@@ -1,7 +1,7 @@
 ---
 title: "About me and my projects"
 author: Killian O'Brien
-date: 26th Feb 2021
+date: 03 MArch 2023
 transition: fade
 theme: killian
 width: 1920
