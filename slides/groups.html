@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <title>6G6Z3024 Group Theory</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">6G6Z3024 Group Theory</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="date">April 2022</p>
+</section>
+
+<section id="the-unit" class="slide level2">
+<h2>The unit</h2>
+<ul>
+<li>Optional unit in first semester</li>
+<li>4 hours lecture + 2 hour tutorial per week</li>
+<li>Assessment: Coursework problems (40%), Examination (60%)</li>
+<li>A unit that allows you to continue your study of pure mathematics</li>
+<li>Excellent free open-source textbook, <a href="http://abstract.pugetsound.edu/">Abstract Algebra</a>, by Tom Judson</li>
+<li>We study a selection from chapters 1 - 15</li>
+</ul>
+</section>
+<section id="the-unit-1" class="slide level2">
+<h2>The unit</h2>
+<ul>
+<li>A thorough introduction to a substantial area of pure mathematics that has strong connections to areas of geometry, combinatorics, graph theory, … .</li>
+<li>Definitely suited to students who like problem solving and the unit will develop your skills in this area.</li>
+<li>We will use the Sage mathematics system to aid our investigations with the Python programming language. (<a href="http://www.sagemath.org">SageMath</a>, <a href="https://cocalc.com">CoCalc</a>, <a href="https://sagecell.sagemath.org">sagecell.sagemath.org</a>)</li>
+</ul>
+</section>
+<section id="the-unit-gives" class="slide level2">
+<h2>The unit gives</h2>
+<ul>
+<li>An appreciation for the many aspects of group theory and its connections to other areas of mathematics.</li>
+<li>Development of your problem solving and abstract thinking skills.</li>
+<li>Exposure to SageMath mathematical software, aimed at pure mathematics teaching and research.</li>
+<li>SageMath uses the Python programming language which is widely used in many areas of computing.</li>
+</ul>
+</section>
+<section id="what-is-a-group" class="slide level2">
+<h2>What is a group?</h2>
+<p>A set of mathematical objects with a mathematically meaningful operation applied amongst them that is <em>well behaved</em>, will be a group. It’s a very broad concept and present in many areas of mathematics.</p>
+</section>
+<section id="more-formally" class="slide level2">
+<h2>More formally</h2>
+<p>A set <span class="math inline"><em>G</em></span> with a binary operation <span class="math inline">⋆</span> satisfying</p>
+<ul>
+<li><span class="math inline"><em>G</em></span> is a closed system under <span class="math inline">⋆</span>, i.e. <span class="math inline"><em>x</em> ⋆ <em>y</em> ∈ <em>G</em></span>.</li>
+<li><span class="math inline">⋆</span> is associative on <span class="math inline"><em>G</em></span>, i.e. <span class="math inline"><em>x</em> ⋆ (<em>y</em> ⋆ <em>z</em>) = (<em>x</em> ⋆ <em>y</em>) ⋆ <em>z</em></span>.</li>
+<li><span class="math inline"><em>G</em></span> contains an identity element, <span class="math inline"><em>e</em></span>, for <span class="math inline">⋆</span>, i.e. <span class="math display"><em>x</em> ⋆ <em>e</em> = <em>e</em> ⋆ <em>x</em> = <em>x</em>.</span></li>
+<li><span class="math inline"><em>G</em></span> contains inverse elements for <span class="math inline">⋆</span>, i.e. <span class="math inline"><em>x</em> ⋆ <em>x</em><sup> − 1</sup> = <em>e</em></span>.</li>
+</ul>
+</section>
+<section id="syllabus-topics" class="slide level2">
+<h2>Syllabus topics</h2>
+<h3 id="examples-of-groups">Examples of groups:</h3>
+<ul>
+<li>Symmetry groups of two and three-dimensional objects,</li>
+<li>the dihedral groups <span class="math inline"><em>D</em><sub><em>n</em></sub></span>,</li>
+<li>rotational symmetry groups of three-dimensional polyhedra.</li>
+<li>Permutation groups, the Symmetric groups <span class="math inline"><em>S</em><sub><em>n</em></sub></span> and the Alternating groups <span class="math inline"><em>A</em><sub><em>n</em></sub></span>,</li>
+<li>Number based groups under arithmetic operations,</li>
+<li>the cyclic groups <span class="math inline">ℤ<sub><em>n</em></sub></span>,</li>
+<li>Groups of matrices</li>
+<li>…</li>
+</ul>
+</section>
+<section id="syllabus-topics-1" class="slide level2">
+<h2>Syllabus topics</h2>
+<p><span class="math inline"><em>Γ</em><sup>+</sup>(<em>T</em>)</span> is the set of rotational symmetries of the tetrahedron.</p>
+<p><img  style="height:90%; object-fit:contain;display:block;margin:auto; " src=./tetrahedrons.png></p>
+</section>
+<section id="syllabus-topics-2" class="slide level2">
+<h2>Syllabus topics</h2>
+<p>The symmetric group, <span class="math inline"><em>S</em><sub>4</sub></span>, is the group of all rearrangments, or <em>permutations</em>, of four objects.</p>
+<p><img style=" height:100%; object-fit:contain;display:block;margin:auto; " src=./S4_Cayley.png></p>
+</section>
+<section id="syllabus-topics-3" class="slide level2">
+<h2>Syllabus topics</h2>
+<p>Group theory lends itself to visual thinking with beautiful mapping diagrams (from Nathan Carter’s <em>Visual Group Theory</em>, MAA)</p>
+<p><img style="display:block;margin:auto; height:90%; object-fit:contain;display:block;margin:auto; "  src=./homomorphisms.png></p>
+</section>
+<section id="syllabus-topics-4" class="slide level2">
+<h2>Syllabus topics</h2>
+<h3 id="classification-problems">Classification problems:</h3>
+<ul>
+<li>The grand enterprise of group theory is to discover and classify all the groups that there are.</li>
+<li>What classification problems can be posed?</li>
+</ul>
+<h3 id="lagranges-theorem">Lagrange’s theorem:</h3>
+<ul>
+<li>Restricts the possibilities for the sizes of subgroups.</li>
+<li>If <span class="math inline"><em>H</em></span> is a subgroup of <span class="math inline"><em>G</em></span> then <span class="math inline">|<em>H</em>|</span> divides <span class="math inline">|<em>G</em>|</span>.</li>
+</ul>
+<h3 id="the-classification-of-finitely-presented-abelian-groups">The classification of finitely presented Abelian groups:</h3>
+<ul>
+<li>All the possible structures of such groups are found and classified</li>
+<li>Can relate this to a type of matrix reduction algorithm on presentation matrices of such groups</li>
+</ul>
+<h3 id="classification-of-groups-of-low-order">Classification of groups of low order:</h3>
+<ul>
+<li>What about non-Abelian groups?</li>
+<li>Why we can’t solve using matrix reduction? Investigation of groups of low order and enumeration and classification of all groups up to some suitable order.</li>
+</ul>
+</section>
+<section id="syllabus-topics-5" class="slide level2">
+<h2>Syllabus topics</h2>
+<h3 id="sylows-theorems">Sylow’s theorems:</h3>
+<ul>
+<li>Discussion of the converse to Lagrange’s theorem:</li>
+<li>If <span class="math inline"><em>d</em></span> divides <span class="math inline">|<em>G</em>|</span>, does <span class="math inline"><em>G</em></span> have a subgroup of size <span class="math inline"><em>d</em></span>?.</li>
+<li>Group actions, orbits, stabilizers. Self-action by conjugation.</li>
+<li>Sylow’s theorems relating to powers of prime divisors of <span class="math inline">|<em>G</em>|</span>.</li>
+</ul>
+</section>
+<section id="wider-interest-material-applications" class="slide level2">
+<h2>Wider interest material / applications</h2>
+<p>The unit allows us to access interesting general material on the following topics/applications.</p>
+<h3 id="the-classification-of-finite-simple-groups">The classification of finite simple groups</h3>
+<p>The grand project. Status of the proof. Some history and biographical details of the completion of the project. The families in the classification. The sporadic groups. The Monster group and Monstrous Moonshine.</p>
+<h3 id="the-monster-group">The Monster group</h3>
+<ul>
+<li>A group, <span class="math inline"><em>M</em></span>, with approx. <span class="math inline">8 × 10<sup>53</sup></span> elements, that is <em>simple</em>, i.e. it has no <em>normal</em> subgroups.</li>
+<li><span class="math inline"><em>M</em></span> is (isomorphic to) a group of rotations of 196883-dimensional space.</li>
+<li><span class="math inline"><em>M</em></span> is (isomorphic to) a group of matrices generated by two particular binary <span class="math inline">196882 × 196882</span> matrices.</li>
+</ul>
+<h3 id="algorithmic-problems">Algorithmic problems</h3>
+<ul>
+<li>The word problem. Computability. Alan Turing.</li>
+</ul>
+<p><img style="height:20%;object-fit:contain;  display:block;margin:auto;" src=./turing.jpg></p>
+</section>
+<section id="wider-interest-material-applications-1" class="slide level2">
+<h2>Wider interest material / applications</h2>
+<h3 id="combinatorial-enumeration-and-geometric-classification-problems">Combinatorial enumeration and geometric classification problems</h3>
+<p>Counting number of distinguishable colourings of geometric objects. Classifying the symmetry types of two-dimensional wallpaper patterns. Classifying two and three-dimensional crystal structures (lattices).</p>
+<iframe width="50%" height="50%" style="display:block; margin:auto;" src="file:///home/killian/Dropbox/Teaching2021/groups/sessions/dodecahedron-labelled.html" title="Dodecahedron">
+</iframe>
+</section>
+<section id="wider-interest-material-applications-2" class="slide level2">
+<h2>Wider interest material / applications</h2>
+<h3 id="the-are-exactly-17-different-types-of-wallpaper-when-classified-according-to-their-symmetries.">The are exactly 17 different types of wallpaper, when classified according to their symmetries.</h3>
+<p><img style="width:60%; object-fit:contain;display:block;margin:auto; " src=./wallpapers.png></p>
+</section>
+<section id="sagemath" class="slide level2">
+<h2>SageMath</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>G<span class="op">=</span>DihedralGroup(<span class="dv">12</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>HH <span class="op">=</span> [H <span class="cf">for</span> H <span class="kw">in</span> G.subgroups() <span class="cf">if</span> <span class="kw">not</span> H.order()<span class="op">==</span><span class="dv">1</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> H <span class="kw">in</span> HH:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span> plot(H.cayley_graph(), vertex_labels<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    show(P)</span></code></pre></div>
+<p>The above code displays the <em>Cayley Graph</em> of every subgroup of <span class="math inline"><em>D</em><sub>12</sub></span>. See the results from SageMath in a <a href="https://sagecell.sagemath.org/?z=eJw9kLFqxDAQRHuD_2HgGruIwVcGXCUgfcB1IQTFXluCPa2RZA7_fSSfc1sO82Z2Vw2fztIUDKsg29r017auLlBwEckSlqJCZgRJJjnxhmH8VDyBZqbx1OJ-v1MKjmIxZ_LpWDY2Af31LbqJJqzC-yK-rupKawz40pglQMN5qC5uv0ddbFq4GV4SdCdhotC0w9B_l8iMnZtFSqXKcC7_B4ugSvoFt2yZhVkezi9HC4usWIPz6RlQXB9mZ9rzlWa1BSYz2lfcmfbaUOv3ukKeaOXR6G484J8Dbtr8tz_mQmmX&amp;lang=sage">SageCell</a></p>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.07,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

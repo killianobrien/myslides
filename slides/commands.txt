@@ -1,0 +1,4 @@
+pandoc -t revealjs --standalone ntc.md -o ntc.html
+
+<h3 style="color:red;">CitizenFour movie</h3>
+<section class="slide level1" data-autoplay data-background-iframe="https://www.youtube.com/embed/GiU2zinfotI?rel=0&amp;controls=0&amp;showinfo=0">

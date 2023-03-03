@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <title>Overhanging Blocks</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Overhanging Blocks</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="date">Mar 2021</p>
+</section>
+
+<section id="the-challenge" class="slide level2">
+<h2>The challenge</h2>
+<ul>
+<li>Make a tower of bricks …<br />
+</li>
+<li>with as much of an overhang as you can.</li>
+</ul>
+</section>
+<section id="an-optimal-solution-for-simple-stacking" class="slide level2">
+<h2>An optimal solution for simple stacking</h2>
+<h3 id="a-couple-of-basic-principles">A couple of basic principles</h3>
+<ul>
+<li>A body balances on a flat surface if its centre of gravity lies over the `footprint’.</li>
+<li>Determine the (horizontal) location of a stack’s centre of gravity by `averaging’ over the locations of centres of the blocks.</li>
+</ul>
+<h3 id="iterate-the-following-construction">Iterate the following construction</h3>
+<ul>
+<li>Build by adding to the bottom of the pile</li>
+<li>When adding a block, position its edge directly under the centre of gravity of the existing stack.</li>
+</ul>
+</section>
+<section id="analyzing-the-solution" class="slide level2">
+<h2>Analyzing the solution</h2>
+<h3 id="defining-h_n">Defining <span class="math inline">\(h_n\)</span></h3>
+<p>Let <span class="math inline">\(h_n\)</span> denote the overhang of this optimal simple stack of <span class="math inline">\(n\)</span> blocks, each of width <span class="math inline">\(w\)</span>.</p>
+<figure>
+<img data-src="stack.png" alt="A stack" /><figcaption aria-hidden="true">A stack</figcaption>
+</figure>
+<p><span class="math display">\[h_n = \text{ centre of gravity of the upper $n-1$ blocks} \]</span></p>
+<h3 id="a-recurrence-formula-for-h_n">A recurrence formula for <span class="math inline">\(h_n\)</span>}</h3>
+<p><span class="math display">\[\begin{align*}
+h_1 &amp; = 0 , \\
+h_n &amp;= h_{n-1} + \frac{1}{n-1} \frac{w}{2}
+\end{align*}\]</span></p>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.07,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

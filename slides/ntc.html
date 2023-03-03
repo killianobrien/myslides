@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <title>6G5Z3019 Number Theory and Cryptography</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">6G5Z3019 Number Theory and Cryptography</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="date">April 2022</p>
+</section>
+
+<section id="the-unit" class="slide level2">
+<h2>The unit</h2>
+<ul>
+<li>Optional unit running in second semester</li>
+<li>4 hours lecture + 2 hour tutorial per week</li>
+<li>Assessment: Coursework problems (40%), Examination (60%)</li>
+<li>Popular unit (36 students in 2021/22)</li>
+</ul>
+</section>
+<section id="number-theory" class="slide level2">
+<h2>Number Theory</h2>
+<ul>
+<li>The study of the integers <span class="math display">ℤ = {… − 3,  − 2,  − 1, 0, 1, 2, 3, …}</span></li>
+<li>Of fundamental importance are the primes <span class="math display">2, 3, 5, 7, …</span></li>
+<li>The unit features a nice mixture of proof oriented theoretical work and practical algorithmic methods</li>
+</ul>
+</section>
+<section id="cryptography" class="slide level2">
+<h2>Cryptography</h2>
+<ul>
+<li>The science/art of transforming <em>plaintext</em> into <em>ciphertext</em> so that it can only be by those possessing a secret key, that can reverse the encryption process.</li>
+<li>Often in connection to military/industrial/political/… secrets.</li>
+<li>Universally and intensively used in modern computer network communications.</li>
+</ul>
+</section>
+<section id="software" class="slide level2">
+<h2>Software</h2>
+<ul>
+<li>Interesting use of mathematical software for various aspects of the unit
+<ul>
+<li>Matlab</li>
+<li><a href="https://www.sagemath.org">SageMath</a>, an open source software system aimed at pure mathematics</li>
+<li><a href="https://cocalc.com">CoCalc</a>, SageMath, and other maths software, in the cloud</li>
+<li><a href="https://www.python.org/">Python</a>, a general purpose programming language with many advanced math libraries</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-quick-tour-of-some-highlights-from-the-unit" class="slide level2">
+<h2>A quick tour of some highlights from the unit</h2>
+</section>
+<section id="integers-in-the-news" class="slide level2">
+<h2>Integers in the news</h2>
+<p>What’s so special about … ?</p>
+<ul>
+<li class="fragment"><span class="math inline">82, 589, 933</span></li>
+<li class="fragment"><span class="math inline">2<sup>82, 589, 933</sup> − 1</span></li>
+</ul>
+<div class="fragment">
+<p>The <span class="math inline">51</span>st known Mersenne prime found by the <a href="http://www.mersenne.org/">GIMPS</a> project, in December 2018.</p>
+</div>
+</section>
+<section id="open-conjecture-or-tutorial-problem" class="slide level2">
+<h2>Open conjecture or tutorial problem?</h2>
+<ul>
+<li class="fragment">There are infinitely many prime numbers.</li>
+<li class="fragment"><span class="math inline">2<sup><em>n</em></sup> − 1</span> can only be prime when <span class="math inline"><em>n</em></span> is prime.</li>
+<li class="fragment">There are infinitely many <span class="math inline">2<sup><em>n</em></sup> − 1</span> which are prime.</li>
+</ul>
+</section>
+<section id="some-python-sagemath-code" class="slide level2">
+<h2>Some Python SageMath code</h2>
+<p>The following SageMath code finds the first few Mersenne primes. See the <a href="https://sagecell.sagemath.org/?z=eJxLyy9SKFDIzFMoKMrMTY0vSsxLT9Uw1DE0iDPStOLlUgCCzDSFzOJ4sLyGUVyBgq6CIUwKBIASeSUaBZroImClhpoAPPsZcA==&amp;lang=sage">results</a></p>
+<pre><code>for p in prime_range(1,10^2):
+    if is_prime(2^p - 1):
+        print(p)
+        print(2^p -1)</code></pre>
+</section>
+<section id="counting-the-primes" class="slide level2">
+<h2>Counting the primes</h2>
+<p><img src="primepi.png" style="display:block; margin-left: auto; margin-right: auto;"></p>
+</section>
+<section id="open-conjecture-or-tutorial-problem-1" class="slide level2">
+<h2>Open conjecture or tutorial problem?</h2>
+<ul>
+<li>There are infinitely many primes <span class="math inline"><em>p</em></span> for which <span class="math inline"><em>p</em> + 2</span> is also prime, i.e. <em>narrow</em> steps on the <span class="math inline"><em>π</em></span> staircase.</li>
+<li>For any integer <span class="math inline"><em>n</em> ≥ 1</span> there are infinitely many gaps of at least length <span class="math inline"><em>n</em></span> between consecutive primes, i.e. <em>wide</em> steps on the <span class="math inline"><em>π</em></span> staircase.</li>
+</ul>
+<p><img src="primepi.png" height = 80% style="display:block; margin-left: auto; margin-right: auto;"></p>
+</section>
+<section id="classical-vs.-modern-cryptography" class="slide level2">
+<h2>Classical vs. modern cryptography</h2>
+</section>
+<section id="classical" class="slide level2">
+<h2>Classical</h2>
+<ul>
+<li>Topics include mono- and poly-alphabetic substitution ciphers.</li>
+<li>Classical cryptography required prearranged secrets between sender and recipient.</li>
+<li>Can be broken with the aid of frequency analysis and other vulnerabilities.</li>
+</ul>
+</section>
+<section id="modern" class="slide level2">
+<h2>Modern</h2>
+<ul>
+<li>Crypto systems based on number theoretic concepts.</li>
+<li>Prearranged secrets no longer required, so called <em>Public Key Cryptography</em>.</li>
+<li>Enables secure mass communication between anyone across public non-secure networks.</li>
+<li>Increasingly important application in crypto-currency such as Bitcoin</li>
+</ul>
+</section>
+<section id="who-is-this" class="slide level2">
+<h2>Who is this?</h2>
+<p><img src="snowden-id.jpg" style="height:80%; width:80%; object-fit:contain; display:block; margin-left: auto; margin-right: auto;"></p>
+</section>
+</section>
+<section id="who-was-that" class="slide level2">
+<h2>Who was that?</h2>
+<ul>
+<li>Edward Snowden, former worker for the CIA and NSA.</li>
+<li>In 2013, he fled the USA, briefly staying in Hong Kong before securing temporary asylum in Russia.</li>
+<li>Has passed many thousands of classified files from the NSA, GCHQ and other intelligence agencies to journalists.</li>
+<li>These revelations concern global surveillance programs carried out by these agencies on the public.</li>
+</ul>
+</section>
+<section id="public-key-cryptography" class="slide level2">
+<h2>Public key cryptography</h2>
+<h3 id="how-did-snowden-make-secure-contact-with-journalists-he-had-never-met">How did Snowden make secure contact with journalists he had never met?</h3>
+<div style="display:block;margin:auto;">
+<img  style="width:22%; object-fit:contain;" src=https://pbs.twimg.com/profile_images/648888480974508032/66_cUYfj_400x400.jpg> <img  style="width:22%; object-fit:contain; " src=https://c1.staticflickr.com/3/2813/13879794094_5e2ce50086_b.jpg> <img  style=" width:22%; object-fit:contain;" src=https://upload.wikimedia.org/wikipedia/commons/4/45/Laura_Poitras_2014.jpg> <img  style=" width:22%; object-fit:contain; " src=http://www.thenation.com/wp-content/uploads/2015/04/Glenn_Greenwald_ap_fb.jpg>
+<div>
+</section>
+<section id="public-key-cryptography-1" class="slide level2">
+<h2>Public key cryptography</h2>
+<iframe width="80%" height="80%" style="display:block;margin:auto;" src="https://www.youtube.com/embed/GiU2zinfotI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.07,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
