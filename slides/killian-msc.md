@@ -35,9 +35,9 @@ title-slide-attributes:
     - Calculus, 
     - Linear Algebra, 
     - Number Theory and Cryptography, 
-    - Group Theory and abstract algebra.
+    - Group Theory and Abstract Algebra.
 * **Research**
-    - PhD in development of algorithms in abstract algebra (Groebner bases in polynomial ring ideals) with applications to knot theory (topology and geometry). 
+    - PhD in development of algorithms in abstract algebra (Gröbner bases in polynomial ring ideals) with applications to knot theory (topology and geometry). 
 
 * **MSc Data Science** project supervision
     - <a href="http://projectlist.cmdt-students.net/?q=my-projects" target="_blank">Projects site</a>
