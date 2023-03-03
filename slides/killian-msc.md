@@ -10,7 +10,8 @@ margin: 0.07
 center: false
 revealjs-url: ../reveal.js
 title-slide-attributes:
-    data-background-color: rgb(0,47,108)	
+    # data-background-color: rgb(0,47,108)	
+    data-background-color: rgb(0,0,0)
     data-background-image: logowhite.png
     data-background-size: 18%
     data-background-repeat: no-repeat
