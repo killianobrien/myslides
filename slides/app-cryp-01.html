@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <meta name="author" content="6G6Z0024 Applied Cryptography">
+  <title>Introduction to Number Theory</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95%
+5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Introduction to Number Theory</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="author">6G6Z0024 Applied Cryptography</p>
+  <p class="date">Lecture Week 01 – Mon 02 October 2023</p>
+</section>
+
+<section id="introduction-to-the-unit" class="slide level2">
+<h2>Introduction to the unit</h2>
+<ul>
+<li><p><img src="./images/mee.jpg" alt="Smiley face" style="padding:3px;float:right;width:150px;">
+My name is Dr Killian O’Brien</p></li>
+<li><p>Contacts: <a
+href="mailto:k.m.obrien@mmu.ac.uk">k.m.obrien@mmu.ac.uk</a>, <a
+href="https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk"
+target="_blank">Teams chat</a>, Office JDE 114a (first floor of John
+Dalton East, Chester St end)</p></li>
+<li><p>6G6Z0024 Applied Cryptography (15 credits)</p></li>
+<li><p>Timetable</p></li>
+<li><p>Let’s look at the <a
+href="https://moodle.mmu.ac.uk/course/view.php?id=172138"
+target="_blank">Moodle</a> page for the unit.</p></li>
+</ul>
+</section>
+<section id="introduction-to-number-theory" class="slide level2">
+<h2>Introduction to Number Theory</h2>
+<p>We deal with the positive and negative <em>counting</em> numbers,
+more properly named the <em>integers</em>, and denoted by the symbol
+<span class="math inline">\(\mathbb{Z}\)</span>, (coming from the German
+<em>Zahl</em>, for number)</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{Z} = \{ \dots, -3, -2, -1, 0,
+1, 2, 3, \dots \}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbb{Z}\)</span> is an
+<em>infinite</em> set.</p></li>
+<li><p><span class="math inline">\(\mathbb{Z}\)</span> obviously carries
+the operations of addition, <span class="math inline">\(+\)</span>, and
+multiplication, <span class="math inline">\(\cdot\)</span>, that you’ve
+known from primary school.</p></li>
+</ul>
+<p>Modern cryptography relies heavily on techniques and facts from
+<em>number theory</em>, which is the mathematical study of the integers
+and their properties under <span class="math inline">\(+\)</span> and
+<span class="math inline">\(\cdot\)</span>.</p>
+</section>
+<section id="topics-we-need-to-know" class="slide level2">
+<h2>Topics we need to know</h2>
+<ul>
+<li>The <strong>divisibility relation</strong> on <span
+class="math inline">\(\mathbb{Z}\)</span>.</li>
+<li><strong>Greatest Common Divisors</strong> (gcd) and the
+<strong>Euclidean Algorithm</strong>.</li>
+<li>The <strong>congruence relation</strong> and <strong>modular
+arithmetic</strong>.</li>
+<li><strong>Prime</strong> numbers and
+<ul>
+<li>The <strong>Fundamental Theorem of Arithmetic</strong> and
+<strong>prime factorizations</strong></li>
+<li><strong>Fermat’s Little Theorem</strong></li>
+<li><strong>Euler’s totient</strong> function</li>
+<li><strong>Euler’s theorem</strong></li>
+<li><strong>Primality</strong> testing, the
+<strong>Miller-Rabin</strong> test</li>
+</ul></li>
+<li><strong>The Chinese Remainder Theorem</strong></li>
+<li><strong>Discrete logarithms</strong></li>
+</ul>
+<p>All these covered in
+<a href="https://mmu.on.worldcat.org/oclc/1064983791" target="_blank">Stallings,
+Chapter 2: Introduction to Number Theory</a>.</p>
+</section>
+<section id="the-divisibility-relation" class="slide level2">
+<h2>The divisibility relation</h2>
+<ul>
+<li><p>Recall, a <em>relation</em> in computer science / mathematics is
+a formula <span class="math inline">\(A(x_1, \dots , x_n)\)</span>, so
+that when values are supplied for the variables <span
+class="math inline">\(x_1, \dots , x_n\)</span>, results in a
+<em>statement</em> <span class="math inline">\(A(x_1, \dots ,
+x_n)\)</span>, i.e. something which is true or false.</p></li>
+<li><p>For a pair of integers <span class="math inline">\(a,b\)</span>,
+with <span class="math inline">\(b \neq 0\)</span>, we say <span
+class="math inline">\(b\)</span> <em>divides</em> <span
+class="math inline">\(a\)</span>, and write <span
+class="math inline">\(b|a\)</span> if there exists an integer <span
+class="math inline">\(c\)</span> such that <span
+class="math display">\[a = b \cdot c,\]</span> and if no such integer
+<span class="math inline">\(c\)</span> exists then we say <span
+class="math inline">\(b\)</span> does <em>not divide</em> <span
+class="math inline">\(a\)</span>.</p></li>
+<li><p>So <span class="math inline">\(b | a\)</span> is a binary
+relation on <span class="math inline">\(a,b\)</span>, i.e. a statement
+that is true or false, depending on the values of <span
+class="math inline">\(a,b\)</span>.</p></li>
+<li><p>If <span class="math inline">\(b|a\)</span> then we say <span
+class="math inline">\(b\)</span> is a <em>factor</em> or
+<em>divisor</em> of <span class="math inline">\(a\)</span>.</p></li>
+</ul>
+<p>Examples</p>
+<ul>
+<li><span class="math inline">\(3|15\)</span>, <span
+class="math inline">\(5|15\)</span>, <span
+class="math inline">\(1|15\)</span>, <span
+class="math inline">\(15|15\)</span>.</li>
+</ul>
+</section>
+<section id="properties-of-divisibility" class="slide level2">
+<h2>Properties of divisibility</h2>
+<p>The divisibility relation enjoys the following properties, which can
+all be demonstrated (and proved) using its definition and basic
+properties of the integers.</p>
+<ul>
+<li>If <span class="math inline">\(a|1\)</span> then <span
+class="math inline">\(a=\pm 1\)</span>, i.e. <span
+class="math inline">\(a=-1\)</span> or <span
+class="math inline">\(a=+1\)</span>.</li>
+<li>If <span class="math inline">\(a|b\)</span> and <span
+class="math inline">\(b|a\)</span> then <span class="math inline">\(a =
+\pm b\)</span>.</li>
+<li>For all non-zero integers <span class="math inline">\(b\)</span>, we
+have <span class="math inline">\(b|0\)</span>, i.e. <em>everything
+divides 0</em>.</li>
+<li>If <span class="math inline">\(a|b\)</span> and <span
+class="math inline">\(b|c\)</span> then <span
+class="math inline">\(a|c\)</span>, i.e. the divisibility relation is
+<em>transitive</em>, it travels through intermediaries.</li>
+<li>If <span class="math inline">\(x|y\)</span> and <span
+class="math inline">\(x|z\)</span> then for all pairs of integer
+coefficients <span class="math inline">\(\alpha, \beta\)</span>, we have
+<span class="math display">\[ x | (\alpha \cdot y + \beta \cdot
+z),\]</span> i.e. <span class="math inline">\(x\)</span> divides all
+<em>linear combinations</em> of <span class="math inline">\(y\)</span>
+and <span class="math inline">\(z\)</span>.</li>
+</ul>
+<p>To familiarise yourself with these, work through some examples of the
+transitivity of divisibility and the divisibility of linear
+combinations.</p>
+</section>
+<section id="the-integer-division-algorithm" class="slide level2">
+<h2>The integer division algorithm</h2>
+<p>Do you remember this kind of thing from primary school?</p>
+<ul>
+<li><span class="math inline">\(20\)</span> divided by <span
+class="math inline">\(3\)</span>, goes in <span
+class="math inline">\(6\)</span> times, with remainder <span
+class="math inline">\(2\)</span>.</li>
+<li><span class="math inline">\(20 = 6 \cdot 3 + 2\)</span></li>
+</ul>
+<p>The <em>integer division algorithm</em> is simply a formalization of
+this</p>
+<ul>
+<li></li>
+</ul>
+</section>
+<section id="greatest-common-divisors-gcd" class="slide level2">
+<h2>Greatest Common Divisors (gcd)</h2>
+</section>
+<section id="the-euclidean-algorithm" class="slide level2">
+<h2>The Euclidean Algorithm</h2>
+</section>
+<section id="the-mod-operator-and-the-congruence-relation"
+class="slide level2">
+<h2>The mod operator and the congruence relation</h2>
+</section>
+<section id="modular-arithmetic" class="slide level2">
+<h2>Modular arithmetic</h2>
+<p>A few slides here</p>
+</section>
+<section id="prime-numbers" class="slide level2">
+<h2>Prime numbers</h2>
+</section>
+<section id="fermats-little-theorem" class="slide level2">
+<h2>Fermat’s Little Theorem</h2>
+</section>
+<section id="eulers-totient-function" class="slide level2">
+<h2>Euler’s totient function</h2>
+</section>
+<section id="eulers-theorem" class="slide level2">
+<h2>Euler’s theorem</h2>
+</section>
+<section id="primality-testing" class="slide level2">
+<h2>Primality testing</h2>
+</section>
+<section id="the-chinese-remainder-theorem" class="slide level2">
+<h2>The Chinese Remainder Theorem</h2>
+</section>
+<section id="exponentiation-and-discrete-logarithms"
+class="slide level2">
+<h2>Exponentiation and discrete logarithms</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
