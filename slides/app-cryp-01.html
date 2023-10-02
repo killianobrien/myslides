@@ -216,27 +216,50 @@
 <li>This is the set of <em>residues</em>, or <em>remainders</em>, modulo <span class="math inline">\(n\)</span>.</li>
 <li>The familiar operations of <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> on <span class="math inline">\(\mathbb{Z}\)</span> extend to <span class="math inline">\(\mathbb{Z}_n\)</span> in a natural way. <span class="math display">\[ (a \mod n) + (b \mod n) := ((a+b) \mod n)\]</span> <span class="math display">\[ (a \mod n) \cdot (b \mod n) := ((a\cdot b) \mod n)\]</span></li>
 </ul>
+<p>This means that <span class="math inline">\(\mathbb{Z}_n\)</span>, with the operations of <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> will form a <em>closed system</em> with respect to these operations, i.e. for any pair <span class="math inline">\(x,y\)</span> from <span class="math inline">\(\mathbb{Z}_n\)</span>, <span class="math inline">\(x+y\)</span> and <span class="math inline">\(x \cdot y\)</span> will again be elements of <span class="math inline">\(\mathbb{Z}_n\)</span>.</p>
+<p>See Stallings for worked examples of <span class="math inline">\(\mathbb{Z}_8\)</span> under <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span>.</p>
 </section>
-<section id="prime-numbers" class="slide level2">
-<h2>Prime numbers</h2>
+<section id="modular-arithmetic-1" class="slide level2">
+<h2>Modular arithmetic</h2>
+<ul>
+<li>So given <span class="math inline">\(x\)</span> from <span class="math inline">\(\mathbb{Z}_n\)</span>, <span class="math inline">\(x\)</span> will have an <em>additive inverse</em>, <span class="math inline">\(n-x\)</span>, which satisfies <span class="math display">\[x + (n-x) \equiv 0 \pmod{n}.\]</span></li>
+<li>Given <span class="math inline">\(x\)</span> from <span class="math inline">\(\mathbb{Z}_n\)</span>, if there exists a <span class="math inline">\(y\)</span> in <span class="math inline">\(\mathbb{Z}_n\)</span> which satisfies <span class="math display">\[ x \cdot y \equiv 1 \pmod{n},\]</span> then we say <span class="math inline">\(y\)</span> is the <em>multiplicative inverse of <span class="math inline">\(x\)</span> modulo <span class="math inline">\(n\)</span></em>, and vice versa. We can write <span class="math inline">\(y \equiv x^{-1} \pmod{n}\)</span>.</li>
+<li>But multiplicative inverses do not necessarily exist for every element of <span class="math inline">\(\mathbb{Z}_n\)</span>.</li>
+</ul>
 </section>
-<section id="fermats-little-theorem" class="slide level2">
-<h2>Fermat’s Little Theorem</h2>
+<section id="modular-arithmetic-2" class="slide level2">
+<h2>Modular arithmetic</h2>
+<p>This is connected to the issue of cancellation in <span class="math inline">\(\mathbb{Z}_n\)</span>.</p>
+<ul>
+<li>If <span class="math inline">\((a+b) \equiv (a+c) \pmod{n} then b \equiv c \pmod{n}\)</span>.</li>
+<li>If <span class="math inline">\((a\cdot b) \equiv (a \cdot c) \pmod{n}\)</span> then it’s not neccessarily true that <span class="math inline">\(b \equiv c \pmod{n}\)</span>.</li>
+<li>However if <span class="math inline">\(a^{-1} \pmod{n}\)</span> exists then we can cancel from products as <span class="math display">\[a^{-1} (a\cdot b) \equiv a^{-1} (a \cdot c) \pmod{n}\]</span> and so <span class="math display">\[(a^{-1}a)\cdot b \equiv (a^{-1} a) \cdot c \pmod{n}\]</span> and so <span class="math display">\[b \equiv c \pmod{n}.\]</span></li>
+</ul>
 </section>
-<section id="eulers-totient-function" class="slide level2">
-<h2>Euler’s totient function</h2>
-</section>
-<section id="eulers-theorem" class="slide level2">
-<h2>Euler’s theorem</h2>
-</section>
-<section id="primality-testing" class="slide level2">
-<h2>Primality testing</h2>
-</section>
-<section id="the-chinese-remainder-theorem" class="slide level2">
-<h2>The Chinese Remainder Theorem</h2>
-</section>
-<section id="exponentiation-and-discrete-logarithms" class="slide level2">
-<h2>Exponentiation and discrete logarithms</h2>
+<section id="extended-euclidean-algorithm-and-multiplicative-inverses" class="slide level2">
+<h2>Extended Euclidean algorithm and multiplicative inverses</h2>
+<p>Using linear combinations and the Euclidean algorithm we can show that</p>
+<ul>
+<li>for <span class="math inline">\(a\)</span> in <span class="math inline">\(\mathbb{Z}_n\)</span>, a multiplicative inverse of <span class="math inline">\(a\)</span> modulo <span class="math inline">\(n\)</span> will exists if and only if <span class="math inline">\(\gcd(a,n)=1\)</span>.</li>
+</ul>
+<p>Terminology</p>
+<ul>
+<li>If <span class="math inline">\(\gcd(x,y)=1\)</span> then <span class="math inline">\(x,y\)</span> are said to be <em>relatively prime</em>, or <em>coprime</em>.</li>
+</ul>
+<p>See Stallings chapter 2 for details.</p>
+<!-- ## Prime numbers
+
+## Fermat's Little Theorem
+
+## Euler's totient function
+
+## Euler's theorem
+
+## Primality testing
+
+## The Chinese Remainder Theorem
+
+## Exponentiation and discrete logarithms -->
 </section>
     </div>
   </div>

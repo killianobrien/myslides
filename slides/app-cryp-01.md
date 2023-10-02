@@ -215,7 +215,45 @@ $$\mathbb{Z}_n = \left \{ 0, 1, 2, 3, \dots , n-1 \right \}.$$
 $$ (a \mod n) + (b \mod n) := ((a+b) \mod n)$$
 $$ (a \mod n) \cdot (b \mod n) := ((a\cdot b) \mod n)$$
 
-## Prime numbers
+This means that $\mathbb{Z}_n$, with the operations of $+$ and $\cdot$ will form a <em>closed system</em> with respect to these operations, i.e. for any pair $x,y$ from $\mathbb{Z}_n$, $x+y$ and $x \cdot y$ will again be elements of $\mathbb{Z}_n$. 
+
+See Stallings for worked examples of $\mathbb{Z}_8$ under $+$ and $\cdot$. 
+
+## Modular arithmetic
+
+* So given $x$ from $\mathbb{Z}_n$, $x$ will have an <em>additive inverse</em>, $n-x$, which satisfies
+$$x + (n-x) \equiv 0 \pmod{n}.$$
+* Given $x$ from $\mathbb{Z}_n$, if there exists a $y$ in $\mathbb{Z}_n$ which satisfies
+$$ x \cdot y \equiv 1 \pmod{n},$$
+then we say $y$ is the <em>multiplicative inverse of $x$ modulo $n$</em>, and vice versa. We can write $y \equiv x^{-1} \pmod{n}$.
+* But multiplicative inverses do not necessarily exist for every element of $\mathbb{Z}_n$.
+
+## Modular arithmetic
+
+This is connected to the issue of cancellation in $\mathbb{Z}_n$.
+
+* If $(a+b) \equiv (a+c) \pmod{n} then b \equiv c \pmod{n}$.
+* If $(a\cdot b) \equiv (a \cdot c) \pmod{n}$ then it's not neccessarily true that $b \equiv c \pmod{n}$.
+* However if $a^{-1} \pmod{n}$ exists then we can cancel from products as
+$$a^{-1} (a\cdot b) \equiv a^{-1} (a \cdot c) \pmod{n}$$
+and so 
+$$(a^{-1}a)\cdot b \equiv (a^{-1} a) \cdot c \pmod{n}$$
+and so 
+$$b \equiv c \pmod{n}.$$
+
+## Extended Euclidean algorithm and multiplicative inverses
+
+Using linear combinations and the Euclidean algorithm we can show that 
+
+* for $a$ in $\mathbb{Z}_n$, a multiplicative inverse of $a$ modulo $n$ will exists if and only if $\gcd(a,n)=1$. 
+
+Terminology
+
+* If $\gcd(x,y)=1$ then $x,y$ are said to be <em>relatively prime</em>, or <em>coprime</em>.
+
+See Stallings chapter 2 for details. 
+
+<!-- ## Prime numbers
 
 ## Fermat's Little Theorem
 
@@ -227,4 +265,4 @@ $$ (a \mod n) \cdot (b \mod n) := ((a\cdot b) \mod n)$$
 
 ## The Chinese Remainder Theorem
 
-## Exponentiation and discrete logarithms
+## Exponentiation and discrete logarithms -->
