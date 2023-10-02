@@ -63,7 +63,7 @@ All these covered in <a href="https://mmu.on.worldcat.org/oclc/1064983791" targe
 
 * For a pair of integers $a,b$, with $b \neq 0$, we say $b$ *divides* $a$, and write $b|a$ if there exists an integer $c$ such that 
 $$a = b \cdot c,$$
-and if no such integer $c$ exists then we say $b$ does *not divide* $a$.
+and if no such integer $c$ exists then we say $b$ does *not divide* $a$, and can write $b \centernot | a$.
 
 * So $b | a$ is a binary relation on $a,b$, i.e. a statement that is true or false, depending on the values of $a,b$.
 
@@ -72,6 +72,7 @@ and if no such integer $c$ exists then we say $b$ does *not divide* $a$.
 Examples
 
 * $3|15$, $5|15$, $1|15$, $15|15$.
+* $3 \centernot | 10$, $17 \centernot | 20$.
 
 ## Properties of divisibility
 
@@ -94,19 +95,125 @@ Do you remember this kind of thing from primary school?
 * $20$ divided by $3$, goes in $6$ times, with remainder $2$.
 * $20 = 6 \cdot 3 + 2$
 
-The *integer division algorithm* is simply a formalization of this
+The *integer division algorithm* is simply a formalization of this. It is:
 
-* 
+* Given any postitive integer $n$ and any non-negative integer $a$, we can divide $a$ by $n$ to get an integer quotient $q$ and remainder $r$ that satisfy
+
+* $a = qn + r$, \quad and $0 \leq r \lt n$, and $q = \left \lfloor a/n \right \rfloor$
+* $\left \lfloor x \right \rfloor$ is defined as the largest integer less than $x$, the so-called <em>floor</em> function.
 
 ## Greatest Common Divisors (gcd)
 
+We write $\gcd(a,b)$ for the <em>greatest common divisor of $a$ and $b$</em>. So $\gcd$ is defined by 
+
+* $\gcd(a,b) = d$, where $d$ is the alrgest integer that divides both $a$ and $b$.
+* For neatness, we also define $\gcd(0,0) = 0$.
+
+For example
+
+* $\gcd(60,24) = 12$, $\gcd(100,75) = 25$, $\gcd(15,32) = 1$. 
+* Note that, by its definition, $\gcd$ will always be non-negative, i.e. $\gcd(-60,24) = 12$. 
+
+For small arguments $a,b$, we can calculate $\gcd(a,b)$ <em>in our heads</em>, so to speak.
+
+* $\gcd(25,3) = ?,$ $\gcd(99, 27) = ?, \dots$.
+* But what about $\gcd(12349878973245, 324765)$?
+
 ## The Euclidean Algorithm
+
+In fact there is a classic algorithm that can quickly determine $\gcd$, and establishes the following, non-obvious fact,
+
+* $\gcd(a,b)$ is the smallest postitive integer $d$ that can be written in the form 
+
+$$ d = x \cdot a + y \cdot b,$$
+
+for integer coefficients $x,y$.
+
+The Euclidean algortihm was known to ancient mathematicians and has severl important uses and generalisations in mathematics and cryptography.
+
+
+## The Euclidean Algorithm
+
+A detailed treatment is given in Stallings. The algorithm depends on the following property of $\gcd$. 
+
+* If $a = qn + r$ then $\gcd(a,n) = \gcd(n,r)$.
+
+This is true because 
+
+* if $d$ is a common divisor of $a$ and $n$, then since $r = a - qn$, i.e. $r$ is a linear combination of $a$ and $n$, then $d$ divides $r$ also. And so $d$ is a common divisor of $n$ and $r$. 
+
+* Similarly we can show that if $e$ is a common divisor of $n$ and $r$, then $e$ divides $a$ also. And so $e$ will be a common divisor of $a$ and $n$.
+
+* So the pairs $(a,n)$ and $(n,r)$ have the exact same set of common divisors.
+
+* Therefore,
+$$\gcd(a,n) = \gcd(n,r).$$
+
+## The Euclidean Algorithm
+
+The algorithm works by repeatedly applying the property from the last slide, to a sequence of integer divisions, until the $\gcd$ is clear. Best seen with a worked example
+
+* What is $\gcd(710,310)$?
+* $710 = 2 \cdot 310 + 90$ so $\gcd(710,310) = \gcd(310,90)$,
+* $310 = 3 \cdot 90 + 40$ so $\gcd(310,90) = \gcd(90,40)$,
+* $90 = 2 \cdot 40 + 10$ so $\gcd(90,40) = \gcd(40,10)$,
+* $40 = 4 \cdot 10 + 0$ so $\gcd(40,10) = \gcd(10,0)=10$.
+
+Note that 
+
+* The algorithm will terminate, since the remainders are a strictly decreasing sequence of non-negative integers.
+* By definition of divisibility, $\gcd(x,0) = x$, for all integers $x$. 
+* The $\gcd$ equations associated to the integer divisions all link together.
+* So we can conclude that 
+$$\gcd(710,310) = 10.$$
+
+See Stallings for the full detail, a flowchart specification of the algorithm, and more examples.
 
 ## The mod operator and the congruence relation
 
+For an integer $a$ and a positive integer $n$ we say that <em>$a$ modulo $n$</em> is the remainder $r$ in the integer division of $a$ by $n$. 
+
+* $a = qn + r$, \quad $0 \leq r \lt n$
+* We write $(a \mod n) = r$.
+* $n$ is called the <em>modulus</em> in this expression.
+
+For example
+
+* $(11 \mod 7) = 4$ and $(-11 \mod 4) = 3$.
+
+There is an associated binary relation here. We say that two integers $a$ and $b$ are <em>congruent modulo $n$</em>, written as 
+
+$$ a \equiv b \pmod{n},$$
+
+if 
+
+* $(a \mod n) = (b \mod n)$
+* That is, if $a$ and $b$ <em>leave the same remainder</em>, after division by $n$. 
+
+## The mod operator and the congruence relation
+
+Examples
+
+* $23 \equiv 8 \pmod{5}$
+* $-11 \equiv 5 \pmod{8}$
+* $81 \equiv 0 \pmod{27}$
+
+The congruence relation has the following properties
+
+* $a \equiv b \pmod{n}$ if and only if $n | (a-b)$
+* $a \equiv a \pmod{n}$, $\quad$ called <em>reflexivity</em>
+* $a \equiv b \pmod{n}$ implies that $b \equiv a \pmod{n}$, $\quad$ called <em>symmetry</em>
+* If $a \equiv b \pmod{n}$ and $b \equiv c \pmod{n}$, then $a \equiv c \pmod{n}$, $\quad$ called <em>transitivity</em>
+* These last three properties mean congruence modulo $n$ is an <em>equivalence relation</em> on $\mathbb{Z}$. 
+
 ## Modular arithmetic
 
-A few slides here
+* The mod operator $(a \mod n)$ maps all integers $a$ into the set
+$$\mathbb{Z}_n = \left \{ 0, 1, 2, 3, \dots , n-1 \right \}.$$
+* This is the set of <em>residues</em>, or <em>remainders</em>, modulo $n$.
+* The familiar operations of $+$ and $\cdot$ on $\mathbb{Z}$ extend to $\mathbb{Z}_n$ in a natural way. 
+$$ (a \mod n) + (b \mod n) := ((a+b) \mod n)$$
+$$ (a \mod n) \cdot (b \mod n) := ((a\cdot b) \mod n)$$
 
 ## Prime numbers
 
