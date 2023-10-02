@@ -179,7 +179,7 @@ For an integer $a$ and a positive integer $n$ we say that <em>$a$ modulo $n$</em
 
 For example
 
-* $(11 \mod 7) = 4$ and $(-11 \mod 4) = 3$.
+* $(11 \mod 7) = 4$ and $(-11 \mod 4) = 1$.
 
 There is an associated binary relation here. We say that two integers $a$ and $b$ are <em>congruent modulo $n$</em>, written as 
 
