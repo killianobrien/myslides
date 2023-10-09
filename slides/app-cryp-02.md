@@ -24,13 +24,15 @@ title-slide-attributes:
 * <img src="./images/mee.jpg" alt="Smiley face" style="padding:3px;float:right;width:150px;"> My name is Dr Killian O'Brien
 * Contacts: [k.m.obrien@mmu.ac.uk](mailto:k.m.obrien@mmu.ac.uk), [Teams chat](https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk){target="_blank"}, Office JDE 114a (first floor of John Dalton East, Chester St end)
 
-* Office hours are XXX
+* Office hours are Thurs 2-3pm &amp; Thur 4-5pm - before/after your Thurs lecture. I intend to be in the *Learning Studio*, come find me there. 
 
 * 6G6Z0024 Applied Cryptography (15 credits)
 
 * The [Moodle](https://moodle.mmu.ac.uk/course/view.php?id=172138){target="_blank"} page for the unit.
 
 * The slides from the first lecture are repeated after this one for reference. New slides for lecture 02 [begin here](#prime-numbers)
+
+* <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 2: Introduction to Number Theory</a>
 
 ## Introduction to Number Theory
 
@@ -289,14 +291,136 @@ $$n = \prod_{i=1}^r p_i^{a_i}.$$
 
 ## Fermat's Little Theorem
 
-We need to understand the behaviour of *multiplication* and *exponentiation* on $\mathbb{Z}_n$.
+We need to understand the behaviour of *multiplication* and *exponentiation* on $\mathbb{Z}_n$. **Euler's Theorem** is a result that tells us a lot about how it behaves. A simpler first case to look at it called **Fermat's Little Theorem**. 
+
+<span class="theorem" name="Fermat's Little Theorem">
+If $p$ is a prime and $a$ is a postive integer not divisible by $p$, (i.e. $a \not\equiv 0 \pmod{p}$) then 
+$$a^{p-1} \equiv 1 \pmod{p}.$$
+</span>
+
+* A proof for this is given in Stallings. 
+
+## Fermat's Little Theorem
+
+**Example**
+
+With $a = 7$ and $19$ we see
+
+$$7^2 \equiv 49 \equiv 11 \pmod{19} \quad 
+7^4 \equiv (7^2)^2 \equiv 11^2 \equiv 121 \equiv 7  \pmod{19}
+$$
+
+
+$$7^8 \equiv 7^2 \equiv 49 \equiv 11 \pmod{19} \quad 
+7^{16} \equiv 11^2 \equiv 121 \equiv 7  \pmod{19}
+$$
+
+So now 
+
+$$ a^{p-1} \equiv a^{16} \equiv a^{16+2} \equiv a^{16}\cdot a^2 \equiv 7^{16}\cdot 7^2 \equiv 7 \cdot 11 \equiv 77 \equiv 1 \pmod{19}.$$
+
+* These calculations show an example of dealing with large exponents, (i.e. 16), by the method of **repeated squares**. More later. 
 
 ## Euler's totient function
 
+* Recall, the integer $a$ has a multiplicative inverse modulo $n$ if and only if $\gcd(a,n) = 1$, i.e. $a$ and $n$ are coprime (to each other).
+
+* <span class="definition" name = "Euler's totient function">
+Euler's totient function $\phi : \mathbb{Z}^+ \to \mathbb{Z}^+$ is defined as: $\phi(n)$ is the number of positive integers $a$, less than $n$, (i.e. $1 \leq a \lt n$) such that $\gcd(a,n) = 1$.</span>
+
+**Example**
+
+* $\phi(35) = 24$ as the integers coprime to 35 are 
+$$1,2,3,4,6,8,9,11,12,13,16,17,18,$$
+$$19,22,23,24,26,27,29,31,32,33,34,$$
+and there are $24$ integers on this list. 
+* Notice that $35 = 5 \cdot 7$ and this list omits all multiples of $5$ and $7$. 
+* This points to a more systematic way of evaluating $\phi(n)$. 
+
+## Euler's totient function
+
+Some evaluation formulae for $\phi$ are 
+
+* For a prime $p$, 
+$$\phi(p) = p-1.$$
+* For a power of a prime, $p^a$, we have 
+$$\phi(p^a) = p^{a-1}(p-1).$$
+* $\phi$ is *multiplicative*, i.e. 
+$$ \text{ if $\gcd(a,b)=1$ then } \phi(a \cdot b) = \phi(a) \cdot \phi(b).$$
+
+## Euler's totient function
+
+* Putting all these together, means that for an integer $n$ with a prime factorization 
+$$ n = \prod_{i=1}^r p_i^{a_i} = p_1^{a_1} \cdot p_2^{a_2} \cdot \dots \cdot p_r^{a_r},$$
+then 
+$$ \phi(n) = \prod_{i=1}^r p_i^{a_i - 1}(p_i - 1) = p_1^{a_1-1}\cdot (p_1 - 1) \cdot p_2^{a_2 - 1}\cdot(p_2 - 1) \cdot \dots \cdot p_r^{a_r -1}(p_r - 1).$$
+
+**Example**
+$$ \phi(35) = \phi(5 \cdot 7) = 5^0 \cdot 4 \cdot 7^0 \cdot 6 = 4 \cdot 6 = 24. $$
+
 ## Euler's theorem
 
-## Primality testing
+Finally, we can now state Euler's theorem, which is a generalization of Fermat's Little Theorem
+
+<span class="theorem" name="Euler's Theorem">
+If $n$ is a postive integer modulus and $a$ and $n$ are coprime then 
+$$a^{\phi(n)} \equiv 1 \pmod{n}.$$</span>
+
+* A proof for this is given in Stallings. 
+* Theorem allows one to simplify powers of $a$ modulo $n$, where the exponent is very large. 
+* Suppose that $b \equiv r \pmod{\phi(n)}$. Think of $b$ being very large and $r$ being relatively small. 
+* So $b = q \cdot \phi(n) + r$.
+* Then 
+$$a^b = a^{q \cdot \phi(n) + r} = a^{q \cdot \phi(n)} \cdot a^r = \left ( a^{\phi(n)} \right )^q \cdot a^r \equiv 1^q \cdot a^r \equiv a^r \pmod{n}.$$
+
+**Example**
+
+* Suppose $\gcd(a,35) = 1$ and we want $a^{23458973249848} \pmod{35}$. Remember $\phi(35) = 24$. 
+* $23458973249848 \equiv 16 \pmod{24}$.
+* So $a^{23458973249848} \equiv a^{16} \pmod{35}$.
+
+<!-- ## Primality testing -->
 
 ## The Chinese Remainder Theorem
 
-## Exponentiation and discrete logarithms
+* The CRT is another useful result for working with modular arithmetic.
+* Suppose $M$ is an integer factorized into *pairwise coprime* factors
+$$M = \prod_{i=1}^k m_i = m_1 \cdot m_2 \cdot \dots m_k,$$
+i.e. $\gcd(m_i,m_j) = 1$ for every pair of distint indices $1 \leq i,j, \leq k$, $i \neq j$.
+* Such a factorization might be given by the different powers of primes in the prime factorization of $M$, i.e. 
+$$ M = \prod_{i=1}^k p_i^{a_i} = \left ( p_1^{a_1} \right ) \cdot \left ( p_2^{a_2} \right ) \cdot \dots \cdot \left ( p_k^{a_k} \right ).$$
+* The CRT describes a *one to one* mapping from the integers $\mathbb{Z}_M$ to the *Cartesian product*,
+$$\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}.$$
+* An element of $\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}$ is a $k$-tuple
+$$(a_1 , a_2, \dots , a_k),$$
+where each $a_i$ is a residues/remainder modulo $m_i$.
+
+## The Chinese Remainder Theorem
+
+* $M = \prod_{i=1}^k m_i = m_1 \cdot m_2 \cdot \dots m_k,$
+* $\gcd(m_i,m_j) = 1$ for every pair of distint indices $1 \leq i,j, \leq k$, $i \neq j$.
+* The mapping $\mathbb{Z}_M \to \mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}$ is defined by 
+$$x \mapsto \Big ( (x \pmod{m_1}), (x \pmod{m_2}), 
+\dots , (x \pmod{m_k}) \Big )$$
+i.e. reduct $x$ modulo $m_i$ for the $i^{th}$-component of the $k$-tuple. 
+* The mapping in the other direction $\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k} \to \mathbb{Z}_M$ is a little more involved
+* For each $1 \leq i \leq k$, define $M_i = M/m_i$, and let $M_i^{-1}$ be the multiplicative inverse of $M_i$ modulo $m_i$.
+* Then, the $k$-tuple $(a_1, a_2, \dots , a_k)$ will be mapped to the element $a$ of $\mathbb{Z}_M$ defined by 
+$$a = \sum_{i=1}^k a_i \cdot M_i \cdot M_i^{-1} \pmod{M}.$$
+* These two maps described above are *inverses* of one another. 
+* Arithmetic operations on elements of $\mathbb{Z}_M$ can be achived by corresepoding operations on elements of $\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}$.
+* We will work with examples of this in the today's lab. 
+
+## Suggested reading
+
+* During the week, read up on the following sections of Chapter 2 from Stallings. 
+    - Testing for Primality
+    - Discrete Logarithms
+
+
+* Discrete logarithms will be needed for public key encryption. I will cover it then also. 
+
+* Next week, our first encryption system, the *Data Encryption Standard* (DES). 
+
+
+<!-- ## Exponentiation and discrete logarithms -->

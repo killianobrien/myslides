@@ -37,11 +37,10 @@
 <ul>
 <li><p><img src="./images/mee.jpg" alt="Smiley face" style="padding:3px;float:right;width:150px;"> My name is Dr Killian O’Brien</p></li>
 <li><p>Contacts: <a href="mailto:k.m.obrien@mmu.ac.uk">k.m.obrien@mmu.ac.uk</a>, <a href="https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk" target="_blank">Teams chat</a>, Office JDE 114a (first floor of John Dalton East, Chester St end)</p></li>
-<li><p>Office hours are Thurs 2-3pm &amp; Thur 4-5pm - before/after your Thurs lecture. I intend to be in the <em>Learning Studio</em>, come find me there.</p></li>
+<li><p>Office hours are XXX</p></li>
 <li><p>6G6Z0024 Applied Cryptography (15 credits)</p></li>
 <li><p>The <a href="https://moodle.mmu.ac.uk/course/view.php?id=172138" target="_blank">Moodle</a> page for the unit.</p></li>
 <li><p>The slides from the first lecture are repeated after this one for reference. New slides for lecture 02 <a href="#/prime-numbers">begin here</a></p></li>
-<li><p><a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 2: Introduction to Number Theory</a></p></li>
 </ul>
 </section>
 <section id="introduction-to-number-theory" class="slide level2">
@@ -347,45 +346,20 @@
 <li><span class="math inline">\(23458973249848 \equiv 16 \pmod{24}\)</span>.</li>
 <li>So <span class="math inline">\(a^{23458973249848} \equiv a^{16} \pmod{35}\)</span>.</li>
 </ul>
-<!-- ## Primality testing -->
+</section>
+<section id="primality-testing" class="slide level2">
+<h2>Primality testing</h2>
 </section>
 <section id="the-chinese-remainder-theorem" class="slide level2">
 <h2>The Chinese Remainder Theorem</h2>
 <ul>
 <li>The CRT is another useful result for working with modular arithmetic.</li>
 <li>Suppose <span class="math inline">\(M\)</span> is an integer factorized into <em>pairwise coprime</em> factors <span class="math display">\[M = \prod_{i=1}^k m_i = m_1 \cdot m_2 \cdot \dots m_k,\]</span> i.e. <span class="math inline">\(\gcd(m_i,m_j) = 1\)</span> for every pair of distint indices <span class="math inline">\(1 \leq i,j, \leq k\)</span>, <span class="math inline">\(i \neq j\)</span>.</li>
-<li>Such a factorization might be given by the different powers of primes in the prime factorization of <span class="math inline">\(M\)</span>, i.e.  <span class="math display">\[ M = \prod_{i=1}^k p_i^{a_i} = \left ( p_1^{a_1} \right ) \cdot \left ( p_2^{a_2} \right ) \cdot \dots \cdot \left ( p_k^{a_k} \right ).\]</span></li>
-<li>The CRT describes a <em>one to one</em> mapping from the integers <span class="math inline">\(\mathbb{Z}_M\)</span> to the <em>Cartesian product</em>, <span class="math display">\[\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}.\]</span></li>
-<li>An element of <span class="math inline">\(\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}\)</span> is a <span class="math inline">\(k\)</span>-tuple <span class="math display">\[(a_1 , a_2, \dots , a_k),\]</span> where each <span class="math inline">\(a_i\)</span> is a residues/remainder modulo <span class="math inline">\(m_i\)</span>.</li>
+<li>The CRT describes a <em>one to one</em> mapping from the integers <span class="math inline">\(\mathbb{Z}_M\)</span>,</li>
 </ul>
 </section>
-<section id="the-chinese-remainder-theorem-1" class="slide level2">
-<h2>The Chinese Remainder Theorem</h2>
-<ul>
-<li><span class="math inline">\(M = \prod_{i=1}^k m_i = m_1 \cdot m_2 \cdot \dots m_k,\)</span></li>
-<li><span class="math inline">\(\gcd(m_i,m_j) = 1\)</span> for every pair of distint indices <span class="math inline">\(1 \leq i,j, \leq k\)</span>, <span class="math inline">\(i \neq j\)</span>.</li>
-<li>The mapping <span class="math inline">\(\mathbb{Z}_M \to \mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}\)</span> is defined by <span class="math display">\[x \mapsto \Big ( (x \pmod{m_1}), (x \pmod{m_2}), 
-\dots , (x \pmod{m_k}) \Big )\]</span> i.e. reduct <span class="math inline">\(x\)</span> modulo <span class="math inline">\(m_i\)</span> for the <span class="math inline">\(i^{th}\)</span>-component of the <span class="math inline">\(k\)</span>-tuple.</li>
-<li>The mapping in the other direction <span class="math inline">\(\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k} \to \mathbb{Z}_M\)</span> is a little more involved</li>
-<li>For each <span class="math inline">\(1 \leq i \leq k\)</span>, define <span class="math inline">\(M_i = M/m_i\)</span>, and let <span class="math inline">\(M_i^{-1}\)</span> be the multiplicative inverse of <span class="math inline">\(M_i\)</span> modulo <span class="math inline">\(m_i\)</span>.</li>
-<li>Then, the <span class="math inline">\(k\)</span>-tuple <span class="math inline">\((a_1, a_2, \dots , a_k)\)</span> will be mapped to the element <span class="math inline">\(a\)</span> of <span class="math inline">\(\mathbb{Z}_M\)</span> defined by <span class="math display">\[a = \sum_{i=1}^k a_i \cdot M_i \cdot M_i^{-1} \pmod{M}.\]</span></li>
-<li>These two maps described above are <em>inverses</em> of one another.</li>
-<li>Arithmetic operations on elements of <span class="math inline">\(\mathbb{Z}_M\)</span> can be achived by corresepoding operations on elements of <span class="math inline">\(\mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \dots \times \mathbb{Z}_{m_k}\)</span>.</li>
-<li>We will work with examples of this in the today’s lab.</li>
-</ul>
-</section>
-<section id="suggested-reading" class="slide level2">
-<h2>Suggested reading</h2>
-<ul>
-<li><p>During the week, read up on the following sections of Chapter 2 from Stallings.</p>
-<ul>
-<li>Testing for Primality</li>
-<li>Discrete Logarithms</li>
-</ul></li>
-<li><p>Discrete logarithms will be needed for public key encryption. I will cover it then also.</p></li>
-<li><p>Next week, our first encryption system, the <em>Data Encryption Standard</em> (DES).</p></li>
-</ul>
-<!-- ## Exponentiation and discrete logarithms -->
+<section id="exponentiation-and-discrete-logarithms" class="slide level2">
+<h2>Exponentiation and discrete logarithms</h2>
 </section>
     </div>
   </div>
