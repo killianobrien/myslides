@@ -304,7 +304,7 @@ $$a^{p-1} \equiv 1 \pmod{p}.$$
 
 **Example**
 
-With $a = 7$ and $19$ we see
+With $a = 7$ and $p=19$ we see
 
 $$7^2 \equiv 49 \equiv 11 \pmod{19} \quad 
 7^4 \equiv (7^2)^2 \equiv 11^2 \equiv 121 \equiv 7  \pmod{19}
@@ -317,7 +317,7 @@ $$
 
 So now 
 
-$$ a^{p-1} \equiv a^{16} \equiv a^{16+2} \equiv a^{16}\cdot a^2 \equiv 7^{16}\cdot 7^2 \equiv 7 \cdot 11 \equiv 77 \equiv 1 \pmod{19}.$$
+$$ a^{p-1} \equiv a^{18} \equiv a^{16+2} \equiv a^{16}\cdot a^2 \equiv 7^{16}\cdot 7^2 \equiv 7 \cdot 11 \equiv 77 \equiv 1 \pmod{19}.$$
 
 * These calculations show an example of dealing with large exponents, (i.e. 16), by the method of **repeated squares**. More later. 
 
