@@ -287,9 +287,9 @@ $$n = \prod_{i=1}^r p_i^{a_i}.$$
 * $3600 = 2^4 \cdot 3^2 \cdot 5^2$
 * $1101 = 7 \cdot 11^2 \cdot 13$
 
-
-
 ## Fermat's Little Theorem
+
+We need to understand the behaviour of *multiplication* and *exponentiation* on $\mathbb{Z}_n$.
 
 ## Euler's totient function
 
