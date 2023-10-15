@@ -86,18 +86,35 @@
 <img data-src="./images/types-of-attack.png" style="width:70%" alt="Stallings Cryptography and Network Security, Sec. 3.1, pg 88" /><figcaption aria-hidden="true">Stallings <em>Cryptography and Network Security</em>, Sec. 3.1, pg 88</figcaption>
 </figure>
 </section>
+<section id="symmetric-ciphers-4" class="slide level2">
+<h2>Symmetric Ciphers</h2>
+<ul>
+<li>Something on security definition.</li>
+</ul>
+</section>
 <section id="stream-and-block-ciphers" class="slide level2">
 <h2>Stream and Block ciphers</h2>
 <ul>
-<li><strong>Stream cipher</strong> <img src="./images/stream-cipher.png" alt="Smiley face" style="padding:3px;float:right;width:55%;"></li>
-<li>Stream cipher points</li>
-<li>point</li>
-</ul>
-<p> </p>
+<li><strong>Stream cipher</strong> <img src="./images/stream-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"></li>
+<li>Considers plaintext <span class="math inline">\(P\)</span> as a stream of individual bits, <span class="math inline">\(P=(p_0, p_1, p_2, \dots)\)</span>.</li>
+<li>Requires a key stream <span class="math inline">\(K\)</span> of individual bits, <span class="math inline">\(K=(k_0, k_1, k_2, \dots)\)</span>, known only to sender and recipient.</li>
+<li>Encryption is by <span class="math inline">\(\pmod{2}\)</span>-addition-without-carry, also known as exclusive-or operation (XOR)</li>
+<li>Ciphertext <span class="math inline">\(C=(c_0, c_1, c_2, \dots )\)</span> computed as <span class="math inline">\(c_i = p_i + k_i\)</span>
 <ul>
-<li><strong>Block cipher</strong> <img src="./images/block-cipher.png" alt="Smiley face" style="padding:3px;float:right;width:55%;"></li>
-<li>block cipher point</li>
-<li>point</li>
+<li><span class="math inline">\(0 + 0 = 0\)</span>, <span class="math inline">\(1+1=0\)</span></li>
+<li><span class="math inline">\(0+1 = 1\)</span>, <span class="math inline">\(1+0=1\)</span></li>
+</ul></li>
+<li>Ideal <span class="math inline">\(K\)</span> is so-called <strong>one-time pad</strong>, a random stream of bits known only to sender and recipient. But this <em>impractical</em>.</li>
+<li>So some kind of keyed algorithm is used to produce the keystream <span class="math inline">\(K\)</span>.</li>
+<li>More on stream ciphers later in the unit.</li>
+</ul>
+</section>
+<section id="stream-and-block-ciphers-1" class="slide level2">
+<h2>Stream and Block ciphers</h2>
+<ul>
+<li><strong>Block cipher</strong> <img src="./images/block-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"></li>
+<li>Plaintext <span class="math inline">\(P\)</span> divided into <em>blocks</em> of fixed bit-length <span class="math inline">\(b\)</span>, typically 64 or 128 bits used.</li>
+<li>Encryption and decryption algortihms depend on same key <span class="math inline">\(K\)</span>, known only to sender and recipient.</li>
 </ul>
 </section>
 <section id="next" class="slide level2">
