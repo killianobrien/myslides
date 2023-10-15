@@ -63,17 +63,28 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 
 ![Stallings *Cryptography and Network Security*, Sec. 3.1, pg 88](./images/types-of-attack.png){style="width:70%"}
 
+## Symmetric Ciphers
+
+* Something on security definition.
+
 ## Stream and Block ciphers
 
-* **Stream cipher** <img src="./images/stream-cipher.png" alt="Smiley face" style="padding:3px;float:right;width:55%;"> 
-* Stream cipher points
-* point
+* **Stream cipher** <img src="./images/stream-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"> 
+* Considers plaintext $P$ as a stream of individual bits, $P=(p_0, p_1, p_2, \dots)$.
+* Requires a key stream $K$ of individual bits, $K=(k_0, k_1, k_2, \dots)$, known only to sender and recipient. 
+* Encryption is by $\pmod{2}$-addition-without-carry, also known as exclusive-or operation (XOR)
+* Ciphertext $C=(c_0, c_1, c_2, \dots )$ computed as $c_i = p_i + k_i$
+    - $0 + 0 = 0$, $1+1=0$
+    - $0+1 = 1$, $1+0=1$
+* Ideal $K$ is so-called **one-time pad**, a random stream of bits known only to sender and recipient. But this *impractical*.
+* So some kind of keyed algorithm is used to produce the keystream $K$. 
+* More on stream ciphers later in the unit. 
 
-&nbsp;
+## Stream and Block ciphers
 
-* **Block cipher** <img src="./images/block-cipher.png" alt="Smiley face" style="padding:3px;float:right;width:55%;"> 
-* block cipher point
-* point
+* **Block cipher** <img src="./images/block-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"> 
+* Plaintext $P$ divided into *blocks* of fixed bit-length $b$, typically 64 or 128 bits used.
+* Encryption and decryption algortihms depend on same key $K$, known only to sender and recipient. 
 
 ## next 
 
