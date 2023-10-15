@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <meta name="author" content="6G6Z0024 Applied Cryptography 2023/24">
+  <title>Introduction to Number Theory</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Introduction to Number Theory</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="author">6G6Z0024 Applied Cryptography 2023/24</p>
+  <p class="date">Lecture Week 02 – Mon 09 October 2023</p>
+</section>
+
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li><p><img src="./images/mee.jpg" alt="Smiley face" style="padding:3px;float:right;width:150px;"> My name is Dr Killian O’Brien</p></li>
+<li><p>Contacts: <a href="mailto:k.m.obrien@mmu.ac.uk">k.m.obrien@mmu.ac.uk</a>, <a href="https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk" target="_blank">Teams chat</a>, Office JDE 114a (first floor of John Dalton East, Chester St end)</p></li>
+<li><p>Office hours are Thurs 2-3pm &amp; Thur 4-5pm - before/after your Thurs lecture.</p>
+<ul>
+<li>Normally in my office JD E114a</li>
+<li>Though I might be based in the Learning Studio for these office hours. I’ll send a Moodle announcement/email if I am there.</li>
+</ul></li>
+<li><p>6G6Z0024 Applied Cryptography (15 credits)</p></li>
+<li><p>The <a href="https://moodle.mmu.ac.uk/course/view.php?id=172138" target="_blank">Moodle</a> page for the unit.</p></li>
+<li><p>Reading for this topic</p>
+<ul>
+<li><a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 4: Block Ciphers and the Data Encryption Standard (DES)</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="symmetric-ciphers" class="slide level2">
+<h2>Symmetric Ciphers</h2>
+<p>Some definitions, (Stallings, <em>Cryptography and Network Security</em>, Ch. 3)</p>
+<ul>
+<li><span class="definition" name="Plaintext">The original intelligible message or data.</span></li>
+<li><span class="definition" name="Encryption algorithm">The encryption algorithm performs various substitutions and transformations of the plaintext.</span></li>
+<li><span class="definition" name="Secret key">The secret key <span class="math inline">\(K\)</span> is input into the encryption algorithm along with the plaintext. The algorithm will produce different outputs depending on the specific value of <span class="math inline">\(K\)</span> used for the same plaintext. The exact substitutions and transformations carried out by the algorithm depend on <span class="math inline">\(K\)</span>.</span></li>
+<li><span class="definition" name="Ciphertext">The scrambled message output by the encryption algorithm. It depends on the agorithm, plaintext and key <span class="math inline">\(K\)</span>. The ciphertext should be an apparently unintelligible random stream of data. </span></li>
+</ul>
+</section>
+<section id="symmetric-ciphers-1" class="slide level2">
+<h2>Symmetric Ciphers</h2>
+<figure>
+<img data-src="./images/symmetric-cipher.png" style="width:60%" alt="Stallings Cryptography and Network Security, Sec. 3.1, pg 85" /><figcaption aria-hidden="true">Stallings <em>Cryptography and Network Security</em>, Sec. 3.1, pg 85</figcaption>
+</figure>
+</section>
+<section id="symmetric-ciphers-2" class="slide level2">
+<h2>Symmetric Ciphers</h2>
+<ul>
+<li>Bob (message source) sends an encrypted message to Alice (destination)</li>
+<li>The cryptanalyst Eve, intercepts <span class="math inline">\(Y\)</span>, has knowledge of the encryption and decryption algorithms, and seeks to develop estimates <span class="math inline">\(\hat X\)</span> and/or <span class="math inline">\(\hat K\)</span> of the plaintext <span class="math inline">\(X\)</span> and key <span class="math inline">\(K\)</span>.</li>
+</ul>
+<figure>
+<img data-src="./images/symmetric-cipher2.png" style="width:60%" alt="Stallings Cryptography and Network Security, Sec. 3.1, pg 86" /><figcaption aria-hidden="true">Stallings <em>Cryptography and Network Security</em>, Sec. 3.1, pg 86</figcaption>
+</figure>
+</section>
+<section id="symmetric-ciphers-3" class="slide level2">
+<h2>Symmetric Ciphers</h2>
+<ul>
+<li>The types of attacks carried out by Eve can be classified in various ways,</li>
+</ul>
+<figure>
+<img data-src="./images/types-of-attack.png" style="width:70%" alt="Stallings Cryptography and Network Security, Sec. 3.1, pg 88" /><figcaption aria-hidden="true">Stallings <em>Cryptography and Network Security</em>, Sec. 3.1, pg 88</figcaption>
+</figure>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
