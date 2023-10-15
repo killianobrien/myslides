@@ -1,9 +1,9 @@
 ---
-title: "Introduction to Number Theory"
+title: "Symmetric ciphers and the Data Encryption Standard (DES)"
 author:
 - Killian O'Brien
 - 6G6Z0024 Applied Cryptography 2023/24
-date: Lecture Week 02 -- Mon 09 October 2023
+date: Lecture Week 03 -- Mon 16 October 2023
 transition: fade
 theme: killian
 width: 1920
@@ -33,6 +33,8 @@ title-slide-attributes:
 * The [Moodle](https://moodle.mmu.ac.uk/course/view.php?id=172138){target="_blank"} page for the unit.
 
 * Reading for this topic
+    - <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 3, Just Section 3.1: Symmetric Cipher Model</a>
+
     - <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 4: Block Ciphers and the Data Encryption Standard (DES)</a>
 
 ## Symmetric Ciphers
@@ -61,6 +63,42 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 
 ![Stallings *Cryptography and Network Security*, Sec. 3.1, pg 88](./images/types-of-attack.png){style="width:70%"}
 
-## g
+## Stream and Block ciphers
+
+* **Stream cipher** <img src="./images/stream-cipher.png" alt="Smiley face" style="padding:3px;float:right;width:55%;"> 
+* Stream cipher points
+* point
+
+&nbsp;
+
+* **Block cipher** <img src="./images/block-cipher.png" alt="Smiley face" style="padding:3px;float:right;width:55%;"> 
+* block cipher point
+* point
+
+## next 
+
+**General intro**
+
+* Stream ciphers
+    - mention on-time-pad
+    - but in reality use keyed algorithms to generate key streams
+
+* Block ciphers
+    - blocks of text
+    - widely used
+
+## Feistel ciphers
+
+* Substitution and permutation
+
+**Shannon's**
+
+* diffusion and confusion
+
+## Feistel ciphers
+
+**Feistel cipher structure**
+
+## Data Encryption Standard (DES)
 
 
