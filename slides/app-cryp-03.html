@@ -107,6 +107,7 @@
 <li>Ideal <span class="math inline">\(K\)</span> is so-called <strong>one-time pad</strong>, a random stream of bits known only to sender and recipient. But this <em>impractical</em>.</li>
 <li>So some kind of keyed algorithm is used to produce the keystream <span class="math inline">\(K\)</span>.</li>
 <li>More on stream ciphers later in the unit.</li>
+<li>Figure from Stallings, Ch 4, pg 114</li>
 </ul>
 </section>
 <section id="stream-and-block-ciphers-1" class="slide level2">
@@ -115,36 +116,42 @@
 <li><strong>Block cipher</strong> <img src="./images/block-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"></li>
 <li>Plaintext <span class="math inline">\(P\)</span> divided into <em>blocks</em> of fixed bit-length <span class="math inline">\(b\)</span>, typically 64 or 128 bits used.</li>
 <li>Encryption and decryption algortihms depend on same key <span class="math inline">\(K\)</span>, known only to sender and recipient.</li>
+<li>More widely used design than stream ciphers.</li>
+<li>Provides a basic encryption/decryption component that can be used to build further ciphers, through so-called <em>modes of operation</em>. More on this later.</li>
+<li>Figure from Stallings, Ch 4, pg 114</li>
 </ul>
 </section>
-<section id="next" class="slide level2">
-<h2>next</h2>
-<p><strong>General intro</strong></p>
+<section id="possibilities-for-block-ciphers" class="slide level2">
+<h2>Possibilities for block ciphers</h2>
 <ul>
-<li>Stream ciphers
-<ul>
-<li>mention on-time-pad</li>
-<li>but in reality use keyed algorithms to generate key streams</li>
-</ul></li>
-<li>Block ciphers
-<ul>
-<li>blocks of text</li>
-<li>widely used</li>
-</ul></li>
+<li><strong>Outlining the possiblities</strong> <img src="./images/4-bit-block-cipher.png" alt="Smiley face" style="padding:5spx;float:right;width:55%;"></li>
+<li>The encryption algorithm needs to map blocks of bit-length <span class="math inline">\(n\)</span> to blocks of bit-length <span class="math inline">\(n\)</span>.</li>
+<li>There are <span class="math inline">\(2^n\)</span> possible blocks of length <span class="math inline">\(n\)</span>.</li>
+<li>The mapping needs to be <em>reversible</em>, i.e. a so-called <em>permutation</em> or <em>non-singular transformation</em>.</li>
+<li>There are <span class="math inline">\((2^n)!\)</span> such transformations to choose from.</li>
+<li>The factorial operator <span class="math inline">\(!\)</span> is defined as <span class="math display">\[N! = N \cdot (N-1) \cdot (N-2) \cdot \dots \cdot 3 \cdot 2 \cdot 1.\]</span></li>
+<li>An example for <span class="math inline">\(n=4\)</span> shown on the right.</li>
+<li>The key <span class="math inline">\(K\)</span> is, in effect, the whole mapping table.</li>
+<li>However, short block lengths, known statistical properties of the plaintexts would leak through to the ciphertexts and allow attacks, such as <em>fequency analyis</em>.</li>
+<li>So in practice the block bit-length needs to be large, eg. <span class="math inline">\(n=64\)</span> or <span class="math inline">\(128\)</span>.</li>
+<li>But then the size of the mapping table is <strong>very big</strong> e.g. <span class="math inline">\(2^{64}\)</span> or <span class="math inline">\(2^{128}\)</span>, which makes it hard to manage <span class="math inline">\(K\)</span> and keep it secure.</li>
+<li>So instead, require some way to base block ciphers on <em>smaller keys</em>.</li>
 </ul>
 </section>
 <section id="feistel-ciphers" class="slide level2">
 <h2>Feistel ciphers</h2>
 <ul>
-<li>Substitution and permutation</li>
-</ul>
-<p><strong>Shannon’s</strong></p>
+<li>A Feistel cipher uses a block length of <span class="math inline">\(n\)</span> bits and a key of length <span class="math inline">\(k\)</span> bits. So there are <span class="math inline">\(2^k\)</span> possible keys.</li>
+<li>It employs combinations of the two principles of <strong>substitution</strong> and <strong>permutation</strong> to achieve security.
 <ul>
-<li>diffusion and confusion</li>
+<li><span class="definition" name="substitution">Each plaintext element is uniquely replaced by a corresponding ciphertext element.</span></li>
+<li><span class="definition" name="permutation">A sequence of plaintext elements is replaced by a permutation of that sequence. So no new elements are added or deleted, rather the order the elements appear in the sequence is changed.</span></li>
+</ul></li>
+<li>These correspond to the theoretical principles of <strong>diffusion</strong> and <strong>confusion</strong> developed by Claude Shannon. See Stallings chapter 4 for discussion.</li>
 </ul>
 </section>
-<section id="feistel-ciphers-1" class="slide level2">
-<h2>Feistel ciphers</h2>
+<section id="feistel-cipher-structure" class="slide level2">
+<h2>Feistel cipher structure</h2>
 <p><strong>Feistel cipher structure</strong></p>
 </section>
 <section id="data-encryption-standard-des" class="slide level2">

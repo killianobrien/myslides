@@ -79,34 +79,40 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 * Ideal $K$ is so-called **one-time pad**, a random stream of bits known only to sender and recipient. But this *impractical*.
 * So some kind of keyed algorithm is used to produce the keystream $K$. 
 * More on stream ciphers later in the unit. 
+* Figure from Stallings, Ch 4, pg 114
 
 ## Stream and Block ciphers
 
 * **Block cipher** <img src="./images/block-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"> 
 * Plaintext $P$ divided into *blocks* of fixed bit-length $b$, typically 64 or 128 bits used.
 * Encryption and decryption algortihms depend on same key $K$, known only to sender and recipient. 
+* More widely used design than stream ciphers. 
+* Provides a basic encryption/decryption component that can be used to build further ciphers, through so-called *modes of operation*. More on this later.
+* Figure from Stallings, Ch 4, pg 114
 
-## next 
-
-**General intro**
-
-* Stream ciphers
-    - mention on-time-pad
-    - but in reality use keyed algorithms to generate key streams
-
-* Block ciphers
-    - blocks of text
-    - widely used
-
-## Feistel ciphers
-
-* Substitution and permutation
-
-**Shannon's**
-
-* diffusion and confusion
+## Possibilities for block ciphers
+* **Outlining the possiblities** <img src="./images/4-bit-block-cipher.png" alt="Smiley face" style="padding:5spx;float:right;width:55%;"> 
+* The encryption algorithm needs to map blocks of bit-length $n$ to blocks of bit-length $n$. 
+* There are $2^n$ possible blocks of length $n$.
+* The mapping needs to be *reversible*, i.e. a so-called *permutation* or *non-singular transformation*. 
+* There are $(2^n)!$ such transformations to choose from.
+* The factorial operator $!$ is defined as $$N! = N \cdot (N-1) \cdot (N-2) \cdot \dots \cdot 3 \cdot 2 \cdot 1.$$
+* An example for $n=4$ shown on the right. 
+* The key $K$ is, in effect, the whole mapping table. 
+* However, short block lengths, known statistical properties of the plaintexts would leak through to the ciphertexts and allow attacks, such as *fequency analyis*.
+* So in practice the block bit-length needs to be large, eg. $n=64$ or $128$. 
+* But then the size of the mapping table is **very big** e.g. $2^{64}$ or $2^{128}$, which makes it hard to manage $K$ and keep it secure.
+* So instead, require some way to base block ciphers on *smaller keys*.
 
 ## Feistel ciphers
+
+* A Feistel cipher uses a block length of $n$ bits and a key of length $k$ bits. So there are $2^k$ possible keys. 
+* It employs combinations of the two principles of **substitution** and **permutation** to achieve security.
+    - <span class="definition" name="substitution">Each plaintext element is uniquely replaced by a corresponding ciphertext element.</span>
+    - <span class="definition" name="permutation">A sequence of plaintext elements is replaced by a permutation of that sequence. So no new elements are added or deleted, rather the order the elements appear in the sequence is changed.</span>
+* These correspond to the theoretical principles of **diffusion** and **confusion** developed by Claude Shannon. See Stallings chapter 4 for discussion.
+
+## Feistel cipher structure
 
 **Feistel cipher structure**
 
