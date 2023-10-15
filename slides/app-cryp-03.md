@@ -114,7 +114,8 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 
 ## Feistel cipher structure
 
-**Feistel cipher structure**
+<img src="./images/feistel-structure.png" alt="Smiley face" style="padding:5spx;float:right;height=100%;"> 
+
 
 ## Data Encryption Standard (DES)
 
