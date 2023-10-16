@@ -85,12 +85,9 @@
 <figure>
 <img data-src="./images/types-of-attack.png" style="width:70%" alt="Stallings Cryptography and Network Security, Sec. 3.1, pg 88" /><figcaption aria-hidden="true">Stallings <em>Cryptography and Network Security</em>, Sec. 3.1, pg 88</figcaption>
 </figure>
-</section>
-<section id="symmetric-ciphers-4" class="slide level2">
-<h2>Symmetric Ciphers</h2>
-<ul>
-<li>Something on security definition.</li>
-</ul>
+<!-- ## Symmetric Ciphers
+
+* Something on security definition. -->
 </section>
 <section id="stream-and-block-ciphers" class="slide level2">
 <h2>Stream and Block ciphers</h2>
@@ -104,7 +101,7 @@
 <li><span class="math inline">\(0 + 0 = 0\)</span>, <span class="math inline">\(1+1=0\)</span></li>
 <li><span class="math inline">\(0+1 = 1\)</span>, <span class="math inline">\(1+0=1\)</span></li>
 </ul></li>
-<li>Ideal <span class="math inline">\(K\)</span> is so-called <strong>one-time pad</strong>, a random stream of bits known only to sender and recipient. But this <em>impractical</em>.</li>
+<li>Ideal <span class="math inline">\(K\)</span> is so-called <strong>one-time pad</strong>, a random stream of bits known only to sender and recipient. But this is 1<em>impractical</em>.</li>
 <li>So some kind of keyed algorithm is used to produce the keystream <span class="math inline">\(K\)</span>.</li>
 <li>More on stream ciphers later in the unit.</li>
 <li>Figure from Stallings, Ch 4, pg 114</li>
@@ -152,10 +149,90 @@
 </section>
 <section id="feistel-cipher-structure" class="slide level2">
 <h2>Feistel cipher structure</h2>
-<p><img src="./images/feistel-structure.png" alt="Smiley face" style="padding:5spx;float:right;height=100%;"></p>
+<ul>
+<li>Feistel cipher diagram <img src="./images/feistel-structure.png" alt="" style="padding:5spx;float:right;height=100%;"></li>
+<li>Encryption down the left hand side</li>
+<li>Plaintext of block length <span class="math inline">\(2w\)</span> divided into two halves, <span class="math inline">\(LE_0\)</span> and <span class="math inline">\(RE_0\)</span>.</li>
+<li>Repeated rounds of processing applied.</li>
+<li>Round <span class="math inline">\(i\)</span> takes inputs <span class="math inline">\(LE_{i-1}\)</span>, <span class="math inline">\(LR_{i-1}\)</span> and a subkey <span class="math inline">\(K_i\)</span>, derived from the overall key <span class="math inline">\(K\)</span>, and uses a <strong>round function</strong> <span class="math inline">\(F\)</span>.</li>
+<li>A <strong>substitution</strong> applied to <span class="math inline">\(LE_{i-1}\)</span> to defined by <span class="math display">\[RE_{i} = F(RE_{i-1}, K_{i}) \oplus LE_{i-1}.\]</span></li>
+<li><span class="math inline">\(\oplus\)</span> is bit-wise <span class="math inline">\(\text{XOR}\)</span> operation.</li>
+<li>A <strong>permutation</strong> is then applied for the round to output <span class="math display">\[LE_{i} := RE_{i-1} \quad \text{ and } RE_{i} = F(RE_{i-1}, K_{i}) \oplus LE_{i-1}.\]</span></li>
+</ul>
+</section>
+<section id="feistel-cipher-structure-1" class="slide level2">
+<h2>Feistel cipher structure</h2>
+<ul>
+<li>Decryption takes place up the right hand side. <img src="./images/feistel-structure.png" alt="" style="padding:5spx;float:right;height=100%;"></li>
+<li>Ciphertext divided into two halves, <span class="math inline">\(LD_0 = RE_{16}\)</span> and <span class="math inline">\(RD_0 = LE_{16}\)</span>.</li>
+<li>Round <span class="math inline">\(i\)</span> will output <span class="math display">\[LD_{i} := RD_{i-1} \quad \text{ and } RD_{i} = F(RD_{i-1}, K_{16-(i-1)}) \oplus LD_{i-1}.\]</span></li>
+<li>Note that the output of decryption round <span class="math inline">\(i\)</span> will be the swap of the two halves of the input to encryption round <span class="math inline">\(16-(i-1)\)</span>, for example <span class="math display">\[LD_1 = RD_0 = LE_{16} = RE_{15}, \text{ and}\]</span> <span class="math display">\[RD_1 = LD_{0} \oplus F(RD_0, K_{16}) = RE_{16} \oplus F(RE_{15},K_{16})\]</span></li>
+<li>But notice that <span class="math display">\[ RE_{16} \oplus F(RE_{15},K_{16}) = \Big ( LE_{15} \oplus F(RE_{15},K_{16}) \Big )  \oplus F(RE_{15},K_{16})\]</span></li>
+<li>But <span class="math inline">\(\oplus\)</span> satisfies <span class="math inline">\((x \oplus y ) \oplus y = x \oplus (y \oplus y) = x \oplus 0 = x\)</span>.</li>
+<li>So in summary <span class="math display">\[LD_{1} = RE_{15} \text{ and } RD_1 = LE_{15}.\]</span></li>
+</ul>
+</section>
+<section id="feistel-cipher-structure-2" class="slide level2">
+<h2>Feistel cipher structure</h2>
+<ul>
+<li>The repeated <strong>substitutions</strong> using <span class="math inline">\(F\)</span> and <strong>permutations</strong> ensure that the original plaintext is strongly encrypted. <img src="./images/feistel-structure.png" alt="" style="padding:5spx;float:right;height=100%;"></li>
+<li>Exact implementation of a Fesitel cipher will depend on:
+<ul>
+<li><strong>Block size</strong>: Larger size means more security, but slower computation speed. A trade off of <span class="math inline">\(64\)</span> bits has traditionally been used. However the newer scheme AES uses <span class="math inline">\(128\)</span>-bit blocks.</li>
+<li><strong>Key size</strong>: Again, larger means more secure but may deccrease computation speed. Key sizes of less than 64 bits now considered inadequate and 128 bits or longer has become common.</li>
+<li><strong>Number of rounds</strong>: More is more secure, but longer computation times. Typical size is 16 rounds.</li>
+<li><strong>Sub-key generation algorithm</strong>: Greater compplexity in this will enhance security.</li>
+<li><strong>Round function <span class="math inline">\(F\)</span></strong>: Greater compplexity in this will enhance security.</li>
+</ul></li>
+</ul>
 </section>
 <section id="data-encryption-standard-des" class="slide level2">
 <h2>Data Encryption Standard (DES)</h2>
+<ul>
+<li>DES follows the Feistel cipher structure with added steps of an initial permutation of the plaintext and a corresponding final inverse intitial permutation step. <img src="./images/DES.png" alt="" style="padding:5spx;float:right;height=100%;"></li>
+<li>Precise details are involved. See Appendix C of Stallings of specifications of
+<ul>
+<li>initial permutation,</li>
+<li>round permutations</li>
+<li>round function <span class="math inline">\(F\)</span></li>
+<li>sub key generation algorithm</li>
+</ul></li>
+<li>NIST = National Institute of Standards and Technology, a US government standards body.</li>
+<li>DES issued by NIST in 1977</li>
+<li>In 1999 advised to only use DES for legacy systems and instead advised triple-DES.</li>
+<li>Advanced Encryption Standard (AES) issued by NIST in 2001 and recommended over DES.</li>
+</ul>
+</section>
+<section id="avalanche-effect-in-des" class="slide level2">
+<h2>Avalanche effect in DES</h2>
+<p>For convenience, <span class="math inline">\(64\)</span>-bit blocks are presented as 16 digit hexadecimal values, where the digits</p>
+<p><code>0,1,2,...,8,9,a, ... ,f</code></p>
+<p>denote the <span class="math inline">\(4\)</span>-bit bytes values</p>
+<p><code>0000,0001,0010,..., 1000,1001,1010,1111</code></p>
+</section>
+<section id="avalanche-effect-in-des-1" class="slide level2">
+<h2>Avalanche effect in DES</h2>
+<ul>
+<li>Table 4.3 from Stallings shows the effect of DES on plaintext blocks that differ only in a single bit, their fourth bit position <img src="./images/DESavalancheP.png" alt="" style="padding:5spx;float:right;height=100%;"></li>
+<li>Middle column shows intermediate states of the block.</li>
+<li><span class="math inline">\(\delta\)</span> column counts the number of bit positions where the intermediate blocks differ.</li>
+<li>Note the way <span class="math inline">\(\delta\)</span> increases rapidly.</li>
+<li>By the end <span class="math inline">\(\delta = 32\)</span>, which is the expected number of positions for two randomly selected <span class="math inline">\(64\)</span>-bit blocks to differ in.</li>
+<li>The small change in inputs has <strong>avalanched</strong> through DES and heavily affected the output. This is one source of security of DES and Feistel ciphers in general.</li>
+</ul>
+</section>
+<section id="avalanche-effect-in-des-2" class="slide level2">
+<h2>Avalanche effect in DES</h2>
+<ul>
+<li>Table 4.4 from Stallings shows the effect of DES on the same plaintext block <code>02468aceeca86420</code> but where two differen keys have been used. <img src="./images/DESavalancheK.png" alt="" style="padding:5spx;float:right;height=100%;"></li>
+<li>The two keys are <code>0f1571c947d9e859</code> and <code>1f1571c947d9e859</code>, so again, differing only in their fourth bit position.</li>
+<li>Middle column shows intermediate states of the block.</li>
+<li><span class="math inline">\(\delta\)</span> column counts the number of bit positions where the intermediate blocks differ.</li>
+<li>Note the way <span class="math inline">\(\delta\)</span> increases rapidly.</li>
+<li>By the end <span class="math inline">\(\delta = 30\)</span>, which is near the expected number of positions for two randomly selected <span class="math inline">\(64\)</span>-bit blocks to differ in.</li>
+<li>The small change in keys has <strong>avalanched</strong> through DES and heavily affected the output. This is one source of security of DES and Feistel ciphers in general.</li>
+</ul>
+<!-- ## Stength of DES -->
 </section>
     </div>
   </div>

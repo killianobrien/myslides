@@ -63,9 +63,9 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 
 ![Stallings *Cryptography and Network Security*, Sec. 3.1, pg 88](./images/types-of-attack.png){style="width:70%"}
 
-## Symmetric Ciphers
+<!-- ## Symmetric Ciphers
 
-* Something on security definition.
+* Something on security definition. -->
 
 ## Stream and Block ciphers
 
@@ -76,7 +76,7 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 * Ciphertext $C=(c_0, c_1, c_2, \dots )$ computed as $c_i = p_i + k_i$
     - $0 + 0 = 0$, $1+1=0$
     - $0+1 = 1$, $1+0=1$
-* Ideal $K$ is so-called **one-time pad**, a random stream of bits known only to sender and recipient. But this *impractical*.
+* Ideal $K$ is so-called **one-time pad**, a random stream of bits known only to sender and recipient. But this is 1*impractical*.
 * So some kind of keyed algorithm is used to produce the keystream $K$. 
 * More on stream ciphers later in the unit. 
 * Figure from Stallings, Ch 4, pg 114
@@ -114,9 +114,86 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 
 ## Feistel cipher structure
 
-<img src="./images/feistel-structure.png" alt="Smiley face" style="padding:5spx;float:right;height=100%;"> 
+* Feistel cipher diagram <img src="./images/feistel-structure.png" alt="" style="padding:5spx;float:right;height=100%;"> 
+* Encryption down the left hand side
+* Plaintext of block length $2w$ divided into two halves, $LE_0$ and $RE_0$.
+* Repeated rounds of processing applied.
+* Round $i$ takes inputs $LE_{i-1}$, $LR_{i-1}$ and a subkey $K_i$, derived from the overall key $K$, and uses a **round function** $F$.
+* A **substitution** applied to $LE_{i-1}$ to defined by
+$$RE_{i} = F(RE_{i-1}, K_{i}) \oplus LE_{i-1}.$$
+* $\oplus$ is bit-wise $\text{XOR}$ operation.
+* A **permutation** is then applied for the round to output
+$$LE_{i} := RE_{i-1} \quad \text{ and } RE_{i} = F(RE_{i-1}, K_{i}) \oplus LE_{i-1}.$$
 
+## Feistel cipher structure
+
+* Decryption takes place up the right hand side. <img src="./images/feistel-structure.png" alt="" style="padding:5spx;float:right;height=100%;"> 
+* Ciphertext divided into two halves, $LD_0 = RE_{16}$ and $RD_0 = LE_{16}$.
+* Round $i$ will output
+$$LD_{i} := RD_{i-1} \quad \text{ and } RD_{i} = F(RD_{i-1}, K_{16-(i-1)}) \oplus LD_{i-1}.$$
+* Note that the output of decryption round $i$ will be the swap of the two halves of the input to encryption round $16-(i-1)$, for example
+$$LD_1 = RD_0 = LE_{16} = RE_{15}, \text{ and}$$
+$$RD_1 = LD_{0} \oplus F(RD_0, K_{16}) = RE_{16} \oplus F(RE_{15},K_{16})$$
+* But notice that 
+$$ RE_{16} \oplus F(RE_{15},K_{16}) = \Big ( LE_{15} \oplus F(RE_{15},K_{16}) \Big )  \oplus F(RE_{15},K_{16})$$
+* But $\oplus$ satisfies $(x \oplus y ) \oplus y = x \oplus (y \oplus y) = x \oplus 0 = x$.
+* So in summary 
+$$LD_{1} = RE_{15} \text{ and } RD_1 = LE_{15}.$$
+
+## Feistel cipher structure
+
+* The repeated **substitutions** using $F$ and **permutations** ensure that the original plaintext is strongly encrypted. <img src="./images/feistel-structure.png" alt="" style="padding:5spx;float:right;height=100%;"> 
+* Exact implementation of a Fesitel cipher will depend on:
+    - **Block size**: Larger size means more security, but slower computation speed. A trade off of $64$ bits has traditionally been used. However the newer scheme AES uses $128$-bit blocks.
+    - **Key size**: Again, larger means more secure but may deccrease computation speed. Key sizes of less than 64 bits now considered inadequate and 128 bits or longer has become common. 
+    - **Number of rounds**: More is more secure, but longer computation times. Typical size is 16 rounds. 
+    - **Sub-key generation algorithm**: Greater compplexity in this will  enhance security. 
+    - **Round function $F$**: Greater compplexity in this will  enhance security. 
 
 ## Data Encryption Standard (DES)
+
+* DES follows the Feistel cipher structure with added steps of an initial permutation of the plaintext and a corresponding final inverse intitial permutation step. <img src="./images/DES.png" alt="" style="padding:5spx;float:right;height=100%;"> 
+* Precise details are involved. See Appendix C of Stallings of specifications of
+    - initial permutation, 
+    - round permutations
+    - round function $F$
+    - sub key generation algorithm
+* NIST = National Institute of Standards and Technology, a US government standards body.
+* DES issued by NIST in 1977
+* In 1999 advised to only use DES for legacy systems and instead advised triple-DES.
+* Advanced Encryption Standard (AES) issued by NIST in 2001 and recommended over DES.
+
+## Avalanche effect in DES
+
+For convenience, $64$-bit blocks are presented as 16 digit hexadecimal values, where the digits
+
+`0,1,2,...,8,9,a, ... ,f`
+
+denote the $4$-bit bytes values 
+
+`0000,0001,0010,..., 1000,1001,1010,1111`
+
+## Avalanche effect in DES
+
+* Table 4.3 from Stallings shows the effect of DES on plaintext blocks that differ only in a single bit, their fourth bit position <img src="./images/DESavalancheP.png" alt="" style="padding:5spx;float:right;height=100%;"> 
+* Middle column shows intermediate states of the block.
+* $\delta$ column counts the number of bit positions where the intermediate blocks differ. 
+* Note the way $\delta$ increases rapidly.
+* By the end $\delta = 32$, which is the expected number of positions for two randomly selected $64$-bit blocks to differ in. 
+* The small change in inputs has **avalanched** through DES and heavily affected the output. This is one source of security of DES and Feistel ciphers in general.
+
+## Avalanche effect in DES
+
+* Table 4.4 from Stallings shows the effect of DES on the same plaintext block `02468aceeca86420` but where two differen keys have been used. <img src="./images/DESavalancheK.png" alt="" style="padding:5spx;float:right;height=100%;"> 
+* The two keys are `0f1571c947d9e859` and `1f1571c947d9e859`, so again, differing only in their fourth bit position.
+* Middle column shows intermediate states of the block.
+* $\delta$ column counts the number of bit positions where the intermediate blocks differ. 
+* Note the way $\delta$ increases rapidly.
+* By the end $\delta = 30$, which is near the expected number of positions for two randomly selected $64$-bit blocks to differ in. 
+* The small change in keys has **avalanched** through DES and heavily affected the output. This is one source of security of DES and Feistel ciphers in general.
+
+<!-- ## Stength of DES -->
+
+
 
 
