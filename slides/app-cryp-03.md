@@ -99,7 +99,7 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 * The factorial operator $!$ is defined as $$N! = N \cdot (N-1) \cdot (N-2) \cdot \dots \cdot 3 \cdot 2 \cdot 1.$$
 * An example for $n=4$ shown on the right. 
 * The key $K$ is, in effect, the whole mapping table. 
-* However, short block lengths, known statistical properties of the plaintexts would leak through to the ciphertexts and allow attacks, such as *fequency analyis*.
+* However, with short block lengths, known statistical properties of the plaintexts would leak through to the ciphertexts and allow attacks, such as *fequency analyis*.
 * So in practice the block bit-length needs to be large, eg. $n=64$ or $128$. 
 * But then the size of the mapping table is **very big** e.g. $2^{64}$ or $2^{128}$, which makes it hard to manage $K$ and keep it secure.
 * So instead, require some way to base block ciphers on *smaller keys*.
