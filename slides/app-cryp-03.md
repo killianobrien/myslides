@@ -169,7 +169,7 @@ For convenience, $64$-bit blocks are presented as 16 digit hexadecimal values, w
 
 `0,1,2,...,8,9,a, ... ,f`
 
-denote the $4$-bit bytes values 
+denote the $4$-bit values 
 
 `0000,0001,0010,..., 1000,1001,1010,1111`
 
