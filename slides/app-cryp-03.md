@@ -76,7 +76,7 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 * Ciphertext $C=(c_0, c_1, c_2, \dots )$ computed as $c_i = p_i + k_i$
     - $0 + 0 = 0$, $1+1=0$
     - $0+1 = 1$, $1+0=1$
-* Ideal $K$ is so-called **one-time pad**, a random stream of bits known only to sender and recipient. But this is 1*impractical*.
+* Ideal $K$ is so-called **one-time pad**, a random stream of bits known only to sender and recipient. But this is *impractical*.
 * So some kind of keyed algorithm is used to produce the keystream $K$. 
 * More on stream ciphers later in the unit. 
 * Figure from Stallings, Ch 4, pg 114
