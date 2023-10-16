@@ -144,15 +144,15 @@ $$LD_{1} = RE_{15} \text{ and } RD_1 = LE_{15}.$$
 
 * The repeated **substitutions** using $F$ and **permutations** ensure that the original plaintext is strongly encrypted. <img src="./images/feistel-structure.png" alt="" style="padding:5spx;float:right;height=100%;"> 
 * Exact implementation of a Fesitel cipher will depend on:
-    - **Block size**: Larger size means more security, but slower computation speed. A trade off of $64$ bits has traditionally been used. However the newer scheme AES uses $128$-bit blocks.
-    - **Key size**: Again, larger means more secure but may deccrease computation speed. Key sizes of less than 64 bits now considered inadequate and 128 bits or longer has become common. 
+    - **Block size**: Larger size means more security, but slower computation speed. A trade-off of $64$ bits has traditionally been used. However, the newer scheme AES uses $128$-bit blocks.
+    - **Key size**: Again, larger means more secure but may decrease computation speed. Key sizes of less than 64 bits now considered inadequate and 128 bits or longer has become common. 
     - **Number of rounds**: More is more secure, but longer computation times. Typical size is 16 rounds. 
-    - **Sub-key generation algorithm**: Greater compplexity in this will  enhance security. 
-    - **Round function $F$**: Greater compplexity in this will  enhance security. 
+    - **Sub-key generation algorithm**: Greater complexity in this will enhance security. 
+    - **Round function $F$**: Greater complexity in this will enhance security. 
 
 ## Data Encryption Standard (DES)
 
-* DES follows the Feistel cipher structure with added steps of an initial permutation of the plaintext and a corresponding final inverse intitial permutation step. <img src="./images/DES.png" alt="" style="padding:5spx;float:right;height=100%;"> 
+* DES follows the Feistel cipher structure with added steps of an initial permutation of the plaintext and a corresponding final inverse initial permutation step. <img src="./images/DES.png" alt="" style="padding:5spx;float:right;height=100%;"> 
 * Precise details are involved. See Appendix C of Stallings of specifications of
     - initial permutation, 
     - round permutations
