@@ -72,10 +72,10 @@ Some definitions, (Stallings, *Cryptography and Network Security*, Ch. 3)
 * **Stream cipher** <img src="./images/stream-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"> 
 * Considers plaintext $P$ as a stream of individual bits, $P=(p_0, p_1, p_2, \dots)$.
 * Requires a key stream $K$ of individual bits, $K=(k_0, k_1, k_2, \dots)$, known only to sender and recipient. 
-* Encryption is by $\pmod{2}$-addition-without-carry, also known as exclusive-or operation (XOR)
-* Ciphertext $C=(c_0, c_1, c_2, \dots )$ computed as $c_i = p_i + k_i$
-    - $0 + 0 = 0$, $1+1=0$
-    - $0+1 = 1$, $1+0=1$
+* Encryption is by $\pmod{2}$-addition-without-carry, also known as exclusive-or operation (XOR) $\oplus$.
+* Ciphertext $C=(c_0, c_1, c_2, \dots )$ computed as $c_i = p_i \oplus k_i$
+    - $0 \oplus 0 = 0$, $1 \oplus 1=0$
+    - $0 \oplus 1 = 1$, $1 \oplus 0=1$
 * Ideal $K$ is so-called **one-time pad**, a random stream of bits known only to sender and recipient. But this is *impractical*.
 * So some kind of keyed algorithm is used to produce the keystream $K$. 
 * More on stream ciphers later in the unit. 

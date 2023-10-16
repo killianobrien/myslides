@@ -95,11 +95,11 @@
 <li><strong>Stream cipher</strong> <img src="./images/stream-cipher.png" alt="Smiley face" style="padding:10px;float:right;width:70%;"></li>
 <li>Considers plaintext <span class="math inline">\(P\)</span> as a stream of individual bits, <span class="math inline">\(P=(p_0, p_1, p_2, \dots)\)</span>.</li>
 <li>Requires a key stream <span class="math inline">\(K\)</span> of individual bits, <span class="math inline">\(K=(k_0, k_1, k_2, \dots)\)</span>, known only to sender and recipient.</li>
-<li>Encryption is by <span class="math inline">\(\pmod{2}\)</span>-addition-without-carry, also known as exclusive-or operation (XOR)</li>
-<li>Ciphertext <span class="math inline">\(C=(c_0, c_1, c_2, \dots )\)</span> computed as <span class="math inline">\(c_i = p_i + k_i\)</span>
+<li>Encryption is by <span class="math inline">\(\pmod{2}\)</span>-addition-without-carry, also known as exclusive-or operation (XOR) <span class="math inline">\(\oplus\)</span>.</li>
+<li>Ciphertext <span class="math inline">\(C=(c_0, c_1, c_2, \dots )\)</span> computed as <span class="math inline">\(c_i = p_i \oplus k_i\)</span>
 <ul>
-<li><span class="math inline">\(0 + 0 = 0\)</span>, <span class="math inline">\(1+1=0\)</span></li>
-<li><span class="math inline">\(0+1 = 1\)</span>, <span class="math inline">\(1+0=1\)</span></li>
+<li><span class="math inline">\(0 \oplus 0 = 0\)</span>, <span class="math inline">\(1 \oplus 1=0\)</span></li>
+<li><span class="math inline">\(0 \oplus 1 = 1\)</span>, <span class="math inline">\(1 \oplus 0=1\)</span></li>
 </ul></li>
 <li>Ideal <span class="math inline">\(K\)</span> is so-called <strong>one-time pad</strong>, a random stream of bits known only to sender and recipient. But this is <em>impractical</em>.</li>
 <li>So some kind of keyed algorithm is used to produce the keystream <span class="math inline">\(K\)</span>.</li>
