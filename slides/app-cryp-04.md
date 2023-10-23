@@ -150,7 +150,8 @@ $$x^4+1 = (x+1)(x^3+x^2+x+1).$$
 * <img src="./images/EAeg.png" alt="Stallings" style="padding:5spx;width=100%;float:right">  On the right, from Stallings, is an example showing the EA run to find the $\gcd(a(x),b(x))$, where 
 $$a(x) = x^6 + x^5 + x^4 + x^3 +x^2 + x + 1$$
 and 
-$$b(x) = x^4 + x^2 + x + 1.$$ 
+$$b(x) = x^4 + x^2 + x + 1,$$
+are polynomials with coefficients in $\mathbb{Z}_2$.  
 
 ## Finite fields of the form $\text{GF}(2^n$)
 
