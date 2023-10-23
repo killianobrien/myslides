@@ -117,6 +117,7 @@ $$f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 = \sum_{i=0}^n a_i x^i.
 $$f(x) = (x+2) g(x) + x,$$
 i.e. that dividing $f(x)$ by $g(x)$ gives a *quotient* of $(x+2)$ and a *remainder* of $x$. 
 * We can write $( f(x) \,\, \text{mod} \, \, g(x)) = x$.
+* We require that the remainder polynomial has degree strictly less than the degree of the divisor polynomial, i.e. $g(x)$ in the equation above. 
 * Can carry out the calculation using some form of *long division*, see boards. 
 * Can multiply out the above equation to verify the result. 
 
@@ -133,13 +134,57 @@ $$0+0=0, 1+1=0, 1+0=1, 1-1=0, 0-1=1, \dots $$
 $$x^4+1 = (x+1)(x^3+x^2+x+1).$$
     - but $g(x) = x^3 + x +1$ is irreducible since neither $x$ nor $x+1$, the only such polys of degree 2, is a factor of it.
 
+## GCD and Euclidean algorithm for polynomials
+
+* For polynomials with coefficients from some particular field $F$ we can define $\gcd$ and the Euclidean algorithm, just like we did within the system $\mathbb{Z}$. 
+* For polynomials $a(x)$ and $b(x)$, their $\gcd$ is the polynomial $c(x)$ such that 
+    - $a(x)$ and $b(x)$ are both divisible by $c(x)$. 
+    - Any other common divisor of $a(x)$ and $b(x)$, also divides $c(x)$. 
+* Or equivalently, the $\gcd$ of $a(x)$ and $b(x)$ is the polynomial of maximum degree, that divides both $a(x)$ and $b(x)$.
+* <img src="./images/EAforpolys.png" alt="Stallings" style="padding:5spx;width=60%;float:right"> See specification or right, which is essentially the previous specification for the Euclidean algorithm, but now taking place for polynomials.
 
 
-<!-- ## Finite fields of the form $\text{GF}(2^n$)
 
-## Modular polynomial arithmetic
+## GCD and Euclidean algorithm for polynomials
 
-## Using a generator -->
+* <img src="./images/EAeg.png" alt="Stallings" style="padding:5spx;width=100%;float:right">  On the right, from Stallings, is an example showing the EA run to find the $\gcd(a(x),b(x))$, where 
+$$a(x) = x^6 + x^5 + x^4 + x^3 +x^2 + x + 1$$
+and 
+$$b(x) = x^4 + x^2 + x + 1.$$ 
+
+## Finite fields of the form $\text{GF}(2^n$)
+
+* <img src="./images/GF8.png" alt="Stallings" style="padding:5spx;width=100%;float:right"> In computer science we commonly work with capacities (of memory size, size of comms channel, message block size, etc) of size $2^n$, for some integer $n$. As these are all based on a certain number of binary bits. 
+* With $n$ bits we can represent $2^n$ numbers: the integer 0, and the $2^n -1$ integers $1,2,3, \dots, 2^n -1$.
+* So we wish to have a finite field $\text{GF}(2^n)$. Where does such a field come from?
+* It can't be the integers under the usual arithmetic modulo $2^n$, as this will lack multiplicative inverses for half the elements.
+* See table on the right for an example showing $\text{GF}(2^3)$ exists and then we'll describe the general construction.   
+
+## Modular polynomial arithmetic and $\text{GF}(p^n)$
+
+* The finite fields $\text{GF}(p^n)$ for primes $p$ and any positive integer exponent $n$ do indeed exits, and can be constructed from **modular polynomial arithmetic** as follows.
+* Define $S$ to be the set of all polynomials of degree $n-1$, or less, and with coefficients coming from the field $\mathbb{Z}_p$, i.e. the coefficients follow the rules of integers arithmetic modulo $p$. 
+* So $S$ consists of all polynomials $f(x)$ of the form 
+$$f(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + \dots + a_1 x + a_0 = \sum_{i=0}^{n-1} a_i x^i, \quad a_i \in \mathbb{Z}_p.$$
+* In total, there are $p^n$ such polynomials, since there is a choice of $p$ elements for each of the $n$ coefficients $a_0, \dots , a_{n-1}$. 
+* The behaviour of $+$ and $\cdot$ on $S$ will follow the usual rules of polynomial arithmetic and 
+    - arithmetic with the coefficients $a_i$ is done under the rules of $\mathbb{Z}_p$, i.e. integer arithmetic modulo $p$, 
+    - if multiplication of polynomials results in a polynomial of degree $n$ or greater then the results is reduced modulo some specified irreducible polynomial $m(x)$, of degree $m$. That is, we divide the result by $m(x)$ and keep the remainder polynomial $r(x)$, which must have degree less than $n$. 
+ * The resulting system $(S, + , \cdot)$ will be a field of $p^n$ elements. This shows that finite fields $\text{GF}(p^n)$ do exist.
+
+## AES and $\text{GF}(2^8)$. 
+
+ * <img src="./images/GF8examp.png" alt="Stallings" style="padding:5spx;width=100px;float:right"> The Advanceed Encryption Standard (AES) uses such a field $\text{GF}(2^8)$, consisting of polynomials of degree less than or equal to 7, with binary coefficients and polynomial operations carried out modulo the irreducible polynomial 
+ $$m(x) = x^8 + x^4 + x^3 + x +1.$$
+ * The figure on the right shows the calculation of an example product in $\text{GF}(2^8)$.
+
+## $\text{GF}(2^3)$ again. 
+
+* The tables below show addition and multiplication in $\text{GF}(8)$ <img src="./images/GF8again.png" alt="Stallings" style="padding:5spx;width=100%;float:right"> 
+* The Extended Euclidean algorithm can be used to obtain multiplicative inverses just as before. 
+
+
+<!-- ## Using a generator -->
 
 
 

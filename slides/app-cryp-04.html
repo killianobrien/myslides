@@ -145,6 +145,7 @@
 <li>For a first example consider the system of polynomials with integer coefficients.</li>
 <li>Let <span class="math inline">\(f(x) = x^3 + x^2 + 2\)</span> and <span class="math inline">\(g(x) = x^2 - x +1\)</span>, then we can say that <span class="math display">\[f(x) = (x+2) g(x) + x,\]</span> i.e. that dividing <span class="math inline">\(f(x)\)</span> by <span class="math inline">\(g(x)\)</span> gives a <em>quotient</em> of <span class="math inline">\((x+2)\)</span> and a <em>remainder</em> of <span class="math inline">\(x\)</span>.</li>
 <li>We can write <span class="math inline">\(( f(x) \,\, \text{mod} \, \, g(x)) = x\)</span>.</li>
+<li>We require that the remainder polynomial has degree strictly less than the degree of the divisor polynomial, i.e. <span class="math inline">\(g(x)\)</span> in the equation above.</li>
 <li>Can carry out the calculation using some form of <em>long division</em>, see boards.</li>
 <li>Can multiply out the above equation to verify the result.</li>
 </ul>
@@ -163,11 +164,65 @@
 <li>but <span class="math inline">\(g(x) = x^3 + x +1\)</span> is irreducible since neither <span class="math inline">\(x\)</span> nor <span class="math inline">\(x+1\)</span>, the only such polys of degree 2, is a factor of it.</li>
 </ul></li>
 </ul>
-<!-- ## Finite fields of the form $\text{GF}(2^n$)
-
-## Modular polynomial arithmetic
-
-## Using a generator -->
+</section>
+<section id="gcd-and-euclidean-algorithm-for-polynomials" class="slide level2">
+<h2>GCD and Euclidean algorithm for polynomials</h2>
+<ul>
+<li>For polynomials with coefficients from some particular field <span class="math inline">\(F\)</span> we can define <span class="math inline">\(\gcd\)</span> and the Euclidean algorithm, just like we did within the system <span class="math inline">\(\mathbb{Z}\)</span>.</li>
+<li>For polynomials <span class="math inline">\(a(x)\)</span> and <span class="math inline">\(b(x)\)</span>, their <span class="math inline">\(\gcd\)</span> is the polynomial <span class="math inline">\(c(x)\)</span> such that
+<ul>
+<li><span class="math inline">\(a(x)\)</span> and <span class="math inline">\(b(x)\)</span> are both divisible by <span class="math inline">\(c(x)\)</span>.</li>
+<li>Any other common divisor of <span class="math inline">\(a(x)\)</span> and <span class="math inline">\(b(x)\)</span>, also divides <span class="math inline">\(c(x)\)</span>.</li>
+</ul></li>
+<li>Or equivalently, the <span class="math inline">\(\gcd\)</span> of <span class="math inline">\(a(x)\)</span> and <span class="math inline">\(b(x)\)</span> is the polynomial of maximum degree, that divides both <span class="math inline">\(a(x)\)</span> and <span class="math inline">\(b(x)\)</span>.</li>
+<li><img src="./images/EAforpolys.png" alt="Stallings" style="padding:5spx;width=60%;float:right"> See specification or right, which is essentially the previous specification for the Euclidean algorithm, but now taking place for polynomials.</li>
+</ul>
+</section>
+<section id="gcd-and-euclidean-algorithm-for-polynomials-1" class="slide level2">
+<h2>GCD and Euclidean algorithm for polynomials</h2>
+<ul>
+<li><img src="./images/EAeg.png" alt="Stallings" style="padding:5spx;width=100%;float:right"> On the right, from Stallings, is an example showing the EA run to find the <span class="math inline">\(\gcd(a(x),b(x))\)</span>, where <span class="math display">\[a(x) = x^6 + x^5 + x^4 + x^3 +x^2 + x + 1\]</span> and <span class="math display">\[b(x) = x^4 + x^2 + x + 1.\]</span></li>
+</ul>
+</section>
+<section id="finite-fields-of-the-form-textgf2n" class="slide level2">
+<h2>Finite fields of the form <span class="math inline">\(\text{GF}(2^n\)</span>)</h2>
+<ul>
+<li><img src="./images/GF8.png" alt="Stallings" style="padding:5spx;width=100%;float:right"> In computer science we commonly work with capacities (of memory size, size of comms channel, message block size, etc) of size <span class="math inline">\(2^n\)</span>, for some integer <span class="math inline">\(n\)</span>. As these are all based on a certain number of binary bits.</li>
+<li>With <span class="math inline">\(n\)</span> bits we can represent <span class="math inline">\(2^n\)</span> numbers: the integer 0, and the <span class="math inline">\(2^n -1\)</span> integers <span class="math inline">\(1,2,3, \dots, 2^n -1\)</span>.</li>
+<li>So we wish to have a finite field <span class="math inline">\(\text{GF}(2^n)\)</span>. Where does such a field come from?</li>
+<li>It can’t be the integers under the usual arithmetic modulo <span class="math inline">\(2^n\)</span>, as this will lack multiplicative inverses for half the elements.</li>
+<li>See table on the right for an example showing <span class="math inline">\(\text{GF}(2^3)\)</span> exists and then we’ll describe the general construction.</li>
+</ul>
+</section>
+<section id="modular-polynomial-arithmetic-and-textgfpn" class="slide level2">
+<h2>Modular polynomial arithmetic and <span class="math inline">\(\text{GF}(p^n)\)</span></h2>
+<ul>
+<li>The finite fields <span class="math inline">\(\text{GF}(p^n)\)</span> for primes <span class="math inline">\(p\)</span> and any positive integer exponent <span class="math inline">\(n\)</span> do indeed exits, and can be constructed from <strong>modular polynomial arithmetic</strong> as follows.</li>
+<li>Define <span class="math inline">\(S\)</span> to be the set of all polynomials of degree <span class="math inline">\(n-1\)</span>, or less, and with coefficients coming from the field <span class="math inline">\(\mathbb{Z}_p\)</span>, i.e. the coefficients follow the rules of integers arithmetic modulo <span class="math inline">\(p\)</span>.</li>
+<li>So <span class="math inline">\(S\)</span> consists of all polynomials <span class="math inline">\(f(x)\)</span> of the form <span class="math display">\[f(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + \dots + a_1 x + a_0 = \sum_{i=0}^{n-1} a_i x^i, \quad a_i \in \mathbb{Z}_p.\]</span></li>
+<li>In total, there are <span class="math inline">\(p^n\)</span> such polynomials, since there is a choice of <span class="math inline">\(p\)</span> elements for each of the <span class="math inline">\(n\)</span> coefficients <span class="math inline">\(a_0, \dots , a_{n-1}\)</span>.</li>
+<li>The behaviour of <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> on <span class="math inline">\(S\)</span> will follow the usual rules of polynomial arithmetic and
+<ul>
+<li>arithmetic with the coefficients <span class="math inline">\(a_i\)</span> is done under the rules of <span class="math inline">\(\mathbb{Z}_p\)</span>, i.e. integer arithmetic modulo <span class="math inline">\(p\)</span>,</li>
+<li>if multiplication of polynomials results in a polynomial of degree <span class="math inline">\(n\)</span> or greater then the results is reduced modulo some specified irreducible polynomial <span class="math inline">\(m(x)\)</span>, of degree <span class="math inline">\(m\)</span>. That is, we divide the result by <span class="math inline">\(m(x)\)</span> and keep the remainder polynomial <span class="math inline">\(r(x)\)</span>, which must have degree less than <span class="math inline">\(n\)</span>.</li>
+</ul></li>
+<li>The resulting system <span class="math inline">\((S, + , \cdot)\)</span> will be a field of <span class="math inline">\(p^n\)</span> elements. This shows that finite fields <span class="math inline">\(\text{GF}(p^n)\)</span> do exist.</li>
+</ul>
+</section>
+<section id="aes-and-textgf28." class="slide level2">
+<h2>AES and <span class="math inline">\(\text{GF}(2^8)\)</span>.</h2>
+<ul>
+<li><img src="./images/GF8examp.png" alt="Stallings" style="padding:5spx;width=100px;float:right"> The Advanceed Encryption Standard (AES) uses such a field <span class="math inline">\(\text{GF}(2^8)\)</span>, consisting of polynomials of degree less than or equal to 7, with binary coefficients and polynomial operations carried out modulo the irreducible polynomial <span class="math display">\[m(x) = x^8 + x^4 + x^3 + x +1.\]</span></li>
+<li>The figure on the right shows the calculation of an example product in <span class="math inline">\(\text{GF}(2^8)\)</span>.</li>
+</ul>
+</section>
+<section id="textgf23-again." class="slide level2">
+<h2><span class="math inline">\(\text{GF}(2^3)\)</span> again.</h2>
+<ul>
+<li>The tables below show addition and multiplication in <span class="math inline">\(\text{GF}(8)\)</span> <img src="./images/GF8again.png" alt="Stallings" style="padding:5spx;width=100%;float:right"></li>
+<li>The Extended Euclidean algorithm can be used to obtain multiplicative inverses just as before.</li>
+</ul>
+<!-- ## Using a generator -->
 </section>
     </div>
   </div>
@@ -185,6 +240,7 @@
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
+      
         // Push each slide change to the browser history
         history: true,
         // Transition style
