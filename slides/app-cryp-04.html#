@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <meta name="author" content="6G6Z0024 Applied Cryptography 2023/24">
+  <title>Finite fields for the Advanced Encryption Standard (AES)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Finite fields for the Advanced Encryption Standard (AES)</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="author">6G6Z0024 Applied Cryptography 2023/24</p>
+  <p class="date">Lecture Week 03 – Mon 23 October 2023</p>
+</section>
+
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li>Cryptography relies heavily on mathematics</li>
+<li>The notion of <strong>finite fields</strong> and <strong>modular polynomial arithmetic</strong> important in ciphers like AES and Elipptic Curves.</li>
+<li>These mathematical systems provide the security and operational requirement needed by the ciphers.</li>
+</ul>
+</section>
+<section id="hierarchy-of-algebraic-systems" class="slide level2">
+<h2>Hierarchy of algebraic systems</h2>
+<h4 id="the-familiar-system-mathbbr-cdot">The familiar system <span class="math inline">\((\mathbb{R}, + , \cdot)\)</span></h4>
+<ul>
+<li>Consider the set of real numbers <span class="math inline">\(\mathbb{R}\)</span></li>
+<li><span class="math inline">\(\mathbb{R}\)</span> can be thought of as consisting of every number on the <em>real number line</em>, a line extending from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>.</li>
+<li>Real numbers <span class="math inline">\(x\)</span> can be written down as numbers with a (potentially infinite) decimal expansion.</li>
+<li>The real numbers, together with the usual operations of addition, <span class="math inline">\(+\)</span>, and multiplication, <span class="math inline">\(\cdot\)</span>, have the structure of what mathematicians call a <strong>field</strong>.</li>
+<li>That is the system <span class="math inline">\((\mathbb{R}, +, \cdot)\)</span> satisfies the following properties.
+<ul>
+<li><strong>(A1)</strong> <em>Closure for addition:</em> If <span class="math inline">\(a,b \in \mathbb{R}\)</span> then <span class="math inline">\(a+b \in \mathbb{R}\)</span>.</li>
+<li><strong>(A2)</strong> <em>Associativity for addition:</em> For all <span class="math inline">\(a,b,c \in \mathbb{R}\)</span> we have <span class="math inline">\((a+b)+c = a+(b+c)\)</span>.</li>
+<li><strong>(A3)</strong> <em>Additive identity element:</em> There is an element <span class="math inline">\(0 \in \mathbb{R}\)</span> such that for all <span class="math inline">\(a \in \mathbb{R}\)</span> we have <span class="math inline">\(a+0 = 0 + a = a\)</span>.</li>
+<li><strong>(A4)</strong> <em>Additive inverses:</em> For each <span class="math inline">\(a \in \mathbb{R}\)</span> there exists an element <span class="math inline">\(b \in \mathbb{R}\)</span> such that <span class="math inline">\(a+b = b+ a =0\)</span>. This element <span class="math inline">\(b\)</span> is of course the <em>negative of <span class="math inline">\(a\)</span></em> and usually written as <span class="math inline">\(b = -a\)</span>.</li>
+<li><strong>(A5)</strong> <em>Commutativity of addition:</em> For all <span class="math inline">\(a,b \in \mathbb{R}\)</span> we have <span class="math inline">\(a+b= b+a\)</span>.</li>
+</ul></li>
+<li>A system <span class="math inline">\((S,+)\)</span> satisfying (A1) - (A4) is called a <strong>group</strong>, and if it also satisfies (A5) it is called an <strong>abelian group</strong>.</li>
+</ul>
+</section>
+<section id="hierarchy-of-algebraic-systems-1" class="slide level2">
+<h2>Hierarchy of algebraic systems</h2>
+<h4 id="the-familiar-system-mathbbr-cdot-1">The familiar system <span class="math inline">\((\mathbb{R}, + , \cdot)\)</span></h4>
+<ul>
+<li>The system also satisfies
+<ul>
+<li><strong>(M1)</strong> <em>Closure for multiplication:</em> If <span class="math inline">\(a,b \in \mathbb{R}\)</span> then <span class="math inline">\(a\cdot b \in \mathbb{R}\)</span>.</li>
+<li><strong>(M2)</strong> <em>Associativity for multiplication:</em> For all <span class="math inline">\(a,b,c \in \mathbb{R}\)</span> we have <span class="math inline">\((a\cdot b)\cdot c = a\cdot (b\cdot c)\)</span>.</li>
+<li><strong>(M3)</strong> <em>Distributive laws:</em>
+<ul>
+<li>for all <span class="math inline">\(a,b,c \in \mathbb{R}\)</span> we have <span class="math inline">\(a \cdot (b+c) = a \cdot b + a \cdot c\)</span>.</li>
+<li>for all <span class="math inline">\(a,b,c \in \mathbb{R}\)</span> we have <span class="math inline">\((b+c)\cdot a = b \cdot a + c \cdot a\)</span>.</li>
+</ul></li>
+<li><strong>(M4)</strong> <em>Commutativity of multiplication:</em> For all <span class="math inline">\(a,b \in \mathbb{R}\)</span> we have <span class="math inline">\(a\cdot b= b\cdot a\)</span>.</li>
+<li><strong>(M5)</strong> <em>Multiplciative identity:</em> There is an element <span class="math inline">\(1 \in \mathbb{R}\)</span> such that for all <span class="math inline">\(a \in \mathbb{R}\)</span> we have <span class="math inline">\(a\cdot 1 = 1 \cdot a = a\)</span>.</li>
+<li><strong>(M6)</strong> <em>No zero-divisors:</em> If <span class="math inline">\(a,b \in \mathbb{R}\)</span> and <span class="math inline">\(a \cdot b = 0\)</span> then <span class="math inline">\(a=0\)</span> or <span class="math inline">\(b=0\)</span>.</li>
+</ul></li>
+<li>A system <span class="math inline">\((S,+, \cdot)\)</span> satisfying (A1) - (A4) and (M1)-(M3) is called a <strong>ring</strong>, and if it also satisfies (M4) it is called an <strong>abelian ring</strong>.</li>
+<li>A system <span class="math inline">\((S,+, \cdot)\)</span> satisfying (A1) - (A4) and (M1)-(M6) is called an <strong>integral domain</strong>.</li>
+<li>Finally,
+<ul>
+<li><strong>(M7)</strong> <em>Multiplicative inverses:</em> If <span class="math inline">\(a \in \mathbb{R}\)</span> and <span class="math inline">\(a \neq 0\)</span> then there exists an element <span class="math inline">\(b \in \mathbb{R}\)</span> such that <span class="math inline">\(a\cdot b = b \cdot a = 1\)</span>. This element <span class="math inline">\(b\)</span> is of course the <em>reciprocal of <span class="math inline">\(a\)</span></em> and usually written as <span class="math inline">\(b = a^{-1}\)</span>.</li>
+</ul></li>
+<li>A system <span class="math inline">\((F,+, \cdot)\)</span> satisfying (A1) - (A4) and (M1)-(M7) is called a <strong>field</strong>.</li>
+</ul>
+</section>
+<section id="fields" class="slide level2">
+<h2>Fields</h2>
+<ul>
+<li>Essentially, a field <span class="math inline">\((F,+, \cdot)\)</span> is a system within which we can perform addition, subtraction, multiplication and division, without leaving the set <span class="math inline">\(F\)</span>, and the usual proeprties we are familiar with, from <span class="math inline">\(\mathbb{R}\)</span> say, hold true.</li>
+<li>Subtraction and division are defined interms of addition and multiplication as
+<ul>
+<li><span class="math inline">\(a - b = a + (-b)\)</span></li>
+<li><span class="math inline">\(a/b = a \cdot b^{-1}\)</span></li>
+</ul></li>
+<li>Fields provide a mathematical system in which we have a rich calculation environment following well understood rules.</li>
+<li>They, and other related agebraic structures, are of intense interest for their purely mathematical properties ….</li>
+<li>… and also find applications in other mathematical areas such as geometry, and more practical application areas such as cryptography and computer science.</li>
+</ul>
+</section>
+<section id="finite-fields-of-the-form-textgfp" class="slide level2">
+<h2>Finite fields of the form <span class="math inline">\(\text{GF}(p)\)</span></h2>
+<ul>
+<li><p><span class="math inline">\(\text{GF}( m )\)</span> notation named for <em>Galois Field</em> after French mathematician Évariste Galois. It stands for a finite field containing <span class="math inline">\(m\)</span> elements.</p></li>
+<li><p>In cryptography, two of the important finite fields are <span class="math inline">\(\text{GF}(2)\)</span> and, more generally, <span class="math inline">\(\text{GF}(p)\)</span>, for a prime <span class="math inline">\(p\)</span>.</p></li>
+<li><p><span class="math inline">\(\text{GF}(2)\)</span>: This just consits of the binary elements <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, under the following rules.</p></li>
+</ul>
+<p><img src="./images/GF2.png" alt="Stallings" style="padding:5spx;width:70%;"></p>
+</section>
+<section id="finite-fields-of-the-form-textgfp-1" class="slide level2">
+<h2>Finite fields of the form <span class="math inline">\(\text{GF}(p)\)</span></h2>
+<p><img src="./images/Z8Z7.png" alt="Stallings" style="padding:5spx;height:110%;float:right;"></p>
+</section>
+<section id="polynomial-arithmetic" class="slide level2">
+<h2>Polynomial arithmetic</h2>
+</section>
+<section id="polynomial-arithmetic-with-coeffients-in-mathbbz_p" class="slide level2">
+<h2>Polynomial arithmetic with coeffients in <span class="math inline">\(\mathbb{Z}_p\)</span></h2>
+</section>
+<section id="finite-fields-of-the-form-textgf2n" class="slide level2">
+<h2>Finite fields of the form <span class="math inline">\(\text{GF}(2^n\)</span>)</h2>
+</section>
+<section id="modular-polynomial-arithmetic" class="slide level2">
+<h2>Modular polynomial arithmetic</h2>
+</section>
+<section id="using-a-generator" class="slide level2">
+<h2>Using a generator</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
