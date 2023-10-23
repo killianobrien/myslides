@@ -182,6 +182,7 @@ $$f(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + \dots + a_1 x + a_0 = \sum_{i=0}^{n
 
 * The tables below show addition and multiplication in $\text{GF}(8)$ <img src="./images/GF8again.png" alt="Stallings" style="padding:5spx;width=100%;float:right"> 
 * The Extended Euclidean algorithm can be used to obtain multiplicative inverses just as before. 
+* The polynomial operations do have efficient implementations in terms of bit sequence operations which means that computations in $\text{GF}(8)$ (and by generalization other $\text{GF}(2^n)$) can be carried out very fast. See Stallings for details. 
 
 
 <!-- ## Using a generator -->
