@@ -110,10 +110,27 @@
 </section>
 <section id="finite-fields-of-the-form-textgfp-1" class="slide level2">
 <h2>Finite fields of the form <span class="math inline">\(\text{GF}(p)\)</span></h2>
-<p><img src="./images/Z8Z7.png" alt="Stallings" style="padding:5spx;height:110%;float:right;"></p>
+<ul>
+<li><img src="./images/Z8Z7.png" alt="Stallings" style="padding:5spx;height:100%;float:right;"> A finite field <span class="math inline">\(\text{GF}(p)\)</span> can be formed by our familiar modular arithmetic modulo <span class="math inline">\(p\)</span>, i.e. <span class="math inline">\(\text{GF}(p) = \mathbb{Z}_p\)</span>.</li>
+<li>Table to the right show the operation and inverse tables for <span class="math inline">\(\mathbb{Z}_7\)</span>.</li>
+<li>Note that <span class="math inline">\(\mathbb{Z}_m\)</span>, where <span class="math inline">\(m\)</span> is not a prime, will not be a field due to the lack of multiplicative inverses for all elements.</li>
+<li>For example, consider the operation and inverse tables of <span class="math inline">\(\mathbb{Z}_8\)</span> shown on the right.</li>
+<li>Finding mutliplicative inverses in <span class="math inline">\(\text{GF}(p) = \mathbb{Z}_p\)</span>:
+<ul>
+<li>If <span class="math inline">\(p\)</span> is a prime and <span class="math inline">\(1 \leq a \lt p\)</span> then necessarily <span class="math inline">\(\gcd(a,p)=1\)</span>.</li>
+<li>Run the extended Euclidean algorithm to find integers <span class="math inline">\(x,y\)</span> such that <span class="math display">\[ ax + py = \gcd(a,p) = 1.\]</span></li>
+<li>Then reducing this equation modulo <span class="math inline">\(p\)</span> gives <span class="math display">\[ax \equiv 1 \pmod{p},\]</span> so <span class="math inline">\(a^{-1} = (x \, \,\text{mod} \,\, p)\)</span>.</li>
+</ul></li>
+</ul>
 </section>
 <section id="polynomial-arithmetic" class="slide level2">
 <h2>Polynomial arithmetic</h2>
+<ul>
+<li>So for <span class="math inline">\(\text{GF}(p)\)</span> we have a model <span class="math inline">\(\mathbb{Z}_p\)</span>. But what about <span class="math inline">\(\text{GF}(m)\)</span> for other useful values of <span class="math inline">\(m\)</span> such as <span class="math inline">\(m = 2^n\)</span>?</li>
+<li>For this we will need <strong>polynomial arithmetic</strong>.</li>
+<li>A **polynomial of degree <span class="math inline">\(n\)</span>$ is a function <span class="math inline">\(f(x)\)</span> of the form <span class="math display">\[f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 = \sum_{i=0}^n a_i x^i.\]</span></li>
+<li>The coefficients <span class="math inline">\(a_i\)</span> will be coming from some specified set such as the integers or a named finite field.</li>
+</ul>
 </section>
 <section id="polynomial-arithmetic-with-coeffients-in-mathbbz_p" class="slide level2">
 <h2>Polynomial arithmetic with coeffients in <span class="math inline">\(\mathbb{Z}_p\)</span></h2>

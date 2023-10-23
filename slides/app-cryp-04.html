@@ -125,9 +125,44 @@
 </section>
 <section id="polynomial-arithmetic" class="slide level2">
 <h2>Polynomial arithmetic</h2>
+<ul>
+<li><p>So for <span class="math inline">\(\text{GF}(p)\)</span> we have a model <span class="math inline">\(\mathbb{Z}_p\)</span>. But what about <span class="math inline">\(\text{GF}(m)\)</span> for other useful values of <span class="math inline">\(m\)</span> such as <span class="math inline">\(m = 2^n\)</span>?</p></li>
+<li><p>For this we will need <strong>polynomial arithmetic</strong>.</p></li>
+<li><p>A <strong>polynomial of degree <span class="math inline">\(n\)</span></strong> is a function <span class="math inline">\(f(x)\)</span> of the form <span class="math display">\[f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 = \sum_{i=0}^n a_i x^i.\]</span></p></li>
+<li><p>The coefficients <span class="math inline">\(a_i\)</span> will be coming from some specified set such as the integers <span class="math inline">\(\mathbb{Z}\)</span>, modular integers <span class="math inline">\(\mathbb{Z}_m\)</span> or some finite field.</p></li>
+<li><p>We will be interested in the polynomial object <span class="math inline">\(f\)</span> itself, not so much in its particular values. So the <span class="math inline">\(x\)</span> will remain mostly unspecified, or <em>indetermined</em>.</p></li>
+<li><p><img src="./images/polyeg.png" alt="Stallings" style="padding:5spx;width:50%;float:right"> <strong>Polynomial arithmetic</strong> includes the operations of addition and multiplication of polynomials. For example, with coefficients from the set <span class="math inline">\(S\)</span> of integers</p></li>
+</ul>
 </section>
-<section id="polynomial-arithmetic-with-coeffients-in-mathbbz_p" class="slide level2">
-<h2>Polynomial arithmetic with coeffients in <span class="math inline">\(\mathbb{Z}_p\)</span></h2>
+<section id="polynomial-arithmetic-with-coefficients-in-mathbbz_p" class="slide level2">
+<h2>Polynomial arithmetic with coefficients in <span class="math inline">\(\mathbb{Z}_p\)</span></h2>
+<ul>
+<li>Can be shown that the system of polynomials <span class="math inline">\(\sum_{i=0}^n a_i x^i\)</span>, with coefficients <span class="math inline">\(a_i\)</span> coming from the field <span class="math inline">\(\mathbb{Z}_p\)</span>, will form a commutative ring.</li>
+<li>The division process among such polynomials can still be carried out, but it will be a process of <em>division with remainder</em> like we have seen previously in the system <span class="math inline">\(\mathbb{Z}\)</span>.</li>
+</ul>
+<p><strong>Polynomial division</strong></p>
+<ul>
+<li>For a first example consider the system of polynomials with integer coefficients.</li>
+<li>Let <span class="math inline">\(f(x) = x^3 + x^2 + 2\)</span> and <span class="math inline">\(g(x) = x^2 - x +1\)</span>, then we can say that <span class="math display">\[f(x) = (x+2) g(x) + x,\]</span> i.e. that dividing <span class="math inline">\(f(x)\)</span> by <span class="math inline">\(g(x)\)</span> gives a <em>quotient</em> of <span class="math inline">\((x+2)\)</span> and a <em>remainder</em> of <span class="math inline">\(x\)</span>.</li>
+<li>We can write <span class="math inline">\(( f(x) \,\, \text{mod} \, \, g(x)) = x\)</span>.</li>
+<li>Can carry out the calculation using some form of <em>long division</em>, see boards.</li>
+<li>Can multiply out the above equation to verify the result.</li>
+</ul>
+</section>
+<section id="polynomial-arithmetic-with-coefficients-in-textgf2-mathbbz_2" class="slide level2">
+<h2>Polynomial arithmetic with coefficients in <span class="math inline">\(\text{GF}(2) = \mathbb{Z}_2\)</span></h2>
+<ul>
+<li><img src="./images/polyarithoverGF2.png" alt="Stallings" style="padding:5spx;width=60%;float:right"> For cryptography purposes, polynomials with coefficients in <span class="math inline">\(\text{GF}(2) = \mathbb{Z}_2\)</span> are of most interest.</li>
+<li>That is, these are polynomials with binary coefficients, i.e. <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, and these coefficients follow the rules of arithmetic in <span class="math inline">\(\mathbb{Z}_2\)</span>, <span class="math display">\[0+0=0, 1+1=0, 1+0=1, 1-1=0, 0-1=1, \dots \]</span></li>
+<li>This setup can make the resulting polynomial arithmetic tricky to follow.</li>
+<li>See the examples on the right for polyomial arithmetic operations two such polys <span class="math inline">\(f(x) = x^7 + x^5 +x^4+x^3+x+1\)</span> and <span class="math inline">\(g(x) = x^3 + x +1\)</span>.</li>
+<li>A polynomial <span class="math inline">\(f(x)\)</span> with coefficients from a field <span class="math inline">\(F\)</span> is called <strong>irreducible</strong> if and only if <span class="math inline">\(f(x)\)</span> cannot be expressed as a product of two other such polynomials, both of degree greater than 0 and less than the degree of <span class="math inline">\(f\)</span>.</li>
+<li>For example,
+<ul>
+<li>for polynomials over <span class="math inline">\(\mathbb{Z}_2\)</span>, the poly <span class="math inline">\(f(x) = x^4+1\)</span> is reducible as <span class="math display">\[x^4+1 = (x+1)(x^3+x^2+x+1).\]</span></li>
+<li>but <span class="math inline">\(g(x) = x^3 + x +1\)</span> is irreducible since neither <span class="math inline">\(x\)</span> nor <span class="math inline">\(x+1\)</span>, the only such polys of degree 2, is a factor of it.</li>
+</ul></li>
+</ul>
 </section>
 <section id="finite-fields-of-the-form-textgf2n" class="slide level2">
 <h2>Finite fields of the form <span class="math inline">\(\text{GF}(2^n\)</span>)</h2>
