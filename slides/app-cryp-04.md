@@ -135,11 +135,11 @@ $$x^4+1 = (x+1)(x^3+x^2+x+1).$$
 
 
 
-## Finite fields of the form $\text{GF}(2^n$)
+<!-- ## Finite fields of the form $\text{GF}(2^n$)
 
 ## Modular polynomial arithmetic
 
-## Using a generator
+## Using a generator -->
 
 
 
