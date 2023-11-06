@@ -130,7 +130,7 @@ $$\text{incoming state} \oplus \text{round key} = \text{outgoing state}$$
 
 * <img src="./images/AESkeyexp.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> The $i^{\text{th}}$ of the $N+1$ round keys consist of the four keywords 
 $$w_{4i + 0}, w_{4i + 1},w_{4i + 2},w_{4i + 3}.$$
-* The 16 bytes of the initial key form the first four key words $w_0,w_1, w_3, w_3$ as shown.
+* The 16 bytes, $k_0, k_1, \dots, k_{15}$, of the initial key form the first four key words $w_0,w_1, w_3, w_3$ as shown.
 * An iterative process creates the 40 subsequent key words. 
     - for $j=1,2,3$, and $i =1,\dots, 10$,
     $$w_{4i+j} = w_{4i+j-1} \oplus w_{4(i-1)+j}.$$

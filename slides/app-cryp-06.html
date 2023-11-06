@@ -173,7 +173,7 @@
 <h2>Key expansion in AES-128</h2>
 <ul>
 <li><img src="./images/AESkeyexp.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> The <span class="math inline">\(i^{\text{th}}\)</span> of the <span class="math inline">\(N+1\)</span> round keys consist of the four keywords <span class="math display">\[w_{4i + 0}, w_{4i + 1},w_{4i + 2},w_{4i + 3}.\]</span></li>
-<li>The 16 bytes of the initial key form the first four key words <span class="math inline">\(w_0,w_1, w_3, w_3\)</span> as shown.</li>
+<li>The 16 bytes, <span class="math inline">\(k_0, k_1, \dots, k_{15}\)</span>, of the initial key form the first four key words <span class="math inline">\(w_0,w_1, w_3, w_3\)</span> as shown.</li>
 <li>An iterative process creates the 40 subsequent key words.
 <ul>
 <li>for <span class="math inline">\(j=1,2,3\)</span>, and <span class="math inline">\(i =1,\dots, 10\)</span>, <span class="math display">\[w_{4i+j} = w_{4i+j-1} \oplus w_{4(i-1)+j}.\]</span></li>
