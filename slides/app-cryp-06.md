@@ -139,10 +139,16 @@ $$w_{4i + 0}, w_{4i + 1},w_{4i + 2},w_{4i + 3}.$$
     - the function $g$ is the composition of 
         - a circular left-shift of the word bytes
         - an S-box byte substitution using the same S-box table as in the AES encryption rounds
-        - a bitwise $\text{XOR}$ with the word formed by the bytes RC~i~, 00, 00, 00. The round constant RC~i~ is given by the table
-        <img src="./images/RCtable.png" alt="Stallings" style="padding:5spx;width=150px;float:right">
+        - a bitwise $\text{XOR}$ with the word formed by the bytes RC~i~, 00, 00, 00. The round constants RC~i~ are shown on table on next slide.
+        
+
+        
 
 ## Design considerations of the key expansion algorithm
+
+* The round constants RC~i~.
+<img src="./images/RCtable.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> 
+
 
 * These transformations were chosen to ensure these features, amongst others, 
     - speedy implementations in software and chip hardware,

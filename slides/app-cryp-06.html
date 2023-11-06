@@ -182,7 +182,7 @@
 <ul>
 <li>a circular left-shift of the word bytes</li>
 <li>an S-box byte substitution using the same S-box table as in the AES encryption rounds</li>
-<li>a bitwise <span class="math inline">\(\text{XOR}\)</span> with the word formed by the bytes RC<sub>i</sub>, 00, 00, 00. The round constant RC<sub>i</sub> is given by the table <img src="./images/RCtable.png" alt="Stallings" style="padding:5spx;width=150px;float:right"></li>
+<li>a bitwise <span class="math inline">\(\text{XOR}\)</span> with the word formed by the bytes RC<sub>i</sub>, 00, 00, 00. The round constants RC<sub>i</sub> are shown on table on next slide.</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -190,14 +190,15 @@
 <section id="design-considerations-of-the-key-expansion-algorithm" class="slide level2">
 <h2>Design considerations of the key expansion algorithm</h2>
 <ul>
-<li>These transformations were chosen to ensure these features, amongst others,
+<li><p>The round constants RC<sub>i</sub>. <img src="./images/RCtable.png" alt="Stallings" style="padding:5spx;width=150px;float:right"></p></li>
+<li><p>These transformations were chosen to ensure these features, amongst others,</p>
 <ul>
 <li>speedy implementations in software and chip hardware,</li>
 <li>partial knowledge of the original key or intermediate round keys will not enable determination of many other bits of other key words,</li>
 <li>use of different round constants eliminates any potential symmetries in the round key generations,</li>
 <li>diffusion, i.e. each bit of the original key effects many round key bits.</li>
 </ul></li>
-<li>Further details, worked examples, and illustrations of bit diffusion from plaintext and key differences can be found in <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 6: AES</a></li>
+<li><p>Further details, worked examples, and illustrations of bit diffusion from plaintext and key differences can be found in <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 6: AES</a></p></li>
 </ul>
 </section>
     </div>
