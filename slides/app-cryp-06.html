@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <meta name="author" content="6G6Z0024 Applied Cryptography 2023/24">
+  <title>Advanced Encryption Standard (AES)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Advanced Encryption Standard (AES)</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="author">6G6Z0024 Applied Cryptography 2023/24</p>
+  <p class="date">Lecture Week 06 – Mon 06 November 2023</p>
+</section>
+
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li>The <strong>Advanced Encryption Standard</strong> (AES), published by NIST in 2001.</li>
+<li>To replace DES due to security concerns over small key size and other considerations.</li>
+<li>AES designed to be more secure and fast.</li>
+<li>From 2008 on, chip manufacturers implement AES capabilities in low-level chip design.</li>
+<li>Now the most widely used cipher.</li>
+</ul>
+</section>
+<section id="polynomial-arithmetic-and-the-fields-gf2n" class="slide level2">
+<h2>Polynomial arithmetic and the fields <span class="math inline">\(GF(2^n)\)</span></h2>
+<ul>
+<li>Consider all polynomials <span class="math display">\[f(x) = a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + \dots + a_1 x + a_0 = \sum_{i=0}^{n-1} a_i x^i, \quad a_i \in \mathbb{Z}_2.\]</span> of degree <span class="math inline">\(n-1\)</span> or less.</li>
+<li>Arithmetic follows the rules of <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> for polynomials, with arithmetic of the coefficients <span class="math inline">\(a_i\)</span> carried out in <span class="math inline">\(\mathbb{Z}_2\)</span>, i.e. addition of coefficients is the same as <span class="math inline">\(\text{XOR}\)</span>.</li>
+<li>If multiplication results in a polynomial of degree greater than <span class="math inline">\(n-1\)</span> then the product is reduced modulo a specified irreducible polynomial <span class="math inline">\(m(x)\)</span> of degree <span class="math inline">\(n\)</span>, the modulos polynomial.</li>
+</ul>
+</section>
+<section id="aes-and-textgf28." class="slide level2">
+<h2>AES and <span class="math inline">\(\text{GF}(2^8)\)</span>.</h2>
+<ul>
+<li><img src="./images/GF8examp.png" alt="Stallings" style="padding:5spx;width=100px;float:right"> The Advanceed Encryption Standard (AES) uses such a field <span class="math inline">\(\text{GF}(2^8)\)</span>, consisting of polynomials of degree less than or equal to 7, with binary coefficients and polynomial operations carried out modulo the irreducible polynomial <span class="math display">\[m(x) = x^8 + x^4 + x^3 + x +1.\]</span></li>
+<li>The figure on the right shows the calculation of an example product in <span class="math inline">\(\text{GF}(2^8)\)</span>.</li>
+<li>AES uses this since it is designed to operate on 8-bit bytes.
+<ul>
+<li>addition of bytes is just bit-wise <span class="math inline">\(\text{XOR}\)</span>.</li>
+<li><em>multiplication</em> of bytes is defined as multiplication in the finite field <span class="math inline">\(\text{GF}(2^8)\)</span>, modulo the irreducible polynomial <span class="math inline">\(m(x) = x^8 + x^4 + x^3 + x +1.\)</span></li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
