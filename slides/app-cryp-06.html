@@ -62,6 +62,106 @@
 </ul></li>
 </ul>
 </section>
+<section id="the-structure-of-aes" class="slide level2">
+<h2>The structure of AES</h2>
+<ul>
+<li><img src="./images/AESdesign.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> Operates on plaintext message blocks of 16 bytes = 128 bits.</li>
+<li>Various key lengths allowed, 16, 24 or 32 bytes. Ciphers referred to as AES-128, AES-192 or AES-256, depending on how many bits used in key.</li>
+<li>Throughout encryption (and decryption) the message block is maintained as a <span class="math inline">\(4 \times 4\)</span> array of bytes. This is referred to as the <strong>state</strong>.</li>
+<li>First four bytes form the first column, next four bytes the second column, and so on.</li>
+<li>An initial transformation of the state is followed by <span class="math inline">\(N\)</span> rounds. Where <span class="math inline">\(N\)</span> depends on the ley length used.
+<ul>
+<li><span class="math inline">\(N=10\)</span> for 128 bit key.</li>
+<li><span class="math inline">\(N=12\)</span> for 192 bit key.</li>
+<li><span class="math inline">\(N=14\)</span> for 256 bit key.</li>
+</ul></li>
+<li>The key passes through a <em>key explansion</em> transformation to provide <span class="math inline">\(N+1\)</span> sub-keys to be used in the initial transformation and <span class="math inline">\(N\)</span> rounds.</li>
+<li>Each sub-key consists for four 4-byte <strong>words</strong>, which form the columns of the <strong>round key matrix</strong>.</li>
+</ul>
+</section>
+<section id="aes-detail" class="slide level2">
+<h2>AES detail</h2>
+<ul>
+<li><img src="./images/AESdetail.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure exposes the transformations within each round, for AES-128. The other schemes are similar.</li>
+<li>Note that is departs from the Feistel design. There is no notion of dividing the block into halves.</li>
+<li>Rounds 1 - 9 consists of four transformations
+<ul>
+<li><strong>Substitute bytes</strong>: and S-box type permutation of the bytes of the state.</li>
+<li><strong>Shift rows</strong>: a simple permutation of the bytes within each row of the state.</li>
+<li><strong>Mix columns</strong>: a transformation that combines the bytes within each column of the state. This transformation utilies the <span class="math inline">\(\text{GF}(2^8)\)</span> field.</li>
+<li><strong>Add round key</strong>: bit-wise <span class="math inline">\(\text{XOR}\)</span> of the state with the appropriate round key matrix.</li>
+</ul></li>
+<li>The decryption algorithm reverses all the transformations. At each horizontal level, the intermediate states of the encryption and decryption algorithms are the same.</li>
+</ul>
+</section>
+<section id="visualizing-a-single-round" class="slide level2">
+<h2>Visualizing a single round</h2>
+<ul>
+<li><img src="./images/AESsingleround.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure visualizes the four transformations within a typical round.</li>
+<li>Here the state matrix is shown laid out as a row of 16 bytes.</li>
+</ul>
+</section>
+<section id="substitute-bytes" class="slide level2">
+<h2>Substitute bytes</h2>
+<ul>
+<li><img src="./images/subsbytes.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure shows the how the substitute bytes transformation is defined.</li>
+<li>For each entry of the incoming state matrix, i.e. for each byte
+<ul>
+<li>the first four bits denote the row index <span class="math inline">\(x\)</span> of the S-box</li>
+<li>the second four bites denote the column index <span class="math inline">\(y\)</span> of the S-box</li>
+<li>the S-box entry at that row and column is a byte that replaces the original byte of the state.</li>
+</ul></li>
+<li>After replacing each entry of the incoming state matrix, we get the outgoing state matrix.</li>
+</ul>
+</section>
+<section id="the-s-box-itself" class="slide level2">
+<h2>The S-box itself</h2>
+<ul>
+<li><img src="./images/s-box.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure shows the S-box.</li>
+<li>Remember
+<ul>
+<li>a four bit block is denoted by a hexadecimal digit <code>0,1,...9,a,b,c,d,e,f</code>.</li>
+<li>a singel byte (i.e. a 8-bit block) is denoted by a two-digit hexadecimal number.</li>
+</ul></li>
+<li>A corresponding inverse S-box table is used in the decryption algorithm.</li>
+<li>Lots of detail in Stallings on the contruction of this S-box table.
+<ul>
+<li>Designed like this to minimize any correlation between incoming and outgoing bits.</li>
+</ul></li>
+<li>An example substitute bytes transformation is shown here <img src="./images/egsbox.png" alt="Stallings" style="padding:5spx;width=80px;"></li>
+</ul>
+</section>
+<section id="the-shift-rows-transformation" class="slide level2">
+<h2>The shift rows transformation</h2>
+<ul>
+<li><img src="./images/shiftrows.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> In each of the second, third and fourth rows of state, permute the bytes in each row as shown.</li>
+<li>This has a significant effect on the original positions of the bits within the 128 bit message block.</li>
+</ul>
+</section>
+<section id="mix-columns-transformation" class="slide level2">
+<h2>Mix columns transformation</h2>
+<ul>
+<li><p><img src="./images/mixcolsmatrices.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> The equation shows how the incoming state matrix <span class="math inline">\(s_{i,j}\)</span> is multiplied by the matrix of constants to get the outgoing state matrix <span class="math inline">\(s&#39;_{i,j}\)</span>, shown on the right of the equation.</p></li>
+<li><p>This results in the following transformations within the <span class="math inline">\(j^{\text{th}}\)</span> column of the state <img src="./images/coltrans.png" alt="Stallings" style="padding:5spx;width=150px;float:right"></p></li>
+<li><p>The operations <span class="math inline">\(\oplus\)</span> and <span class="math inline">\(\cdot\)</span> shown here are the operations from <span class="math inline">\(\text{GF}(2^8)\)</span>, carried out on the entries of the state, i.e. on the bytes, i.e. on the 8-bit blocks which are interpreted as the coefficients of degree 7 polynomials.</p></li>
+<li><p>So <span class="math inline">\(\oplus\)</span> is bitwise <span class="math inline">\(\text{XOR}\)</span> and <span class="math inline">\(\cdot\)</span> is the multiplication obtained from the multiplication of these polynomials, modulo the polynomial <span class="math inline">\(m(x) = x^8 + x^4 + x^3 + x +1.\)</span></p></li>
+<li><p>The design of this Mix Columns transformation ensures good mixing of the bytes within a column, and the use of the constants <code>01</code>, <code>02</code> and <code>03</code> results in efficient implementation of the encryption algorithm.</p></li>
+</ul>
+</section>
+<section id="add-round-key-transformation" class="slide level2">
+<h2>Add round key transformation</h2>
+<ul>
+<li>Perhaps the most straightforward, this is just bitwise <span class="math inline">\(\text{XOR}\)</span> amongst the bit entries of the state and round key matrices.</li>
+<li>Consider the examples shown here <img src="./images/addroundeg.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> of <span class="math display">\[\text{incoming state} \oplus \text{round key} = \text{outgoing state}\]</span></li>
+</ul>
+</section>
+<section id="a-summary-flowchart-for-aes-encryption" class="slide level2">
+<h2>A summary flowchart for AES encryption</h2>
+<ul>
+<li><p><img src="./images/AESsummary.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure summarizes a typical encryption round.</p></li>
+<li><p>We still need to describe the key expansion process for the derivation of the round keys from the original key.</p></li>
+</ul>
+</section>
     </div>
   </div>
 
