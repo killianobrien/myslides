@@ -108,7 +108,7 @@
 <li>For each entry of the incoming state matrix, i.e. for each byte
 <ul>
 <li>the first four bits denote the row index <span class="math inline">\(x\)</span> of the S-box</li>
-<li>the second four bites denote the column index <span class="math inline">\(y\)</span> of the S-box</li>
+<li>the second four bits denote the column index <span class="math inline">\(y\)</span> of the S-box</li>
 <li>the S-box entry at that row and column is a byte that replaces the original byte of the state.</li>
 </ul></li>
 <li>After replacing each entry of the incoming state matrix, we get the outgoing state matrix.</li>
@@ -121,7 +121,7 @@
 <li>Remember
 <ul>
 <li>a four bit block is denoted by a hexadecimal digit <code>0,1,...9,a,b,c,d,e,f</code>.</li>
-<li>a singel byte (i.e. a 8-bit block) is denoted by a two-digit hexadecimal number.</li>
+<li>a single byte (i.e. a 8-bit block) is denoted by a two-digit hexadecimal number.</li>
 </ul></li>
 <li>A corresponding inverse S-box table is used in the decryption algorithm.</li>
 <li>Lots of detail in Stallings on the contruction of this S-box table.
@@ -162,6 +162,44 @@
 <li><p>We still need to describe the key expansion process for the derivation of the round keys from the original key.</p></li>
 </ul>
 </section>
+<section id="key-expansion-in-aes" class="slide level2">
+<h2>Key expansion in AES</h2>
+<ul>
+<li><img src="./images/AESdesign.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> <strong>Key expansion</strong> is the process where the initial key is expanded to produce the <span class="math inline">\(N+1\)</span> round keys for the initial transformation and the <span class="math inline">\(N\)</span> rounds of AES.</li>
+<li>Each round key consists of four 4-byte words, i.e. the four columns of the round key matrix.</li>
+</ul>
+</section>
+<section id="key-expansion-in-aes-128" class="slide level2">
+<h2>Key expansion in AES-128</h2>
+<ul>
+<li><img src="./images/AESkeyexp.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> The <span class="math inline">\(i^{\text{th}}\)</span> of the <span class="math inline">\(N+1\)</span> round keys consist of the four keywords <span class="math display">\[w_{4i + 0}, w_{4i + 1},w_{4i + 2},w_{4i + 3}.\]</span></li>
+<li>The 16 bytes of the initial key form the first four key words <span class="math inline">\(w_0,w_1, w_3, w_3\)</span> as shown.</li>
+<li>An iterative process creates the 40 subsequent key words.
+<ul>
+<li>for <span class="math inline">\(j=1,2,3\)</span>, and <span class="math inline">\(i =1,\dots, 10\)</span>, <span class="math display">\[w_{4i+j} = w_{4i+j-1} \oplus w_{4(i-1)+j}.\]</span></li>
+<li>for <span class="math inline">\(j=0\)</span> and <span class="math inline">\(i =1 \dots 10\)</span>, <span class="math display">\[w_{4i} = g(w_{4i-1}) \oplus w_{4(i-1)}.\]</span></li>
+<li>the function <span class="math inline">\(g\)</span> is the composition of
+<ul>
+<li>a circular left-shift of the word bytes</li>
+<li>an S-box byte substitution using the same S-box table as in the AES encryption rounds</li>
+<li>a bitwise <span class="math inline">\(\text{XOR}\)</span> with the word formed by the bytes RC<sub>i</sub>, 00, 00, 00. The round constant RC<sub>i</sub> is given by the table <img src="./images/RCtable.png" alt="Stallings" style="padding:5spx;width=150px;float:right"></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="design-considerations-of-the-key-expansion-algorithm" class="slide level2">
+<h2>Design considerations of the key expansion algorithm</h2>
+<ul>
+<li>These transformations were chosen to ensure these features, amongst others,
+<ul>
+<li>speedy implementations in software and chip hardware,</li>
+<li>partial knowledge of the original key or intermediate round keys will not enable determination of many other bits of other key words,</li>
+<li>use of different round constants eliminates any potential symmetries in the round key generations,</li>
+<li>diffusion, i.e. each bit of the original key effects many round key bits.</li>
+</ul></li>
+<li>Further details, worked examples, and illustrations of bit diffusion from plaintext and key differences can be found in <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 6: AES</a></li>
+</ul>
+</section>
     </div>
   </div>
 
@@ -178,6 +216,7 @@
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
+      
         // Push each slide change to the browser history
         history: true,
         // Transition style

@@ -78,7 +78,7 @@ of degree $n-1$ or less.
 * <img src="./images/subsbytes.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure shows the how the substitute bytes transformation is defined. 
 * For each entry of the incoming state matrix, i.e. for each byte
     - the first four bits denote the row index $x$ of the S-box
-    - the second four bites denote the column index $y$ of the S-box
+    - the second four bits denote the column index $y$ of the S-box
     - the S-box entry at that row and column is a byte that replaces the original byte of the state. 
 * After replacing each entry of the incoming state matrix, we get the outgoing state matrix. 
 
@@ -87,7 +87,7 @@ of degree $n-1$ or less.
 * <img src="./images/s-box.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure shows the S-box.
 * Remember
     - a four bit block is denoted by a hexadecimal digit `0,1,...9,a,b,c,d,e,f`.
-    - a singel byte (i.e. a 8-bit block) is denoted by a two-digit hexadecimal number.
+    - a single byte (i.e. a 8-bit block) is denoted by a two-digit hexadecimal number.
 * A corresponding inverse S-box table is used in the decryption algorithm.
 * Lots of detail in Stallings on the contruction of this S-box table. 
     - Designed like this to minimize any correlation between incoming and outgoing bits.
@@ -120,3 +120,34 @@ $$\text{incoming state} \oplus \text{round key} = \text{outgoing state}$$
 * <img src="./images/AESsummary.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> This figure summarizes a typical encryption round. 
 
 * We still need to describe the key expansion process for the derivation of the round keys from the original key. 
+
+## Key expansion in AES
+
+* <img src="./images/AESdesign.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> **Key expansion** is the process where the initial key is expanded to produce the $N+1$ round keys for the initial transformation and the $N$ rounds of AES.
+* Each round key consists of four 4-byte words, i.e. the four columns of the round key matrix. 
+
+## Key expansion in AES-128
+
+* <img src="./images/AESkeyexp.png" alt="Stallings" style="padding:5spx;width=150px;float:right"> The $i^{\text{th}}$ of the $N+1$ round keys consist of the four keywords 
+$$w_{4i + 0}, w_{4i + 1},w_{4i + 2},w_{4i + 3}.$$
+* The 16 bytes of the initial key form the first four key words $w_0,w_1, w_3, w_3$ as shown.
+* An iterative process creates the 40 subsequent key words. 
+    - for $j=1,2,3$, and $i =1,\dots, 10$,
+    $$w_{4i+j} = w_{4i+j-1} \oplus w_{4(i-1)+j}.$$
+    - for $j=0$ and $i =1 \dots 10$,
+    $$w_{4i} = g(w_{4i-1}) \oplus w_{4(i-1)}.$$
+    - the function $g$ is the composition of 
+        - a circular left-shift of the word bytes
+        - an S-box byte substitution using the same S-box table as in the AES encryption rounds
+        - a bitwise $\text{XOR}$ with the word formed by the bytes RC~i~, 00, 00, 00. The round constant RC~i~ is given by the table
+        <img src="./images/RCtable.png" alt="Stallings" style="padding:5spx;width=150px;float:right">
+
+## Design considerations of the key expansion algorithm
+
+* These transformations were chosen to ensure these features, amongst others, 
+    - speedy implementations in software and chip hardware,
+    - partial knowledge of the original key or intermediate round keys will not enable determination of many other bits of other key words,
+    - use of different round constants eliminates any potential symmetries in the round key generations,
+    - diffusion, i.e. each bit of the original key effects many round key bits.
+
+* Further details, worked examples, and illustrations of bit diffusion from plaintext and key differences can be found in <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 6: AES</a>
