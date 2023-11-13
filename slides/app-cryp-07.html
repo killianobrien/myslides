@@ -151,20 +151,13 @@
 <li>Then the inverse is given by <span class="math display">\[a^{-1} \, \, \text{mod} \, \, m = (x \, \, \text{mod} \, \, m ),\]</span> because <span class="math display">\[xa = 1 - ym \equiv 1 \pmod{m}.\]</span></li>
 </ul></li>
 </ul>
-</section>
-<section id="computation-aspects-of-rsa-encryptiondecryption" class="slide level2">
-<h2>Computation aspects of RSA encryption/decryption</h2>
-<ul>
-<li>Exponentiation
-<ul>
-<li>useful modular properties</li>
-<li>repeated squaring</li>
-<li>efficiencies with public and private keys (maybe skippable, but good for at least one lab / homework problem)
-<ul>
-<li>don’t understand the timing attack point yet</li>
-</ul></li>
-</ul></li>
-</ul>
+<!-- ## Computation aspects of RSA encryption/decryption
+
+* Exponentiation
+    - useful modular properties
+    - repeated squaring
+    - efficiencies with public and private keys (maybe skippable, but good for at least one lab / homework problem)
+        - don't understand the timing attack point yet -->
 </section>
 <section id="factorization-and-the-choice-of-pq" class="slide level2">
 <h2>Factorization and the choice of <span class="math inline">\(p,q\)</span></h2>
@@ -191,16 +184,6 @@
 <li>In practice, for choosing such large primes, probabilistic prime tests, such as the Miller-Rabin test, need to be used.</li>
 <li>This test allows one to choose an integer which is <em>probably</em> a prime.</li>
 <li>But this probability can be made arbitrarily close to 1, i.e. as near certain as one would like. (See chapter 2 of Stallings for details on Miller-Rabin test)</li>
-</ul></li>
-</ul>
-</section>
-<section id="lab-session-assessment-ideas" class="slide level2">
-<h2>Lab session / assessment ideas</h2>
-<ul>
-<li>You need tasks that assess the basic central understanding you want them to have. The extras beyond that then are nice to haves.</li>
-<li>Can choose p,q as the next two primes following their student number.
-<ul>
-<li>This can feed into RSA encryption/decryption problems and the computational efficiency questions.</li>
 </ul></li>
 </ul>
 </section>

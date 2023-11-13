@@ -121,13 +121,13 @@ $$\phi(n) = \phi(pq) = (p-1)\cdot (q-1).$$
     because
     $$xa = 1 - ym \equiv 1 \pmod{m}.$$
 
-## Computation aspects of RSA encryption/decryption
+<!-- ## Computation aspects of RSA encryption/decryption
 
 * Exponentiation
     - useful modular properties
     - repeated squaring
     - efficiencies with public and private keys (maybe skippable, but good for at least one lab / homework problem)
-        - don't understand the timing attack point yet
+        - don't understand the timing attack point yet -->
 
 ## Factorization and the choice of $p,q$
 
@@ -147,9 +147,3 @@ $$\phi(n) = \phi(pq) = (p-1)\cdot (q-1).$$
     - In practice, for choosing such large primes, probabilistic prime tests, such as the Miller-Rabin test, need to be used. 
     - This test allows one to choose an integer which is *probably* a prime.
     - But this probability can be made arbitrarily close to 1, i.e. as near certain as one would like. (See chapter 2 of Stallings for details on Miller-Rabin test)
-
-## Lab session / assessment ideas
-
-* You need tasks that assess the basic central understanding you want them to have. The extras beyond that then are nice to haves. 
-* Can choose p,q as the next two primes following their student number. 
-    - This can feed into RSA encryption/decryption problems and the computational efficiency questions. 
