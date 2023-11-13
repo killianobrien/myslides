@@ -30,9 +30,12 @@ hh
 
 ### Signatures, authenticated encryption
 
+## Summary requirements to make it all work
+
 ## The RSA system
 
-* Historical points
+* Historical points.
+* The claim it will fulfill the requirements. 
 
 * Description with review of modular arithmetic
 
@@ -41,3 +44,11 @@ hh
 * Exponentiation
     - useful modular properties
     - repeated squaring
+    - efficiencies with public and private keys (maybe skippable, but good for at least one lab / homework problem)
+        - don't understand the timing attack point yet
+
+### Lab session / assessment ideas
+
+* You need tasks that assess the basic central understanding you want them to have. The extras beyond that then are nice to haves. 
+* Can choose p,q as the next two primes following their student number. 
+    - This can feed into RSA encryption/decryption problems and the computational efficiency questions. 
