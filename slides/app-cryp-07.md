@@ -69,13 +69,57 @@ title-slide-attributes:
 $$C = E(PU_b,M).$$
 * It is computationally easy for the receiver $B$ to decrypt $C$ using $PR_b$, to recover $M$ as
 $$M = D(PR_b,C) = D \big ( PR_b, E(PU_b,M) \big ).$$
+* It is computationally infeasible for an adversary, knowing the public key $PU_b$, to determine the private key $PR_b$. 
+* It is computationally infeasible for an adversary, knowing the public key $PU_b$ and ciphertext $C$, to recover the original message $M$.
+
+While not essential, the following useful property is possessed by the RSA implementation of public-key cryptography. 
+
+* The two keys can be applied in either order, i.e.
+$$M = D \big ( PR_b, E(PU_b,M) \big ) = D \big ( PU_b, E(PR_b,M) \big ) .$$
+
+*This is all very nice to describe, but what exactly is the technology that can enable such a scheme?*
 
 ## The RSA system
 
-* Historical points.
-* The claim it will fulfill the requirements. 
+* Discovered in 1978 at MIT by Ron **R**ivest, Ade **S**hamir and Len **A**dleman.
+* It remains one of the most widely used general purpose public-key schemes.
+* It deals with messages, or message blocks, encoded as integers in the range $0$ to $n-1$, for some suitably large $n$. 
+* Typicall size for $n$ might be 1024 bots, or around 309 decimal digits.
+* RSA makes use of exponentials in modular arithmetic. 
+* The message $M$ is an integer in the range $0 \leq M \leq n-1$. 
+* The receiver chooses integers $e$ and $d$, with the property that
+$$ed \equiv 1 \pmod{\phi(n)},$$
+i.e. $e$ and $d$ are multiplicative inverses of each other modulo the Euler totient function value $\phi(n)$.
+* The public key is $PU = (e,n)$, the private key is $PR = (d,n)$. 
+* The plaintext $M$ is encrypted as 
+$$C = (M^e \, \, \text{mod} \, \, n).$$
+* The ciphertext $C$ is decrypted as 
+$$ (C^d \, \, \text{mod} \, \, n ) = ((M^e)^d \, \, \text{mod} \, \, n ) = (M^{ed} \, \, \text{mod} \, \, n ) = (M^1 \, \, \text{mod} \, \, n) = M.$$
+* The security comes from the fact that computing $\phi(n)$ from $n$ is **hard**. 
 
-* Description with review of modular arithmetic
+## RSA procedure
+
+* <img src="./images/RSA-summ.png" alt="Stallings" style="padding:5px;height=50%;float:right"> Figure on the right, from Stallings, outlines the procedure. 
+
+## A small $n$ example
+
+* <img src="./images/RSA-eg.png" alt="Stallings" style="padding:5px;height=50%;float:right"> Extract from Stallings pg. 298, shows the calculations for an example based on a small $n$. Remember a typical size for $n$ from real usage is circa 309 decimal digits. 
+* The Euler totient function value $\phi(n)$, when $n=pq$, for distinct primes $p$ and $q$, is given by 
+$$\phi(n) = \phi(pq) = (p-1)\cdot (q-1).$$
+* The reason that computing $\phi(n)$ from $n$ is **hard** is that factoring $n$ into the product $p \cdot q$ is hard. Given such a large $n$ there is no easy way to discover its prime factors. 
+    - the best known algorithms for factoring integers will take a **long** time to factor $n$, given any realistic amount of computing power available. 
+
+## Modular arithmetic reminder
+
+* RSA involves using $c,d$ that are multiplicative inverses of each other modulo $\phi(n)$. 
+* Multiplicative inverses are found using the extended Euclidean algorithm
+    - If $a$ is coprime to a modulus $m$, i.e. $\gcd(a,m) = 1,
+    - Run the extended Euclidean algorithm to find integer coefficients $x,y$ satisfying
+    $$xa + ym = 1.$$
+    - Then the inverse is given by 
+    $$a^{-1} \, \, \text{mod} \, \, m = (x \, \, \text{mod} \, \, m ),$$
+    because
+    $$xa = 1 - ym \equiv 1 \pmod{m}.$$
 
 ## Computation aspects of RSA encryption/decryption
 
@@ -85,7 +129,26 @@ $$M = D(PR_b,C) = D \big ( PR_b, E(PU_b,M) \big ).$$
     - efficiencies with public and private keys (maybe skippable, but good for at least one lab / homework problem)
         - don't understand the timing attack point yet
 
-### Lab session / assessment ideas
+## Factorization and the choice of $p,q$
+
+* Factorization of large $n$ is computationally **hard**
+    - even when using advanced *number field sieve* factoring algorithms. 
+* But computational power increases and theoretical advancements should be expected to continue.
+* The counter to both these possibilities is to increase the size of $n$, to make factoring harder.
+* Recent advice from standards agencies
+    - NIST 2015 recommends key lengths of 2048 bits or longer.
+    - EU Agency for Network ad Information Security 2014 recommends 3072 bits for future developments.
+* Other guidance on choice of $p,q$ is
+    - $p$ and $q$ should be of similar digit length. So for a 1024-bit key, they should be chosen in the range
+    $$10^{75} \leq p,q \leq 10^{100}.$$
+    - both $p-1$ and $q-1$ should contain a large prime factor
+    - $\gcd(p-1,q-1)$ should be small. 
+* However finding large primes is computationally hard, similar to factoring.
+    - In practice, for choosing such large primes, probabilistic prime tests, such as the Miller-Rabin test, need to be used. 
+    - This test allows one to choose an integer which is *probably* a prime.
+    - But this probability can be made arbitrarily close to 1, i.e. as near certain as one would like. (See chapter 2 of Stallings for details on Miller-Rabin test)
+
+## Lab session / assessment ideas
 
 * You need tasks that assess the basic central understanding you want them to have. The extras beyond that then are nice to haves. 
 * Can choose p,q as the next two primes following their student number. 

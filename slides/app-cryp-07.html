@@ -98,14 +98,58 @@
 <li>It is computationally easy for a party <span class="math inline">\(B\)</span> to generate keys pairs <span class="math inline">\(PU_b\)</span> and <span class="math inline">\(PR_b\)</span>.</li>
 <li>It is computationally easy for a sender <span class="math inline">\(A\)</span>, with the public key <span class="math inline">\(PU_b\)</span> and plaintext <span class="math inline">\(M\)</span>, to generate the corresponding ciphertext <span class="math display">\[C = E(PU_b,M).\]</span></li>
 <li>It is computationally easy for the receiver <span class="math inline">\(B\)</span> to decrypt <span class="math inline">\(C\)</span> using <span class="math inline">\(PR_b\)</span>, to recover <span class="math inline">\(M\)</span> as <span class="math display">\[M = D(PR_b,C) = D \big ( PR_b, E(PU_b,M) \big ).\]</span></li>
+<li>It is computationally infeasible for an adversary, knowing the public key <span class="math inline">\(PU_b\)</span>, to determine the private key <span class="math inline">\(PR_b\)</span>.</li>
+<li>It is computationally infeasible for an adversary, knowing the public key <span class="math inline">\(PU_b\)</span> and ciphertext <span class="math inline">\(C\)</span>, to recover the original message <span class="math inline">\(M\)</span>.</li>
 </ul>
+<p>While not essential, the following useful property is possessed by the RSA implementation of public-key cryptography.</p>
+<ul>
+<li>The two keys can be applied in either order, i.e. <span class="math display">\[M = D \big ( PR_b, E(PU_b,M) \big ) = D \big ( PU_b, E(PR_b,M) \big ) .\]</span></li>
+</ul>
+<p><em>This is all very nice to describe, but what exactly is the technology that can enable such a scheme?</em></p>
 </section>
 <section id="the-rsa-system" class="slide level2">
 <h2>The RSA system</h2>
 <ul>
-<li><p>Historical points.</p></li>
-<li><p>The claim it will fulfill the requirements.</p></li>
-<li><p>Description with review of modular arithmetic</p></li>
+<li>Discovered in 1978 at MIT by Ron <strong>R</strong>ivest, Ade <strong>S</strong>hamir and Len <strong>A</strong>dleman.</li>
+<li>It remains one of the most widely used general purpose public-key schemes.</li>
+<li>It deals with messages, or message blocks, encoded as integers in the range <span class="math inline">\(0\)</span> to <span class="math inline">\(n-1\)</span>, for some suitably large <span class="math inline">\(n\)</span>.</li>
+<li>Typicall size for <span class="math inline">\(n\)</span> might be 1024 bots, or around 309 decimal digits.</li>
+<li>RSA makes use of exponentials in modular arithmetic.</li>
+<li>The message <span class="math inline">\(M\)</span> is an integer in the range <span class="math inline">\(0 \leq M \leq n-1\)</span>.</li>
+<li>The receiver chooses integers <span class="math inline">\(e\)</span> and <span class="math inline">\(d\)</span>, with the property that <span class="math display">\[ed \equiv 1 \pmod{\phi(n)},\]</span> i.e. <span class="math inline">\(e\)</span> and <span class="math inline">\(d\)</span> are multiplicative inverses of each other modulo the Euler totient function value <span class="math inline">\(\phi(n)\)</span>.</li>
+<li>The public key is <span class="math inline">\(PU = (e,n)\)</span>, the private key is <span class="math inline">\(PR = (d,n)\)</span>.</li>
+<li>The plaintext <span class="math inline">\(M\)</span> is encrypted as <span class="math display">\[C = (M^e \, \, \text{mod} \, \, n).\]</span></li>
+<li>The ciphertext <span class="math inline">\(C\)</span> is decrypted as <span class="math display">\[ (C^d \, \, \text{mod} \, \, n ) = ((M^e)^d \, \, \text{mod} \, \, n ) = (M^{ed} \, \, \text{mod} \, \, n ) = (M^1 \, \, \text{mod} \, \, n) = M.\]</span></li>
+<li>The security comes from the fact that computing <span class="math inline">\(\phi(n)\)</span> from <span class="math inline">\(n\)</span> is <strong>hard</strong>.</li>
+</ul>
+</section>
+<section id="rsa-procedure" class="slide level2">
+<h2>RSA procedure</h2>
+<ul>
+<li><img src="./images/RSA-summ.png" alt="Stallings" style="padding:5px;height=50%;float:right"> Figure on the right, from Stallings, outlines the procedure.</li>
+</ul>
+</section>
+<section id="a-small-n-example" class="slide level2">
+<h2>A small <span class="math inline">\(n\)</span> example</h2>
+<ul>
+<li><img src="./images/RSA-eg.png" alt="Stallings" style="padding:5px;height=50%;float:right"> Extract from Stallings pg. 298, shows the calculations for an example based on a small <span class="math inline">\(n\)</span>. Remember a typical size for <span class="math inline">\(n\)</span> from real usage is circa 309 decimal digits.</li>
+<li>The Euler totient function value <span class="math inline">\(\phi(n)\)</span>, when <span class="math inline">\(n=pq\)</span>, for distinct primes <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, is given by <span class="math display">\[\phi(n) = \phi(pq) = (p-1)\cdot (q-1).\]</span></li>
+<li>The reason that computing <span class="math inline">\(\phi(n)\)</span> from <span class="math inline">\(n\)</span> is <strong>hard</strong> is that factoring <span class="math inline">\(n\)</span> into the product <span class="math inline">\(p \cdot q\)</span> is hard. Given such a large <span class="math inline">\(n\)</span> there is no easy way to discover its prime factors.
+<ul>
+<li>the best known algorithms for factoring integers will take a <strong>long</strong> time to factor <span class="math inline">\(n\)</span>, given any realistic amount of computing power available.</li>
+</ul></li>
+</ul>
+</section>
+<section id="modular-arithmetic-reminder" class="slide level2">
+<h2>Modular arithmetic reminder</h2>
+<ul>
+<li>RSA involves using <span class="math inline">\(c,d\)</span> that are multiplicative inverses of each other modulo <span class="math inline">\(\phi(n)\)</span>.</li>
+<li>Multiplicative inverses are found using the extended Euclidean algorithm
+<ul>
+<li>If <span class="math inline">\(a\)</span> is coprime to a modulus <span class="math inline">\(m\)</span>, i.e. $(a,m) = 1,</li>
+<li>Run the extended Euclidean algorithm to find integer coefficients <span class="math inline">\(x,y\)</span> satisfying <span class="math display">\[xa + ym = 1.\]</span></li>
+<li>Then the inverse is given by <span class="math display">\[a^{-1} \, \, \text{mod} \, \, m = (x \, \, \text{mod} \, \, m ),\]</span> because <span class="math display">\[xa = 1 - ym \equiv 1 \pmod{m}.\]</span></li>
+</ul></li>
 </ul>
 </section>
 <section id="computation-aspects-of-rsa-encryptiondecryption" class="slide level2">
@@ -121,7 +165,37 @@
 </ul></li>
 </ul></li>
 </ul>
-<h3 id="lab-session-assessment-ideas">Lab session / assessment ideas</h3>
+</section>
+<section id="factorization-and-the-choice-of-pq" class="slide level2">
+<h2>Factorization and the choice of <span class="math inline">\(p,q\)</span></h2>
+<ul>
+<li>Factorization of large <span class="math inline">\(n\)</span> is computationally <strong>hard</strong>
+<ul>
+<li>even when using advanced <em>number field sieve</em> factoring algorithms.</li>
+</ul></li>
+<li>But computational power increases and theoretical advancements should be expected to continue.</li>
+<li>The counter to both these possibilities is to increase the size of <span class="math inline">\(n\)</span>, to make factoring harder.</li>
+<li>Recent advice from standards agencies
+<ul>
+<li>NIST 2015 recommends key lengths of 2048 bits or longer.</li>
+<li>EU Agency for Network ad Information Security 2014 recommends 3072 bits for future developments.</li>
+</ul></li>
+<li>Other guidance on choice of <span class="math inline">\(p,q\)</span> is
+<ul>
+<li><span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> should be of similar digit length. So for a 1024-bit key, they should be chosen in the range <span class="math display">\[10^{75} \leq p,q \leq 10^{100}.\]</span></li>
+<li>both <span class="math inline">\(p-1\)</span> and <span class="math inline">\(q-1\)</span> should contain a large prime factor</li>
+<li><span class="math inline">\(\gcd(p-1,q-1)\)</span> should be small.</li>
+</ul></li>
+<li>However finding large primes is computationally hard, similar to factoring.
+<ul>
+<li>In practice, for choosing such large primes, probabilistic prime tests, such as the Miller-Rabin test, need to be used.</li>
+<li>This test allows one to choose an integer which is <em>probably</em> a prime.</li>
+<li>But this probability can be made arbitrarily close to 1, i.e. as near certain as one would like. (See chapter 2 of Stallings for details on Miller-Rabin test)</li>
+</ul></li>
+</ul>
+</section>
+<section id="lab-session-assessment-ideas" class="slide level2">
+<h2>Lab session / assessment ideas</h2>
 <ul>
 <li>You need tasks that assess the basic central understanding you want them to have. The extras beyond that then are nice to haves.</li>
 <li>Can choose p,q as the next two primes following their student number.
