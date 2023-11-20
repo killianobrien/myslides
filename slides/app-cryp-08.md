@@ -54,7 +54,7 @@ In this lecture we shall look at
     - Mathematicians would usually mean $\log_e$, the *natural logarithm*
     - Engineers might usually mean $\log{10}$
 
-## What are discete logarithms?
+## What are discrete logarithms?
 
 * *Discrete logarithms* is the term for logarithms within modular arithmetic. 
 * Working modulo a prime $p$, if $c \equiv a^b \pmod{p}$ then  
