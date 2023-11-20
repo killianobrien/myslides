@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <meta name="author" content="6G6Z0024 Applied Cryptography 2023/24">
+  <title>Public Key Cryptography</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Public Key Cryptography</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="author">6G6Z0024 Applied Cryptography 2023/24</p>
+  <p class="date">Lecture Week 08 – Mon 20 November 2023</p>
+</section>
+
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li>Reading: <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 10, Sections 10.1, 10.2,<em>Other Public-key cryptosystems</em></a></li>
+</ul>
+<p>In this lecture we shall look at</p>
+<ul>
+<li>Diffie-Hellman key exchange</li>
+<li>the ElGamal system</li>
+</ul>
+<p><strong>Key Exchange</strong></p>
+<ul>
+<li>In practice, public key cryptography works hand in hand with symmetric encryption, such as AES</li>
+<li>A common approach is for public key encryption to be used to exchange a private key, that is then used to commence communication under symmetric encryption.</li>
+</ul>
+<p><strong>DH key exchange</strong></p>
+<ul>
+<li>Diffie-Hellman key exchange (1976) is a method that allows two parties to agree on a shared secret (number) by the exchange unencrypted messages.</li>
+<li>This shared secret can then be used to generate a shared secret key to enable secure, encrypted communication.</li>
+<li>DH key exchange uses a tool from modular arithmetic called <em>discrete logarithms</em>.</li>
+</ul>
+</section>
+<section id="reminder-what-are-logarithms" class="slide level2">
+<h2>Reminder: What are logarithms?</h2>
+<ul>
+<li><strong>Exponentials</strong> – Given numbers <span class="math inline">\(a,b\)</span>, a number of the form <span class="math inline">\(c = a^b\)</span>, is called an <em>exponential</em> (or power), with <em>base</em> <span class="math inline">\(a\)</span>, and <em>exponent</em> <span class="math inline">\(b\)</span>.
+<ul>
+<li>we usually have <span class="math inline">\(a&gt;0\)</span></li>
+<li>for positive integers <span class="math inline">\(b\)</span>, <span class="math inline">\(a^b\)</span> is given by repeated multiplication, i.e. <span class="math display">\[a^b = a \cdot a \cdot \dots \cdot a,\]</span> the product of <span class="math inline">\(b\)</span> factors of <span class="math inline">\(a\)</span>.</li>
+<li>exponentials with negative exponents are defined using <span class="math display">\[a^{-b} = \frac{1}{a^b}\]</span></li>
+</ul></li>
+<li><strong>Logarithms</strong> – These are the <em>inverses</em> of exponentials.
+<ul>
+<li>So if <span class="math inline">\(c=a^b\)</span> then</li>
+<li><span class="math inline">\(\log_a(c) = b\)</span>.</li>
+<li>We say <span class="math inline">\(b\)</span> is the <em>logarithm</em>, with base <span class="math inline">\(a\)</span>, of <span class="math inline">\(c\)</span>.</li>
+</ul></li>
+<li>You might see a function <span class="math inline">\(\log\)</span> mentioned without a base. Its meaning is usually defined from the context/discipline.
+<ul>
+<li>Computer scientists would usually mean <span class="math inline">\(\log_2\)</span></li>
+<li>Mathematicians would usually mean <span class="math inline">\(\log_e\)</span>, the <em>natural logarithm</em></li>
+<li>Engineers might usually mean <span class="math inline">\(\log{10}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="what-are-discete-logarithms" class="slide level2">
+<h2>What are discete logarithms?</h2>
+<ul>
+<li><em>Discrete logarithms</em> is the term for logarithms within modular arithmetic.</li>
+<li>Working modulo a prime <span class="math inline">\(p\)</span>, if <span class="math inline">\(c \equiv a^b \pmod{p}\)</span> then
+<ul>
+<li><span class="math inline">\(b\)</span> is the discrete logarithm of <span class="math inline">\(c\)</span>, to the base <span class="math inline">\(a\)</span>, modulo <span class="math inline">\(p\)</span>.</li>
+<li>Stallings introduces the notation <span class="math display">\[b = \text{dlog}_{a,p}(c).\]</span></li>
+</ul></li>
+<li>Usually the base used is a <em>primitive root</em> modulo <span class="math inline">\(p\)</span>, i.e. a number <span class="math inline">\(a\)</span> whose powers generall <strong>ALL</strong> the non-zero elements modulo <span class="math inline">\(p\)</span>, i.e. the residues <span class="math display">\[ (a \text{ mod } p),\, (a^2 \text{ mod } p),\,  (a^3 \text{ mod } p), \dots , (a^{p-1} \text{ mod } p),\]</span> are all distinct and consist of the integers <span class="math display">\[1, 2, \dots, p-1,\]</span> (though not in that order).</li>
+<li>Security arises from the facts that
+<ul>
+<li>computing modular exponentials is fast (using modular reduction, Euler’s theorem and repeated squaring)</li>
+<li>there is no known fast algorithm for computing discrete logarithms. So for suitable large <span class="math inline">\(p\)</span>, it cannot be done in any practical way.</li>
+</ul></li>
+</ul>
+</section>
+<section id="diffie-hellman-key-exchange-algorithm-how-alice-and-bob-can-agree-on-a-shared-secret" class="slide level2">
+<h2>Diffie-Hellman key exchange algorithm – How Alice and Bob can agree on a shared secret</h2>
+<ul>
+<li><img src="./images/DHkealgo.png" alt="Stallings" style="padding:5px;height=100%;float:right"> Alice and Bob agree on a (large) prime <span class="math inline">\(q\)</span>, and a primitive root <span class="math inline">\(\alpha\)</span>, modulo <span class="math inline">\(q\)</span>.</li>
+<li>Alice and Bob generate their own <strong>private</strong> keys <span class="math inline">\(X_A, X_B \lt q\)</span>.</li>
+<li>Alice and Bob then calculate their <strong>public keys</strong> <span class="math display">\[Y_A = (\alpha^{X_A} \text{ mod } q ), \quad  Y_B = (\alpha^{X_B} \text{ mod } q ).\]</span></li>
+<li>Alice and Bob exchange their public keys <span class="math inline">\(Y_A\)</span> and <span class="math inline">\(Y_B\)</span>. Note that the private keys <span class="math inline">\(X_A\)</span> and <span class="math inline">\(X_B\)</span> are kept private and not exposed.</li>
+<li>Alice calculates <span class="math display">\[K =\left ( (Y_B)^{X_A} \text{ mod } q \right )\]</span> and Bob calculates <span class="math display">\[K =\left ( (Y_A)^{X_B} \text{ mod } q \right .)\]</span></li>
+<li>Note that <span class="math display">\[K =\left ( (Y_B)^{X_A} = \left (\alpha^{X_B} \right )^{X_A} = \alpha^{X_B\cdot X_A} = \left (\alpha^{X_A} \right )^{X_B} = (Y_A)^{X_B}\text{ mod } q \right )\]</span></li>
+<li>Alice and Bob both know the shared secret <span class="math inline">\(K\)</span>. But nobody else does. Even if they’ve eavesdropped on all these setup communications.</li>
+</ul>
+</section>
+<section id="elgamal-cryptosystem" class="slide level2">
+<h2>ElGamal cryptosystem</h2>
+<ul>
+<li><img src="./images/elgamal.png" alt="Stallings" style="padding:5px;height=100%;float:right"> From 1984, provides an enhancement of DH key exchange that introduces an element of authentication into the exchanges.</li>
+<li>Stallings figure to the right shows what’s required for Bob to send encrypted communication to Alice.</li>
+<li>Alice generates and publishes her public key <span class="math inline">\((q, \alpha, Y_A = \alpha^{X_A})\)</span> as before, still retaining her private key <span class="math inline">\(X_A\)</span>.</li>
+<li>Bob prepares plaintext message block <span class="math inline">\(M\)</span> and an element <span class="math inline">\(k\)</span> that is sued to caluclate a temporary secret key <span class="math inline">\(K = (Y_A^k \text{ mod } q)\)</span>.</li>
+<li>Bob calculates <span class="math display">\[C_1 = (\alpha^k \text{ mod } q), \, \, C_2 = (KM \text{ mod } q),\]</span> and sends the pair <span class="math inline">\((C_1, C_2)\)</span> to Alice.</li>
+<li>Alice can recover the secret key <span class="math inline">\(K\)</span> by computing <span class="math display">\[K = (C_1^{X_A} \text{ mod } q),\]</span> and decrypt the message <span class="math inline">\(M\)</span> by computing <span class="math display">\[M = ( C_2 K^{-1} \text{ mod } q).\]</span></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
