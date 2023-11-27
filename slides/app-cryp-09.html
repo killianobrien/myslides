@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <meta name="author" content="6G6Z0024 Applied Cryptography 2023/24">
+  <title>Cryptographic hash functions</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95% 5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Cryptographic hash functions</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="author">6G6Z0024 Applied Cryptography 2023/24</p>
+  <p class="date">Lecture Week 09 – Mon 27 November 2023</p>
+</section>
+
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li>Reading: <a href="https://mmu.on.worldcat.org/oclc/1334132058" target="_blank">Stallings, Chapter 11,<em>Cryptographic Hash Functions</em></a></li>
+</ul>
+<p><strong>Basic idea of a (cryptographic) hash function <span class="math inline">\(H\)</span></strong></p>
+<ul>
+<li><img src="./images/hash-idea.png" alt="Stallings" style="padding:5px;height=100%;float:right"> <span class="math inline">\(H\)</span> takes a variable-length block of data <span class="math inline">\(M\)</span> and computes a fixed sized output <span class="math inline">\(h=H(M)\)</span>.</li>
+<li><span class="math inline">\(h\)</span> called the <em>hash value</em>, or <em>hash code</em> or <em>message digest</em>.</li>
+<li>Typically the input message <span class="math inline">\(M\)</span> is split into standard sized blocks, with padding <span class="math inline">\(P\)</span> if necessary, often including data on the length <span class="math inline">\(L\)</span> of <span class="math inline">\(M\)</span>.</li>
+<li>Typically <span class="math inline">\(h\)</span> will come from a very large domain of possible values, and different inputs <span class="math inline">\(M\)</span> will produce outputs <span class="math inline">\(h\)</span> that are evenly distributed and apparently random selections from this domain.</li>
+<li>The inner workings of <span class="math inline">\(H\)</span> will be somewhat complex, but still have fast implenetations in software and/or hardware.</li>
+<li>For cryptographic hash functions, the inner workings of <span class="math inline">\(H\)</span> will ensure security, in that it should be computationally infeasible to compute
+<ul>
+<li>a message <span class="math inline">\(M\)</span> that will hash to a given hash value <span class="math inline">\(h\)</span> (pre-image resistance)</li>
+<li>two messages <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> that hash to the same hash value (collision resitance)</li>
+</ul></li>
+</ul>
+</section>
+<section id="applications-of-cryptographic-hash-functions" class="slide level2">
+<h2>Applications of cryptographic hash functions</h2>
+<ul>
+<li>Message authentication</li>
+<li>Digital signatures</li>
+<li>Password authentication</li>
+<li>…</li>
+</ul>
+</section>
+<section id="applications-of-cryptographic-hash-functions-1" class="slide level2">
+<h2>Applications of cryptographic hash functions</h2>
+<p><strong>Message authentication</strong></p>
+<ul>
+<li><span class="math inline">\(H\)</span> can be used to verify the integrity of data in storage or communication. To ensure that it has not been changed.</li>
+<li>In very simple terms, the hash value can be appended to the data as shown on below on left.</li>
+<li>This is too simple though, and susceptible to <em>man-in-the-middle attacks</em>, as shown on right.</li>
+<li><img src="./images/simple-hash.png" alt="Stallings" style="padding:5px;height=100%;float:left"> <img src="./images/maninthemiddlehash.png" alt="Stallings" style="padding:5px;height=100%;float:right"></li>
+</ul>
+</section>
+<section id="applications-of-cryptographic-hash-functions-2" class="slide level2">
+<h2>Applications of cryptographic hash functions</h2>
+<p><strong>Message authentication possibilities</strong></p>
+<ul>
+<li><img src="./images/MACmodes.png" alt="Stallings" style="padding:5px;height=100%;float:right"> The diagram on the right shows some ways in whcih <span class="math inline">\(H\)</span> can be used to implement message authentication.</li>
+<li>Diagram key
+<ul>
+<li>a cryptographic hash function <span class="math inline">\(H\)</span></li>
+<li>message <span class="math inline">\(M\)</span> to be communicated</li>
+<li>concatenation operator <span class="math inline">\(||\)</span></li>
+<li>a secret symmetric key <span class="math inline">\(K\)</span></li>
+<li>symmetric key encryption <span class="math inline">\(E\)</span></li>
+<li>a shared secret value <span class="math inline">\(S\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="applications-of-cryptographic-hash-functions-3" class="slide level2">
+<h2>Applications of cryptographic hash functions</h2>
+<p><strong>Digital signatures</strong></p>
+<ul>
+<li><img src="./images/hash-signatures.png" alt="Stallings" style="padding:5px;height=100%;float:right"> Here the emphasis is on authentication and proof of the identity of the sender of the message <span class="math inline">\(M\)</span></li>
+<li>The hash function <span class="math inline">\(H\)</span> can be used in combination with asymmetric public key encryption <span class="math inline">\(E\)</span>, with public <span class="math inline">\(PU_a\)</span>, and private <span class="math inline">\(PR_a\)</span>, keys of the sender <span class="math inline">\(A\)</span>.</li>
+<li>Diagram key
+<ul>
+<li>a cryptographic hash function <span class="math inline">\(H\)</span></li>
+<li>message <span class="math inline">\(M\)</span> to be communicated</li>
+<li>concatenation operator <span class="math inline">\(||\)</span></li>
+<li>sender <span class="math inline">\(A\)</span>’s (public,private) key pair <span class="math inline">\((PU_a,PR_a)\)</span></li>
+<li>symmetric/asymmetric (depending on keys used) encryption <span class="math inline">\(E\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="requirements-and-security" class="slide level2">
+<h2>Requirements and security</h2>
+</section>
+<section id="merkle-damgard-iterated-hashs-function-design" class="slide level2">
+<h2>Merkle-Damgard iterated hashs function design</h2>
+<ul>
+<li><img src="./images/merkle-hash.png" alt="Stallings" style="padding:5px;height=100%;float:right"> Merkle and Damgard proposed this iterated design based on a <em>compression function</em> <span class="math inline">\(f\)</span> that produces an <span class="math inline">\(n\)</span>-bit hash value.</li>
+<li>The input message is split into <span class="math inline">\(L\)</span> fixed-size blocks <span class="math inline">\(Y_i\)</span> of <span class="math inline">\(b\)</span> bits each.</li>
+<li>The final block <span class="math inline">\(Y_{L-1}\)</span> also contains the length information of the original message and any necessary padding to make it up to <span class="math inline">\(b\)</span> bits.</li>
+<li>The compression function <span class="math inline">\(f\)</span> takes two inputs, the message block <span class="math inline">\(Y\)</span> and an <span class="math inline">\(n\)</span> bit <em>chaining variable</em> <span class="math inline">\(CV\)</span>, and produces an <span class="math inline">\(n\)</span>-bit output chaining variable <span class="math inline">\(CV&#39;\)</span>.</li>
+<li><span class="math inline">\(CV_0 = IV = \text{ standard initial $n$-bit value}\)</span></li>
+<li><span class="math inline">\(CV_{i} = f(CV_{i-1}, Y_{i-1}), \quad 1 \leq i \leq L\)</span></li>
+<li><span class="math inline">\(H(M) = CV_L\)</span></li>
+</ul>
+</section>
+<section id="the-sha-family-and-sha-512" class="slide level2">
+<h2>The SHA family and SHA-512</h2>
+<ul>
+<li>Secure Hash Algorithm (SHA) family produced by NIST have been the most widely used crpytographic hash functions.</li>
+<li><img src="./images/SHAfamily.png" alt="Stallings" style="padding:5px;height=100%;float:right"> Offers hash functions of increasing complexity and security.</li>
+<li>As earlier versions become vulnerable to weaknesses incombination with brute-force attack, then later versions adopted.</li>
+<li>Currently SHA-256 and SHA-512 seen as sensible.</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+        height: 1080,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
