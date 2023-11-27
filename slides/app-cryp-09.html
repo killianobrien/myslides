@@ -50,17 +50,18 @@
 <li>two messages <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> that hash to the same hash value (collision resitance)</li>
 </ul></li>
 </ul>
+<p><strong>Applications in</strong></p>
+<ul>
+<li>Message authentication, Digital signatures, Password authentication, …</li>
+</ul>
+<!-- ## Applications of cryptographic hash functions
+
+* Message authentication
+* Digital signatures
+* Password authentication
+* ... -->
 </section>
 <section id="applications-of-cryptographic-hash-functions" class="slide level2">
-<h2>Applications of cryptographic hash functions</h2>
-<ul>
-<li>Message authentication</li>
-<li>Digital signatures</li>
-<li>Password authentication</li>
-<li>…</li>
-</ul>
-</section>
-<section id="applications-of-cryptographic-hash-functions-1" class="slide level2">
 <h2>Applications of cryptographic hash functions</h2>
 <p><strong>Message authentication</strong></p>
 <ul>
@@ -70,7 +71,7 @@
 <li><img src="./images/simple-hash.png" alt="Stallings" style="padding:5px;height=100%;float:left"> <img src="./images/maninthemiddlehash.png" alt="Stallings" style="padding:5px;height=100%;float:right"></li>
 </ul>
 </section>
-<section id="applications-of-cryptographic-hash-functions-2" class="slide level2">
+<section id="applications-of-cryptographic-hash-functions-1" class="slide level2">
 <h2>Applications of cryptographic hash functions</h2>
 <p><strong>Message authentication possibilities</strong></p>
 <ul>
@@ -86,7 +87,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="applications-of-cryptographic-hash-functions-3" class="slide level2">
+<section id="applications-of-cryptographic-hash-functions-2" class="slide level2">
 <h2>Applications of cryptographic hash functions</h2>
 <p><strong>Digital signatures</strong></p>
 <ul>
@@ -101,9 +102,7 @@
 <li>symmetric/asymmetric (depending on keys used) encryption <span class="math inline">\(E\)</span></li>
 </ul></li>
 </ul>
-</section>
-<section id="requirements-and-security" class="slide level2">
-<h2>Requirements and security</h2>
+<!-- ## Requirements and security -->
 </section>
 <section id="merkle-damgard-iterated-hashs-function-design" class="slide level2">
 <h2>Merkle-Damgard iterated hashs function design</h2>
@@ -124,6 +123,56 @@
 <li><img src="./images/SHAfamily.png" alt="Stallings" style="padding:5px;height=100%;float:right"> Offers hash functions of increasing complexity and security.</li>
 <li>As earlier versions become vulnerable to weaknesses incombination with brute-force attack, then later versions adopted.</li>
 <li>Currently SHA-256 and SHA-512 seen as sensible.</li>
+</ul>
+</section>
+<section id="sha-512" class="slide level2">
+<h2>SHA-512</h2>
+<p><strong>Overall design</strong></p>
+<ul>
+<li><img src="./images/SHA-512-overall.png" alt="Stallings" style="padding:5px;height=100%;float:right"> Input message <span class="math inline">\(M\)</span> is padded with <code>1000...0</code> until its length is <span class="math inline">\(\equiv 896 \pmod{1024}\)</span>.</li>
+<li>Then the bit-length <span class="math inline">\(L\)</span> of <span class="math inline">\(M\)</span> is appended as an unsigned 128-bit integer.</li>
+<li>We now have some number <span class="math inline">\(N\)</span> of 1024-bit blocks, <span class="math inline">\(M_1, M_2, \dots, M_N\)</span>.</li>
+<li>The intermediate hash buffer is initialized with standard initial values <span class="math inline">\(H_0 = IV\)</span>, derived from the fractional parts of the square roots of the first eight prime numbers (i.e. essentially random bits).</li>
+<li>An intermediate step of SHA-512 takes the block <span class="math inline">\(M_i\)</span> and previous intermediate hash buffer <span class="math inline">\(H_{i-1}\)</span> and process it with an 80-round processing module <span class="math inline">\(F\)</span>.</li>
+<li>This produces a 512-bit output that is combined with an addition-like operation with <span class="math inline">\(H_{i-1}\)</span>.<br />
+</li>
+<li>The final 512-bit output <span class="math inline">\(H_N\)</span> is the hash value of SHA-512.</li>
+</ul>
+</section>
+<section id="the-80-round-processing-moduel-f" class="slide level2">
+<h2>The 80-round processing moduel <span class="math inline">\(F\)</span></h2>
+<ul>
+<li><img src="./images/module-80round.png" alt="Stallings" style="padding:5px;height=100%;float:right"> This diagram shows the makeup of the processing module <span class="math inline">\(F\)</span>.</li>
+<li>Operates on the 8 64-bit words making up the 512-bit intermediate hash buffer <span class="math inline">\(H_{i-1}\)</span>.</li>
+<li>The message block <span class="math inline">\(M_i\)</span> supplies 80 different 64-bit words <span class="math inline">\(W_t\)</span> via a <em>message schedule</em> algorithm, one for each round.</li>
+<li>80 different 64-bit constants <span class="math inline">\(K_t\)</span> are used, one for each round. These are derived from the fractional parts of the cube roots of the first 80 prime numbers, again this produces essentially random bits for input.</li>
+<li>The additions <span class="math inline">\(+\)</span> shown here are carried out word-by-word on the 8 64-bit pairs of inputs, one from <span class="math inline">\(H_{i-1}\)</span>, one from the corresponding output of the last of the 80 rounds. The additions are carried out modulo <span class="math inline">\(2^{64}\)</span>.</li>
+</ul>
+</section>
+<section id="the-detail-of-the-80-rounds" class="slide level2">
+<h2>The detail of the 80 rounds</h2>
+<ul>
+<li><img src="./images/round-detail.png" alt="Stallings" style="padding:5px;float:right"> This shows the operations within the one of the 80 rounds.</li>
+<li>The 8 input 64-bit words <span class="math inline">\(a,b,c,d,e,f,g,h\)</span> are process to the 8 output 64-bit words <span class="math inline">\(a,b,c,d,e,f,g,h\)</span>. Some by relabelling, and others by more complex operations.</li>
+<li>The additions <span class="math inline">\(+\)</span> shown here are word additions modulo <span class="math inline">\(2^{64}\)</span>.</li>
+<li>Employs bit-wise logical functions <span class="math inline">\(\text{Ch}\)</span> and <span class="math inline">\(\text{Maj}\)</span>, <span class="math inline">\(\oplus\)</span> denotes bit-wise <span class="math inline">\(\text{XOR}\)</span></li>
+<li><span class="math inline">\(\text{Ch}(e,f,g) = (e \text{ AND } f) \oplus (\text{ NOT } e \text{ AND } g)\)</span>. This is equivalent to <em>If e then f, else g</em>.</li>
+<li><span class="math inline">\(\text{Maj}(a,b,c) = (a \text{ AND } b) \oplus (a \text{ AND } c) \oplus (b \text{ AND } c)\)</span>. This is true only if the majority of the arguments (i.e. 2 or 3 of them) are true.</li>
+<li><span class="math inline">\(\Sigma(a) = \text{ROTR}^{28}(a) \oplus \text{ROTR}^{34}(a) \oplus \text{ROTR}^{39}(a)\)</span>, where <span class="math inline">\(\text{ROTR}^n\)</span> denotes circular right shift if the bits by <span class="math inline">\(n\)</span> bits.</li>
+<li><span class="math inline">\(\Sigma(e) = \text{ROTR}^{14}(a) \oplus \text{ROTR}^{18}(a) \oplus \text{ROTR}^{41}(a)\)</span>, where <span class="math inline">\(\text{ROTR}^n\)</span> denotes circular right shift if the bits by <span class="math inline">\(n\)</span> bits.</li>
+</ul>
+</section>
+<section id="sha-512-message-schedule-algorithm" class="slide level2">
+<h2>SHA-512 message schedule algorithm</h2>
+<ul>
+<li><img src="./images/message-schedule.png" alt="Stallings" style="padding:5px;float:right"> This shows the operations within the one of the 80 rounds.</li>
+<li>First 16 64-bit words <span class="math inline">\(W_0, \dots, W_{15}\)</span> obtained directly from <span class="math inline">\(M_i\)</span>.</li>
+<li>Subsequent words obtained by processing previous words.</li>
+<li><span class="math inline">\(W_t = \sigma_1(T_{t-2}) + W_{t-7} + \sigma_0(W_{t-15}) + W_{t-16}\)</span></li>
+<li>These are word by word additions modulo <span class="math inline">\(2^{64}\)</span></li>
+<li><span class="math inline">\(\sigma_0(x) = \text{ROTR}^{1}(x) \oplus \text{ROTR}^{8}(x) \oplus \text{SHR}^{7}(x)\)</span></li>
+<li><span class="math inline">\(\sigma_1(x) = \text{ROTR}^{19}(x) \oplus \text{ROTR}^{61}(x) \oplus \text{SHR}^{6}(x)\)</span></li>
+<li>where <span class="math inline">\(\text{ROTR}^n\)</span> is as before, right circular shift, and <span class="math inline">\(\text{SHR}^n\)</span> is right shift of the 64-bit word by <span class="math inline">\(n\)</span> bits, and padding with <span class="math inline">\(64-n\)</span> zeros on the left. So <span class="math inline">\(\text{SHR}^n\)</span> loses bit information.</li>
 </ul>
 </section>
     </div>
