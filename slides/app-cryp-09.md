@@ -112,7 +112,7 @@ title-slide-attributes:
 * This produces a 512-bit output that is combined with an addition-like operation with $H_{i-1}$.  
 * The final 512-bit output $H_N$ is the hash value of SHA-512.
 
-## The 80-round processing moduel $F$
+## The 80-round processing module $F$
 
 * <img src="./images/module-80round.png" alt="Stallings" style="padding:5px;height=100%;float:right"> This diagram shows the makeup of the processing module $F$.
 * Operates on the 8 64-bit words making up the 512-bit intermediate hash buffer $H_{i-1}$.
@@ -123,7 +123,7 @@ title-slide-attributes:
 ## The detail of the 80 rounds
 
 * <img src="./images/round-detail.png" alt="Stallings" style="padding:5px;float:right"> This shows the operations within the one of the 80 rounds.
-* The 8 input 64-bit words $a,b,c,d,e,f,g,h$ are process to the 8 output 64-bit words $a,b,c,d,e,f,g,h$. Some by relabelling, and others by more complex operations.
+* The 8 input 64-bit words $a,b,c,d,e,f,g,h$ are processed to the 8 output 64-bit words $a,b,c,d,e,f,g,h$. Some by relabelling, and others by more complex operations.
 * The additions $+$ shown here are word additions modulo $2^{64}$. 
 * Employs bit-wise logical functions $\text{Ch}$ and $\text{Maj}$, $\oplus$ denotes bit-wise $\text{XOR}$
 * $\text{Ch}(e,f,g) = (e \text{ AND } f) \oplus (\text{ NOT } e \text{ AND } g)$. This is equivalent to *If e then f, else g*.

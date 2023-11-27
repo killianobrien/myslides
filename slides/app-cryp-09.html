@@ -139,8 +139,8 @@
 <li>The final 512-bit output <span class="math inline">\(H_N\)</span> is the hash value of SHA-512.</li>
 </ul>
 </section>
-<section id="the-80-round-processing-moduel-f" class="slide level2">
-<h2>The 80-round processing moduel <span class="math inline">\(F\)</span></h2>
+<section id="the-80-round-processing-module-f" class="slide level2">
+<h2>The 80-round processing module <span class="math inline">\(F\)</span></h2>
 <ul>
 <li><img src="./images/module-80round.png" alt="Stallings" style="padding:5px;height=100%;float:right"> This diagram shows the makeup of the processing module <span class="math inline">\(F\)</span>.</li>
 <li>Operates on the 8 64-bit words making up the 512-bit intermediate hash buffer <span class="math inline">\(H_{i-1}\)</span>.</li>
@@ -153,7 +153,7 @@
 <h2>The detail of the 80 rounds</h2>
 <ul>
 <li><img src="./images/round-detail.png" alt="Stallings" style="padding:5px;float:right"> This shows the operations within the one of the 80 rounds.</li>
-<li>The 8 input 64-bit words <span class="math inline">\(a,b,c,d,e,f,g,h\)</span> are process to the 8 output 64-bit words <span class="math inline">\(a,b,c,d,e,f,g,h\)</span>. Some by relabelling, and others by more complex operations.</li>
+<li>The 8 input 64-bit words <span class="math inline">\(a,b,c,d,e,f,g,h\)</span> are processed to the 8 output 64-bit words <span class="math inline">\(a,b,c,d,e,f,g,h\)</span>. Some by relabelling, and others by more complex operations.</li>
 <li>The additions <span class="math inline">\(+\)</span> shown here are word additions modulo <span class="math inline">\(2^{64}\)</span>.</li>
 <li>Employs bit-wise logical functions <span class="math inline">\(\text{Ch}\)</span> and <span class="math inline">\(\text{Maj}\)</span>, <span class="math inline">\(\oplus\)</span> denotes bit-wise <span class="math inline">\(\text{XOR}\)</span></li>
 <li><span class="math inline">\(\text{Ch}(e,f,g) = (e \text{ AND } f) \oplus (\text{ NOT } e \text{ AND } g)\)</span>. This is equivalent to <em>If e then f, else g</em>.</li>
@@ -191,6 +191,7 @@
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
+      
         // Push each slide change to the browser history
         history: true,
         // Transition style
