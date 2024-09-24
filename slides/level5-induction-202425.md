@@ -47,7 +47,7 @@ A placement is where a student works with an employer for the year between the s
 * The IMA is one of the main professional bodies for mathematicians in the UK.
 * A great resource of mathematics and career information.
 * Events, publications, awards etc
-* Reduced rate student membership - £10
+* Reduced rate student membership for £10 or use the free IMA eStudent scheme.
 * [IMA website](https://ima.org.uk) 
 
 ## Programme leader
@@ -74,240 +74,75 @@ The Student Hub can be busy in the first few weeks so do try and access their on
 * [Student Hub online](https://studenthub.mmu.ac.uk/)
 
 
-## Personal Tutors and My 5 Year Plan
+## Personal Tutors
 
 ### Personal tutors
 <p>
-* You have each been allocated to one of our two level 5 personal tutors - your Numerical Methods tutor. 
+* You will have been allocated a personal tutor
+* Your Personal tutor will be contacting you very soon, if not already. Keep an eye on your emails.
 * Personal tutors provide support to guide you through your academic studies and support the development of your wider skills.
 </p>
-The university's [My 5 Year Plan](https://www.mmu.ac.uk/student-life/my-five-year-plan/) initiative:
 
-- will guide you in the development of your wider skills,
-- and provide a structure to your meetings with your personal tutor. 
-    
-Read through the information from the link above, make use of the resources linked from there and start thinking about the meaningful activties that you could pursue during the year to help in your personal development.  
+## Your attendance
 
-* Watch out for communications from your personal tutor (by email and/or Teams) and make sure your respond
+* [mmu.ac.uk/attendance](https://attendance.mmu.ac.uk/)
+* If your attendance and course engagement is too low you will be contacted by the university.
+* If contacted make sure you **respond**.
 
-In general we want you to **remain engaged** with your studies and to **enjoy** and **benefit** from your time at university. 
+<img src="./attendance.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img> 
 
-* There are many opportunities and sources of support within the university.
-* Make sure you make the **most of them**. 
+## Future Me week
 
-## The academic year
+* [Future Me](https://www.mmu.ac.uk/careers/students/future-me) information.
 
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-	<tbody>
-		<tr>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">W/C Monday&nbsp;</span></th>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">Week activity</span></th>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;"></span></th>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;"></span></th>
-		</tr>
-		<tr>
-			<td>03/10/2022</td>
-			<td>Teaching Week 1</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>10/10/2022</td>
-			<td>Teaching Week 2</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>17/10/2022</td>
-			<td>Teaching Week 3</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>24/10/2022</td>
-			<td>Teaching Week 4</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>31/10/2022</td>
-			<td>Teaching Week 5</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>07/11/2022</td>
-			<td>Teaching Week 6</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>14/11/2022</td>
-			<td>Teaching Week 7</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>21/11/2022</td>
-			<td>Teaching Week 8</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>28/11/2022</td>
-			<td>Teaching Week 9</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>05/12/2022</td>
-			<td>Teaching Week 10</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>12/12/2022</td>
-			<td>Teaching Week 11</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(221, 221, 221);">19/12/2022</td>
-			<td colspan="3" rowspan="3" style="background-color: rgb(221, 221, 221); text-align: center;"><strong>Christmas Break</strong></td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(221, 221, 221);">26/12/2022</td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(221, 221, 221);">02/01/2023</td>
-		</tr>
-		<tr>
-			<td>09/01/2023</td>
-			<td><span style="color:#d35400;">Assessment Week 1</span></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>16/01/2023</td>
-			<td><span style="color:#d35400;">Assessment Week 2</span></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>23/01/2023</td>
-			<td><strong>Enrichment Week</strong></td>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
+<img src="./futureme.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img> 
+
+## RISE at Man Met
+
+* [RISE](https://rise.mmu.ac.uk/) information.
+
+<img src="./rise.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img> 
+
+## Your Student Union
+
+* [The Union](https://www.theunionmmu.org/) website.
+
+<img src="./union.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img> 
+
+## The Course Rep role
+
+* [Course Reps](https://www.theunionmmu.org/student-voice/course-reps) information.
+
+<img src="./courserep.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img> 
 
 ## The academic year
 
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-	<tbody>
-		<tr>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">W/C Monday&nbsp;</span></th>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;">Week activity</span></th>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;"></span></th>
-			<th align="left" style="background-color: rgb(0, 0, 0);"><span style="color:#ffffff;"></span></th>
-		</tr>
-		<tr>
-			<td>30/01/2023</td>
-			<td>Teaching Week 1</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>06/02/2023</td>
-			<td>Teaching Week 2</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>13/02/2023</td>
-			<td>Teaching Week 3</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>20/02/2023</td>
-			<td>Teaching Week 4</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>27/02/2023</td>
-			<td>Teaching Week 5</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>06/03/2023</td>
-			<td>Teaching Week 6</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>13/03/2023</td>
-			<td>Teaching Week 7</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>20/03/2023</td>
-			<td>Teaching Week 8</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>27/03/2023</td>
-			<td>Teaching Week 9</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(221, 221, 221);">03/04/2023</td>
-			<td colspan="3" rowspan="3" style="background-color: rgb(221, 221, 221); text-align: center;"><strong>Easter Break</strong></td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(221, 221, 221);">10/04/2023</td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(221, 221, 221);">17/04/2023</td>
-		</tr>
-		<tr>
-			<td>24/04/2023</td>
-			<td>Teaching Week 10</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>01/05/2023</td>
-			<td>Teaching Week 11</td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>08/05/2023</td>
-			<td><span style="color:#d35400;">Assessment Week 1</span></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>15/05/2023</td>
-			<td><span style="color:#d35400;">Assessment Week 2</span></td>
-			<td>&nbsp;</td>
-		</tr>
-		<tr>
-			<td>22/05/2023</td>
-			<td><span style="color:#d35400;">Assessment Week 3</span></td>
-			<td>&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
+* Note dates of assessment weeks. You **must** be present for these weeks. 
+* Note that all 11 teaching weeks of Semester Two take place **before** the Easter/Spring break.
+
+<img src="./calendar.png" style="display:block;margin-left:auto;margin-right:auto;height:100%"></img> 
 
 ## The units
 
-#### Semester 1 | Core units
+#### Semester 1 
 
 * 6G5Z3011 - MULTI-VARIABLE CALCULUS ANALYTICAL METHODS (15 credits)
 * 6G5Z3012 - FURTHER LINEAR ALGEBRA (15 credits)
 * 6G5Z3022 - NUMERICAL METHODS AND MODELLING (30 credits)
 
-#### Semester 2 | Optional units
+#### Semester 2 
 
 Each student does two from:
 
-* 6G5Z3015 - COMPUTATIONAL MATHEMATICS (30 credits)
 * 6G5Z3018 - STATISTICS AND FINANCIAL MATHEMATICS (30 credits)
 * 6G5Z3019 - NUMBER THEORY AND CRYPTOGRAPHY (30 credits)
-* 6G5Z3111 - OPERATIONAL RESEARCH (30 credits)
 
 #### Summative Assessment
 
 * Each 30 credit unit assessed by coursework and exam - see unit introductions for details.
 * Further linear algebra assessed by **exam only**.
 * Multi-variable calculus and analytical methods assessed by **coursework only**.
-* Exams are back to *3 hour traditional exam-hall style* held in the relevant semester assessment weeks.
-
-## Options: more info and choice process in Feb/Mar 2023
-
-<img src="./optionss.png" height=85% style="display: block;margin-left: auto;margin-right: auto;"></img>
+* Exams are *3 hour traditional exam-hall style* held in the relevant semester assessment weeks.
 
 ## Degree Classifications
 
