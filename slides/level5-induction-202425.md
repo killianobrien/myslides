@@ -126,18 +126,16 @@ The Student Hub can be busy in the first few weeks so do try and access their on
 
 #### Semester 1 
 
-* 6G5Z3011 - MULTI-VARIABLE CALCULUS ANALYTICAL METHODS (15 credits)
-* 6G5Z3012 - FURTHER LINEAR ALGEBRA (15 credits)
-* 6G5Z3022 - NUMERICAL METHODS AND MODELLING (30 credits)
+* 6G5Z3011 - MULTI-VARIABLE CALCULUS ANALYTICAL METHODS (15 credits) | Dr Killian O'Brien, Dr Saeed Abu-Zour
+* 6G5Z3012 - FURTHER LINEAR ALGEBRA (15 credits) | Dr Saeed Abu-Zour
+* 6G5Z3022 - NUMERICAL METHODS AND MODELLING (30 credits) | Dr Tariq Jarad, Dr Jian Zhou 
 
 #### Semester 2 
 
-Each student does two from:
+* 6G5Z3018 - STATISTICS AND FINANCIAL MATHEMATICS (30 credits) | Dr Esmaeil Babaei Khezerloo
+* 6G5Z3019 - NUMBER THEORY AND CRYPTOGRAPHY (30 credits) | Dr Killian O'Brien
 
-* 6G5Z3018 - STATISTICS AND FINANCIAL MATHEMATICS (30 credits)
-* 6G5Z3019 - NUMBER THEORY AND CRYPTOGRAPHY (30 credits)
-
-#### Summative Assessment
+#### Summative Assessments
 
 * Each 30 credit unit assessed by coursework and exam - see unit introductions for details.
 * Further linear algebra assessed by **exam only**.
@@ -148,16 +146,12 @@ Each student does two from:
 
 Degrees at Man Met are classified as first, 2.1, 2.2, etc using two methods. Both these methods are described in detail in the 
 
-* [Undergraduate Assessment Regulations](https://www.mmu.ac.uk/sites/default/files/2022-08/UG-Regs-22-23.pdf)
+* [Undergraduate Assessment Regulations](https://www.mmu.ac.uk/legal/policies/undergraduate-assessment-regulations-24-25)
 
-I won't duplicate, and thereby possibly confuse, the details here. You should use the regulations to acquaint yourself with the system so you know exactly where you stand. But some important points are:
+I won't duplicate, and thereby possibly confuse, the details here. You should use the regulations to acquaint yourself with the system so you know exactly where you stand.
 
-* A maximum period of registration for anyone who enrolled from 20/21 onwards – course duration + 2 years,
-* Level 5 students and above need to pass all units to progress (which may include up to 30 credits of compensation). This is a *key change*.
-* Summer resits limited to a maximum of 60 credits (but may be allowed more with deferred assessments) - another *key change*.
-* If a student fails more than 60 and less than 120 credits they will get a REPWOA decision (i.e. repeat without attendance), but can request ‘with attendance’.
-* Students with Exceptional Factors or an ongoing appeal can carry 30 failed credits into the following year, but “Where students have either applied for a deferred assessment or submitted an appeal after their respective deadlines, this option shall not be made available”.
-
+* Conditions for *progression*, i.e. continuing to your next level of your course, are also specified in the 
+regulations, and summarized on the [university's website here](https://www.mmu.ac.uk/student-life/course/assessments)
 
 ## Student Academic support and pastoral
 
@@ -170,7 +164,7 @@ Primary academic support for your studies comes from the unit teams and your per
 
 The university also provides a range of general academic support and study skills development opportunities.
 
-* [Study skills](https://www.mmu.ac.uk/student-life/course/study-skills/)
+* [Study skills](https://www.mmu.ac.uk/studyskills)
 
 There is also help and support available for your wellbeing and mental health while at university.
 
@@ -213,14 +207,14 @@ We all know the route to success and enjoyment of your course. It's not a myster
 * Find good ways to relax and unwind.
 * Make the most of being in **Manchester**.
 
-## Exceptional Factors / evidenced extensions
+## Extensions on assesessments
 
 * Illness and other exceptional events make interrupt your study and work on assessments. 
 * The university's Evidenced Extensions process exists to deal with this.
 * Typically awards extensions and decisions on penalty-free resits provided your exceptional factors are supported by **good evidence** and **accepted by** the Evidenced Extensions process.
 * See [Assessment and Results](https://www.mmu.ac.uk/student-life/course/assessments) for more information.
-* Short self-certified coursework extensions may be possible
-    - see Moodle and unit teams for info during the Blocks
+* Short non-evidenced coursework extensions may be possible
+    - see Moodle and unit teams for info during the Semester
 
 ## Academic (mis)conduct
 
@@ -234,30 +228,42 @@ Let's check our timetables
 
 * [mytimetable.mmu.ac.uk](https://mytimetable.mmu.ac.uk/)
 
-## Mathematical software and lab computers
+## Mathematical software, lab computers and the Library
 
-* A range of mathematical and scientific software is available from the PCs in the John Dalton building and the specialist PCs in the library.
-* John Dalton features new labs and student spaces. 
-* See [Software download centre](https://www.mmu.ac.uk/isds/support/apps/software-download-centre/) for a range of software available for students to install on their own machines - **Matlab** and **Python** in particular.
+* A range of mathematical and scientific software is available from the PCs in the Dalton building and the specialist PCs in the library.
+* Dalton building features new labs and student spaces. 
+* See [Software download centre](https://www.mmu.ac.uk/about-us/professional-services/itd/software/) for a range of software available for students to install on their own machines - **Matlab** and **Python** in particular.
 * I recommend having a local installation of [LaTeX](https://www.latex-project.org/) as well as using online tools like [Overleaf](https://www.overleaf.com/).
+* [University Library](https://www.mmu.ac.uk/library) has a new home on Oxford Road, in what was the John Dalton East building. See website for details. 
 
 ## The Departmental Learning Studio
 
-#### Your new HQ
+#### Your HQ
 
 ![](studio05.jpg){style="display:flex;margin-left: auto; margin-right: auto; width: 50%;"}
 
 ## The Departmental Learning Studio
 
-#### Your new HQ
+#### Your HQ
 
 ![](studio02.jpg){style="display:flex;margin-left: auto; margin-right: auto; width: 50%;"}
+
+* Also, lots of study spaces available on ground, 1st and 2nd floors of the new Faculty Dalton Building on Chester Street. 
+
+## Bury Arcade Trip
+
+To make your return really special, we’re organising a field trip to the [Bury Arcade Club](https://www.arcadeclub.co.uk/bury/) on Friday of Welcome Week (27th September 2024). This is a **free trip** and is open to all final year students in the Department of Computing and Mathematics.
+
+If you would like to come along, please can we ask you to sign-up via the [this form](https://forms.office.com/Pages/ResponsePage.aspx?id=UPs_KAujjEiQ9M2uT3rm0Vm1UDwgYT1Np3HapUj9AF9UNzBFSTc2WFJMRUNROE1XOEpRVE4zRFNWUS4u)
+
+On Friday the coach leaves the University at 12:00 noon. We’ll then drive to the Arcade Club, have approximately four hours to spend there, and then we’ll offer a return journey via coach. You are also welcome to make your own way there and meet us at the venue, but please still register at the form above.
+
+If you have any questions about the trip, please reach out to the organiser, Anthony McCormick (a.mccormick@mmu.ac.uk).
+
 
 ## See you all next week
 
 Killian O'Brien
-
-Room E114a, John Dalton Building
 
 * Email [k.m.obrien@mmu.ac.uk](mailto:k.m.obrien@mmu.ac.uk)
 * Teams [https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk](https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk)
