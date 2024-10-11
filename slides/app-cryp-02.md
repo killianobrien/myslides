@@ -67,7 +67,7 @@ All these covered in <a href="https://mmu.on.worldcat.org/oclc/1064983791" targe
 
 * For a pair of integers $a,b$, with $b \neq 0$, we say $b$ *divides* $a$, and write $b|a$ if there exists an integer $c$ such that 
 $$a = b \cdot c,$$
-and if no such integer $c$ exists then we say $b$ does *not divide* $a$, and can write $b \centernot | a$.
+and if no such integer $c$ exists then we say $b$ does *not divide* $a$, and can write $b \nmid | a$.
 
 * So $b | a$ is a binary relation on $a,b$, i.e. a statement that is true or false, depending on the values of $a,b$.
 
@@ -76,7 +76,7 @@ and if no such integer $c$ exists then we say $b$ does *not divide* $a$, and can
 Examples
 
 * $3|15$, $5|15$, $1|15$, $15|15$.
-* $3 \centernot | 10$, $17 \centernot | 20$.
+* $3 \nmid | 10$, $17 \nmid | 20$.
 
 ## Properties of divisibility
 

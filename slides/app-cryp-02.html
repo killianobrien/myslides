@@ -77,14 +77,14 @@
 <h2>The divisibility relation</h2>
 <ul>
 <li><p>Recall, a <em>relation</em> in computer science / mathematics is a formula <span class="math inline">\(A(x_1, \dots , x_n)\)</span>, so that when values are supplied for the variables <span class="math inline">\(x_1, \dots , x_n\)</span>, results in a <em>statement</em> <span class="math inline">\(A(x_1, \dots , x_n)\)</span>, i.e. something which is true or false.</p></li>
-<li><p>For a pair of integers <span class="math inline">\(a,b\)</span>, with <span class="math inline">\(b \neq 0\)</span>, we say <span class="math inline">\(b\)</span> <em>divides</em> <span class="math inline">\(a\)</span>, and write <span class="math inline">\(b|a\)</span> if there exists an integer <span class="math inline">\(c\)</span> such that <span class="math display">\[a = b \cdot c,\]</span> and if no such integer <span class="math inline">\(c\)</span> exists then we say <span class="math inline">\(b\)</span> does <em>not divide</em> <span class="math inline">\(a\)</span>, and can write <span class="math inline">\(b \centernot | a\)</span>.</p></li>
+<li><p>For a pair of integers <span class="math inline">\(a,b\)</span>, with <span class="math inline">\(b \neq 0\)</span>, we say <span class="math inline">\(b\)</span> <em>divides</em> <span class="math inline">\(a\)</span>, and write <span class="math inline">\(b|a\)</span> if there exists an integer <span class="math inline">\(c\)</span> such that <span class="math display">\[a = b \cdot c,\]</span> and if no such integer <span class="math inline">\(c\)</span> exists then we say <span class="math inline">\(b\)</span> does <em>not divide</em> <span class="math inline">\(a\)</span>, and can write <span class="math inline">\(b \nmid | a\)</span>.</p></li>
 <li><p>So <span class="math inline">\(b | a\)</span> is a binary relation on <span class="math inline">\(a,b\)</span>, i.e. a statement that is true or false, depending on the values of <span class="math inline">\(a,b\)</span>.</p></li>
 <li><p>If <span class="math inline">\(b|a\)</span> then we say <span class="math inline">\(b\)</span> is a <em>factor</em> or <em>divisor</em> of <span class="math inline">\(a\)</span>.</p></li>
 </ul>
 <p>Examples</p>
 <ul>
 <li><span class="math inline">\(3|15\)</span>, <span class="math inline">\(5|15\)</span>, <span class="math inline">\(1|15\)</span>, <span class="math inline">\(15|15\)</span>.</li>
-<li><span class="math inline">\(3 \centernot | 10\)</span>, <span class="math inline">\(17 \centernot | 20\)</span>.</li>
+<li><span class="math inline">\(3 \nmid | 10\)</span>, <span class="math inline">\(17 \nmid | 20\)</span>.</li>
 </ul>
 </section>
 <section id="properties-of-divisibility" class="slide level2">
