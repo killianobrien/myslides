@@ -22,7 +22,7 @@ title-slide-attributes:
 
 Today we will cover 
 
-#### Planning your literature search
+#### Resources for your literature search
 
 The Library and its website is your starting point. 
 
@@ -49,6 +49,18 @@ Two of the main reasons are
 * To allow your reader to investigate your work further by
 	* checking your claimed sources,
 	* finding out more about the ideas you refer to.
+
+### Referencing in different subjects/disciplines
+
+* In the Arts and Humanties referencing can be a **big thing**
+	- since the study can involve large archives of material,
+	- the arguments can depend on lots of historical documents,
+	- or depend significantly on different editions/versions of the same works,
+	- ...
+
+* In the Sciences
+	- referencing is less of an significant issue in itself,
+	- just deal with the two basic reasons above.
 
 ## Referencing
 
@@ -89,3 +101,9 @@ In this article Ling Qian (2006) writes about fluid flow with moving bodies, and
 * [Referencing and why it matters](https://www.mmu.ac.uk/library/referencing-and-study-support/referencing) on the Library website. Includes a link to the full *Cite them Right Harvard* referencing style. 
 * [LaTeX and BibTeX](http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management) -- managing citations and references when writing with $\LaTeX$.
 * [Endnote](https://www.mmu.ac.uk/library/referencing-and-study-support/endnote) -- software for managing citations and reference lists which integrates with Microsoft Word and other software -- link to MMU library help. 
+
+## Exporting BibTeX entries
+
+* Many publication databases and catalogues will allow you to export references in a suitable format for various software systems, including BibTeX. 
+* Unfortunately the MMU library catalogue doesn't seem to provide this at the moment, but other sources do. 
+* Let's see an example using the Web of Science database, found on the [Mathematics Subject Guide](https://www.mmu.ac.uk/library/search-tools/subject-guides/mathematics).
