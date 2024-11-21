@@ -2,7 +2,7 @@
 title: "Referencing in Academic (mathematical) Writing"
 author:
 - Killian O'Brien
-date: Thur 21st November 2023
+date: Thur 21st November 2024
 transition: fade
 theme: killian
 width: 1920
