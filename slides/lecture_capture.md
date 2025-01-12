@@ -61,6 +61,7 @@ My preferred approach now is to *side step* the in-room tech and instead ...
 * Use of personal laptop allows me to use my preferred software combination
     - quick, easy workflow
     - can dismiss all distracting UI elements for a larger clean canvas
+* Blackboard is provided by <a href="https://xournalpp.github.io/" target="_blank">Xournal++</a>
 
 Then after class, quickly upload to MMUtube and insert link/embed in Moodle.
 
