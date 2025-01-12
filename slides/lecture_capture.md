@@ -57,6 +57,7 @@ My preferred approach now is to *side step* the in-room tech and instead ...
     - using a clip-on (wired or BT) microphone for much better audio
     - a webcam view of me (for vanity? crucial hand-waving explanations?)
 * Then simply capture the laptop screen + mic input with OBS or similar software. 
+* Not dependent on any in-room tech.
 * Use of personal laptop allows me to use my preferred software combination
     - quick, easy workflow
     - can dismiss all distracting UI elements for a larger clean canvas
