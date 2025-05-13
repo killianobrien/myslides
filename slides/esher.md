@@ -114,15 +114,39 @@ Most mathematics courses in UK universities will allow students to go on a **pla
     - *How many different types of wallpaper are there?*
     - *Exploring COVID-19 Pandemic Modelling and its Broader Applications*
 
-<img src="./images/bifurcation.png" alt="Chaos" style="padding:10px;float:right;width:30%;"> 
+<img src="./images/bifurcation.png" alt="Chaos" style="padding:10px;width:30%;"> 
+<img src="./images/wallpaper.png" alt="Chaos" style="padding:10px;width:30%;"> 
 <img src="./images/seir.png" alt="Chaos" style="padding:10px;width:30%;"> 
-<img src="./images/wallpaper.png" alt="Chaos" style="padding:10px;float:left;width:30%;"> 
+
 
 ## After graduation
 <!-- What graduates of your subject typically go on to do workwise, post-graduate study etc.  -->
+Studying mathematics allows you to develop skills that employers want
+
+* Problem solving, Data Analysis, logical thinking, computer programming, technical writing,...
+
+Mathematics students will find careers in many areas
+
+* Teaching, Banking and Finance, Computing, Software development, 
+
+Some useful resources
+
+* [GORS](https://www.gov.uk/government/organisations/civil-service-government-operational-research-service), the Government Operational Research Service
+* [Gradcracker](https://www.gradcracker.com/search/maths-business/maths-graduate-jobs), for job ads featuring *mathematics*
+
+Students can also continue to Masters level study and PhD level research
+
+* [Jobs.ac.uk](https://www.jobs.ac.uk/search/mathematics-and-statistics/phd), UK PhD positions in maths and related areas
 
 ## Preparing for university
 <!-- What year 12's can be doing now to strengthen their applications for your subject -->
+
+Extra things I would do if I was hoping to study mathematics at university
+
+* Learn some introductory programming in Python, e.g. from [Codeacademy](https://www.codecademy.com/)
+* Maybe progress to working on the [Advent of Code problems](https://adventofcode.com/)
+* Explore many types of puzzles and problem solving, e.g. chess, Rubiks cube, ...
+* Some competitive university courses in mathematics and computer science may require you to take extra mathematics exams such as MAT, TMUA and STEP.
 
 
 
