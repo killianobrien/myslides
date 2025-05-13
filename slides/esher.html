@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Killian O’Brien">
+  <title>Mathematics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../reveal.js/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95%
+5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Mathematics</h1>
+  <p class="author">Killian O’Brien</p>
+  <p class="date">May 2025</p>
+</section>
+
+<section class="slide level2">
+
+<!-- 
+Talk Spec: 
+A maximum seminar of 25 minutes to help year 12 students decide whether to apply to study your subject at university. Do mention how you do it at your university, but, if possible, try to keep the talk focused on the subject and how it is typically taught in higher education in the UK. 
+It could include the following: 
+    What your subject is and why it's important  
+    What a typical student experience of studying your subject involves at uni, in terms of lectures, tutorials, seminars, workshops, practical work, field trips, etc.
+    How assessment of your subject typically works e.g., exams, projects, group presentations, dissertations. 
+    Opportunities for internships, work placements or study abroad 
+    What graduates of your subject typically go on to do workwise, post-graduate study etc. 
+    What year 12's can be doing now to strengthen their applications for your subject -->
+</section>
+<section id="who-am-i" class="slide level2">
+<h2>Who am I?</h2>
+<p><img src="./mee.jpg" height=200 style="display:block; margin:auto;vertical-align:middle;border-radius:50%"></img></p>
+<ul>
+<li>Dr Killian O’Brien</li>
+<li>Senior Lecturer in mathematics</li>
+<li>Background in pure mathematics, with knowledge of applied topics
+such as statistics and probability, cryptography, …</li>
+<li><strong>Contact</strong>
+<ul>
+<li><a href="mailto:k.m.obrien@mmu.ac.uk">k.m.obrien@mmu.ac.uk</a>
+<!-- - DB 3.28, Dalton Building, Chester St, Manchester --></li>
+</ul></li>
+</ul>
+</section>
+<section id="what-exactly-is-mathematics" class="slide level2">
+<h2>What exactly is mathematics?</h2>
+<!-- What your subject is and why it's important -->
+<p>A <strong>tough</strong> question to answer! I commonly say things
+like …</p>
+<ul>
+<li>The study of numbers and space.</li>
+<li>How to reason correctly about our numerical and geometric
+descriptions of the world.</li>
+<li>An underlying language, essential for all the sciences.</li>
+</ul>
+<p>At <strong>school/college</strong> and in <strong>university/higher
+education</strong></p>
+<ul>
+<li>At school and sixth form college you experience studying mathematics
+as learning about tools that help you solve various <em>mathematical
+problems</em>.</li>
+<li>In university, this broadens out to consider a huge range of tools,
+and more importantly, <strong>how they are derived/invented</strong> and
+how we <strong>choose the right tools</strong> to solve unfamiliar
+problems.</li>
+</ul>
+<p>A spectrum of applications, from <strong>very applied</strong>, to
+<strong>very pure</strong>.</p>
+<ul>
+<li><a
+href="https://www.mmu.ac.uk/research/groups/mathematical-modelling">Mathematical
+modelling and flow analysis at Man Met</a>, Applied Mathematics Research
+at Man Met</li>
+<li><a href="https://terrytao.wordpress.com/tag/prime-gaps/">Bounded
+gaps between the primes</a> Terence Tao, Stanford, USA
+<ul>
+<li>Long been <em>conjectured</em> that there are
+<strong>infinitely</strong> many twin prime pairs, i.e., pairs of
+integers <span class="math inline">\(n, n+2\)</span> where both are
+<strong>prime</strong>, for example, <span
+class="math inline">\(11,13\)</span> or <span
+class="math inline">\(17,19\)</span> or <span
+class="math inline">\(101,103\)</span> or … . But no one has managed to
+prove this yet.</li>
+<li><a href="https://annals.math.princeton.edu/2014/179-3/p07">Zhang
+(2014)</a> proved that, two primes can be found in the range <span
+class="math inline">\([n, n+70,000,000]\)</span> for infinitely many
+<span class="math inline">\(n\)</span>.</li>
+<li>Terence Tao (and others) have since improved this situation to: two
+primes can be found in the range <span class="math inline">\([n,
+n+246]\)</span>, for infinitely many <span
+class="math inline">\(n\)</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-mathematics-student-in-uk-higher-education."
+class="slide level2">
+<h2>A mathematics student in UK higher education.</h2>
+<!-- What a typical student experience of studying your subject involves at uni, in terms of lectures, tutorials, seminars, workshops, practical work, field trips, etc. -->
+<p>A typical student will be learning about mathematics through a
+combination of</p>
+<ul>
+<li>Lectures,</li>
+<li>Tutorials/seminars,</li>
+<li>Computer labs,
+<ul>
+<li>learning to program in languages like Python, Matlab, Mathematica,
+C++, …</li>
+</ul></li>
+<li>At Man Met our students typically have 12 hours of such face-to-face
+sessions timetabled each week.</li>
+</ul>
+<p>The rest of your study time is spent</p>
+<ul>
+<li>studying and learning the lecture content,</li>
+<li>following the suggested reading of books and academic papers from
+your courses,</li>
+<li>working on completing tutorial exercises and programming
+problems.</li>
+</ul>
+<p>Lots of this is best done together with other students from your
+course.</p>
+</section>
+<section id="a-mathematics-student-in-uk-higher-education.-1"
+class="slide level2">
+<h2>A mathematics student in UK higher education.</h2>
+<p>Most mathematics courses in UK universities will allow students to go
+on a <strong>placement year</strong> before their final year of
+study.</p>
+<ul>
+<li>In 2022 I oversaw placement activity from our department of
+Computing and Mathematics.</li>
+<li>We had <strong>31</strong> students on placement, from</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;">BSc Computer Forensics &amp; Security
+(<strong>5</strong>)</td>
+<td style="text-align: left;">BSc Computer Science
+(<strong>6</strong>)</td>
+<td style="text-align: left;">BSc Computing (<strong>3</strong>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">BSc Mathematics (<strong>4</strong>)</td>
+<td style="text-align: left;">BSc Software Engineering
+(<strong>11</strong>)</td>
+<td style="text-align: left;">MComp Computer Science
+(<strong>2</strong>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>in England and Wales</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;">Greater London (<strong>2</strong>)</td>
+<td style="text-align: left;">North East England
+(<strong>1</strong>)</td>
+<td style="text-align: left;">North West England
+(<strong>18</strong>)</td>
+<td style="text-align: left;">South East England
+(<strong>5</strong>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">South West England
+(<strong>1</strong>)</td>
+<td style="text-align: left;">Wales (<strong>1</strong>)</td>
+<td style="text-align: left;">West Midlands (<strong>1</strong>)</td>
+<td style="text-align: left;">Yorkshire and the Humber
+(<strong>2</strong>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>with the employers</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;">Apadmi</td>
+<td style="text-align: left;">Atkins</td>
+<td style="text-align: left;">Atom Group</td>
+<td style="text-align: left;">Aucoda (<strong>2</strong>)</td>
+<td style="text-align: left;">Audit Partnership</td>
+</tr>
+<tr>
+<td style="text-align: left;">BAE Systems</td>
+<td style="text-align: left;">Computer Design Systems</td>
+<td style="text-align: left;">Home Office</td>
+<td style="text-align: left;">IBM (<strong>3</strong>)</td>
+<td style="text-align: left;">Intelliscope</td>
+</tr>
+<tr>
+<td style="text-align: left;">Jumping Rivers</td>
+<td style="text-align: left;">Manchester United</td>
+<td style="text-align: left;">Matillion</td>
+<td style="text-align: left;">National Crime Agency</td>
+<td style="text-align: left;">NHS (<strong>2</strong>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pinewood Technologies</td>
+<td style="text-align: left;">TATA Steel</td>
+<td style="text-align: left;">Team Netsol (<strong>2</strong>)</td>
+<td style="text-align: left;">The Insights People</td>
+<td style="text-align: left;">TIP Trailer Services
+(<strong>2</strong>)</td>
+</tr>
+<tr>
+<td style="text-align: left;">TopCashback (<strong>2</strong>)</td>
+<td style="text-align: left;">Tyrrell Products</td>
+<td style="text-align: left;">VMware</td>
+<td style="text-align: left;">Zestia</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="assessment" class="slide level2">
+<h2>Assessment</h2>
+<!-- How assessment of your subject typically works e.g., exams, projects, group presentations, dissertations.  -->
+<ul>
+<li>Mathematics students will typically be assessed through a
+combination of <strong>examinations</strong> and
+<strong>coursework</strong>.</li>
+<li>Most mathematics courses require final year students to produce an
+<strong>undergraduate thesis/project</strong>.</li>
+<li>I am currently assessing our students’ projects. Here are some of
+their titles.
+<ul>
+<li><em>Understanding Chaos in Dynamical Systems and Chaotic Encryption
+Methods</em></li>
+<li><em>How many different types of wallpaper are there?</em></li>
+<li><em>Exploring COVID-19 Pandemic Modelling and its Broader
+Applications</em></li>
+</ul></li>
+</ul>
+<p><img src="./images/bifurcation.png" alt="Chaos" style="padding:10px;float:right;width:30%;">
+<img src="./images/seir.png" alt="Chaos" style="padding:10px;width:30%;">
+<img src="./images/wallpaper.png" alt="Chaos" style="padding:10px;float:left;width:30%;"></p>
+</section>
+<section id="after-graduation" class="slide level2">
+<h2>After graduation</h2>
+<!-- What graduates of your subject typically go on to do workwise, post-graduate study etc.  -->
+</section>
+<section id="preparing-for-university" class="slide level2">
+<h2>Preparing for university</h2>
+<!-- What year 12's can be doing now to strengthen their applications for your subject -->
+</section>
+<section id="teaching-and-research-interests" class="slide level2">
+<h2>Teaching and research interests</h2>
+<ul>
+<li><strong>Teaching</strong> experience in core pure mathematics areas
+of
+<ul>
+<li>Calculus,</li>
+<li>Linear Algebra,</li>
+<li>Number Theory and Cryptography,</li>
+<li>Group Theory and abstract algebra.</li>
+</ul></li>
+<li><strong>Research</strong>
+<ul>
+<li>PhD in development of algorithms in abstract algebra (Groebner bases
+in polynomial ring ideals) with applications to knot theory (topology
+and geometry).</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../reveal.js/plugin/notes/notes.js"></script>
+  <script src="../reveal.js/plugin/search/search.js"></script>
+  <script src="../reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="../reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
