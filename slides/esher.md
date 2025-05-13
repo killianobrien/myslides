@@ -16,26 +16,21 @@ title-slide-attributes:
     data-background-repeat: no-repeat
     data-background-position: 95% 5%	
 ---
-<!-- 
-Talk Spec: 
-A maximum seminar of 25 minutes to help year 12 students decide whether to apply to study your subject at university. Do mention how you do it at your university, but, if possible, try to keep the talk focused on the subject and how it is typically taught in higher education in the UK. 
-It could include the following: 
-    What your subject is and why it's important  
-    What a typical student experience of studying your subject involves at uni, in terms of lectures, tutorials, seminars, workshops, practical work, field trips, etc.
-    How assessment of your subject typically works e.g., exams, projects, group presentations, dissertations. 
-    Opportunities for internships, work placements or study abroad 
-    What graduates of your subject typically go on to do workwise, post-graduate study etc. 
-    What year 12's can be doing now to strengthen their applications for your subject -->
+
 ## Who am I?
 
 <img src="./mee.jpg" height=200 style="display:block; margin:auto;vertical-align:middle;border-radius:50%"></img>
 
 * Dr Killian O'Brien 
 * Senior Lecturer in mathematics
-* Background in pure mathematics, with knowledge of applied topics such as statistics and probability, cryptography, ...
+* Background in pure mathematics, with knowledge of applied topics such as cryptography, ...
 * **Contact**
     - [k.m.obrien@mmu.ac.uk](mailto:k.m.obrien@mmu.ac.uk)
     <!-- - DB 3.28, Dalton Building, Chester St, Manchester -->
+
+These slides are available at 
+
+* [tinyurl.com/esher2025](https://tinyurl.com/esher2025)
 
 ## What exactly is mathematics?
 <!-- What your subject is and why it's important -->
