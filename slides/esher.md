@@ -144,24 +144,3 @@ Extra things I would do if I was hoping to study mathematics at university
 * Some competitive university courses in mathematics and computer science may require you to take extra mathematics exams such as MAT, TMUA and STEP.
 
 
-
-
-
-
-
-
-
-
-
-
-## Teaching and research interests
-
-* **Teaching** experience in core pure mathematics areas of 
-    - Calculus, 
-    - Linear Algebra, 
-    - Number Theory and Cryptography, 
-    - Group Theory and abstract algebra.
-* **Research**
-    - PhD in development of algorithms in abstract algebra (Groebner bases in polynomial ring ideals) with applications to knot theory (topology and geometry). 
-
-
