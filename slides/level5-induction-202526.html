@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Induction Meeting for 2025/26">
+  <meta name="author" content="Killian O’Brien">
+  <title>Level 5 Mathematics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../reveal.js2/dist/reset.css">
+  <link rel="stylesheet" href="../reveal.js2/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../reveal.js2/dist/theme/killian.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="rgb(0,47,108)" data-background-image="logowhite.png" data-background-position="95%
+5%" data-background-repeat="no-repeat" data-background-size="18%">
+  <h1 class="title">Level 5 Mathematics</h1>
+  <p class="author">Induction Meeting for 2025/26</p>
+  <p class="author">Killian O’Brien</p>
+  <p class="date">Wednesday 25th September 2024</p>
+</section>
+
+<section id="welcome-back-to-level-5-of-mathematics"
+class="slide level2">
+<h2>Welcome back to level 5 of Mathematics</h2>
+<p><img
+data-src="https://www.mmu.ac.uk/sites/default/files/styles/page_header_half/public/2022-08/35561324_2.jpg"
+style="display: block; margin-left: auto; margin-right: auto; width: 80%;" /></p>
+</section>
+<section id="careers-employability-and-placements" class="slide level2">
+<h2>Careers, employability and placements</h2>
+<p>It’s never too early to be thinking about life after you graduate.
+The university has a range of resources to help students prepare for
+their future. See the main <a
+href="https://www.mmu.ac.uk/careers/students">Careers</a> part of the
+university website for further information.</p>
+<p><a href="https://mycareerhub.mmu.ac.uk/students/jobs">MyCareerHub</a>
+is the place to go for graduate, placement and internship vacancies and
+employment related events taking place in or near the university or
+online.</p>
+<h3 id="an-important-upcoming-event">An important upcoming event</h3>
+<ul>
+<li><a href="https://www.mmu.ac.uk/careers/students/events">Graduate
+Jobs and Placement Fair Wed 6th November 2024</a></li>
+</ul>
+<p>A placement is where a student works with an employer for the year
+between the second and third years of their degree.</p>
+<ul>
+<li><a
+href="https://www.mmu.ac.uk/careers/students/jobs-and-work-experience/placements">Placements</a>
+section of the Careers website.</li>
+<li><a href="https://www.mmu.ac.uk/careers/students/get-placed-2024">Get
+Placed 2024</a> - focused events in semester one to help you succeed in
+your placement search and application.</li>
+</ul>
+</section>
+<section id="institute-of-mathematics-and-its-applications"
+class="slide level2">
+<h2>Institute of Mathematics and its Applications</h2>
+<p><img
+data-src="https://cdn.ima.org.uk/wp/wp-content/uploads/2022/03/christina-wocintechchat-com-OW5KP_Pj85Q-unsplash-resize.jpg"
+style="display:flex;margin-left: auto; margin-right: auto; width: 50%;" /></p>
+<ul>
+<li>The IMA is one of the main professional bodies for mathematicians in
+the UK.</li>
+<li>A great resource of mathematics and career information.</li>
+<li>Events, publications, awards etc</li>
+<li>Reduced rate student membership for £10 or use the free IMA eStudent
+scheme.</li>
+<li><a href="https://ima.org.uk">IMA website</a></li>
+</ul>
+</section>
+<section id="programme-leader" class="slide level2">
+<h2>Programme leader</h2>
+<ul>
+<li>Our new <strong>Programe Leader</strong>: Dr Saeed Abu-Zour
+<img src="./abuzour.png" height=200 style="vertical-align:middle;border-radius:50%"></img>
+<ul>
+<li><a href="mailto:s.abu-zour@mmu.ac.uk">s.abu-zour@mmu.ac.uk</a></li>
+</ul></li>
+<li><a
+href="https://www.mmu.ac.uk/about-us/faculties/science-engineering/staff/computing-maths">Mathematics
+subject group staff pages</a></li>
+</ul>
+</section>
+<section id="your-wellbeing-and-support" class="slide level2">
+<h2>Your wellbeing and support</h2>
+<ul>
+<li>Lots of information on the <a
+href="https://www.mmu.ac.uk/student-life/wellbeing">Wellbeing</a>
+pages</li>
+</ul>
+<p><img src="./support.png" style="display:block;margin-left:auto;margin-right:auto;height:90%"></img></p>
+</section>
+<section id="contacting-the-student-hub" class="slide level2">
+<h2>Contacting the Student Hub</h2>
+<ul>
+<li>Ask us about things specific to your course.</li>
+<li>The Student Hub in the Business School deals with general university
+enquiries.</li>
+</ul>
+<p>The Student Hub can be busy in the first few weeks so do try and
+access their online provision in the first instance</p>
+<ul>
+<li><a href="https://studenthub.mmu.ac.uk/">Student Hub online</a></li>
+</ul>
+</section>
+<section id="personal-tutors" class="slide level2">
+<h2>Personal Tutors</h2>
+<h3 id="personal-tutors-1">Personal tutors</h3>
+<p>
+<ul>
+<li>You will have been allocated a personal tutor</li>
+<li>Your Personal tutor will be contacting you very soon, if not
+already. Keep an eye on your emails.</li>
+<li>Personal tutors provide support to guide you through your academic
+studies and support the development of your wider skills.</li>
+</ul>
+</p>
+</section>
+<section id="your-attendance" class="slide level2">
+<h2>Your attendance</h2>
+<ul>
+<li><a
+href="https://attendance.mmu.ac.uk/">mmu.ac.uk/attendance</a></li>
+<li>If your attendance and course engagement is too low you will be
+contacted by the university.</li>
+<li>If contacted make sure you <strong>respond</strong>.</li>
+</ul>
+<p><img src="./attendance.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img></p>
+</section>
+<section id="future-me-week" class="slide level2">
+<h2>Future Me week</h2>
+<ul>
+<li><a href="https://www.mmu.ac.uk/careers/students/future-me">Future
+Me</a> information.</li>
+</ul>
+<p><img src="./futureme.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img></p>
+</section>
+<section id="rise-at-man-met" class="slide level2">
+<h2>RISE at Man Met</h2>
+<ul>
+<li><a href="https://rise.mmu.ac.uk/">RISE</a> information.</li>
+</ul>
+<p><img src="./rise.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img></p>
+</section>
+<section id="your-student-union" class="slide level2">
+<h2>Your Student Union</h2>
+<ul>
+<li><a href="https://www.theunionmmu.org/">The Union</a> website.</li>
+</ul>
+<p><img src="./union.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img></p>
+</section>
+<section id="the-course-rep-role" class="slide level2">
+<h2>The Course Rep role</h2>
+<ul>
+<li><a
+href="https://www.theunionmmu.org/student-voice/course-reps">Course
+Reps</a> information.</li>
+</ul>
+<p><img src="./courserep.png" style="display:block;margin-left:auto;margin-right:auto;height:80%"></img></p>
+</section>
+<section id="the-academic-year" class="slide level2">
+<h2>The academic year</h2>
+<ul>
+<li>Note dates of assessment weeks. You <strong>must</strong> be present
+for these weeks.</li>
+<li>Note that all 11 teaching weeks of Semester Two take place
+<strong>before</strong> the Easter/Spring break.</li>
+</ul>
+<p><img src="./calendar.png" style="display:block;margin-left:auto;margin-right:auto;height:100%"></img></p>
+</section>
+<section id="the-units" class="slide level2">
+<h2>The units</h2>
+<h4 id="semester-1">Semester 1</h4>
+<ul>
+<li>6G5Z3011 - MULTI-VARIABLE CALCULUS ANALYTICAL METHODS (15 credits) |
+Dr Killian O’Brien, Dr Saeed Abu-Zour</li>
+<li>6G5Z3012 - FURTHER LINEAR ALGEBRA (15 credits) | Dr Saeed
+Abu-Zour</li>
+<li>6G5Z3022 - NUMERICAL METHODS AND MODELLING (30 credits) | Dr Tariq
+Jarad, Dr Jian Zhou</li>
+</ul>
+<h4 id="semester-2">Semester 2</h4>
+<ul>
+<li>6G5Z3018 - STATISTICS AND FINANCIAL MATHEMATICS (30 credits) | Dr
+Esmaeil Babaei Khezerloo</li>
+<li>6G5Z3019 - NUMBER THEORY AND CRYPTOGRAPHY (30 credits) | Dr Killian
+O’Brien</li>
+</ul>
+<h4 id="summative-assessments">Summative Assessments</h4>
+<ul>
+<li>Each 30 credit unit assessed by coursework and exam - see unit
+introductions for details.</li>
+<li>Further linear algebra assessed by <strong>exam only</strong>.</li>
+<li>Multi-variable calculus and analytical methods assessed by
+<strong>coursework only</strong>.</li>
+<li>Exams are <em>3 hour traditional exam-hall style</em> held in the
+relevant semester assessment weeks.</li>
+</ul>
+</section>
+<section id="degree-classifications" class="slide level2">
+<h2>Degree Classifications</h2>
+<p>Degrees at Man Met are classified as first, 2.1, 2.2, etc using two
+methods. Both these methods are described in detail in the</p>
+<ul>
+<li><a
+href="https://www.mmu.ac.uk/legal/policies/undergraduate-assessment-regulations-24-25">Undergraduate
+Assessment Regulations</a></li>
+</ul>
+<p>I won’t duplicate, and thereby possibly confuse, the details here.
+You should use the regulations to acquaint yourself with the system so
+you know exactly where you stand.</p>
+<ul>
+<li>Conditions for <em>progression</em>, i.e. continuing to your next
+level of your course, are also specified in the regulations, and
+summarized on the <a
+href="https://www.mmu.ac.uk/student-life/course/assessments">university’s
+website here</a></li>
+</ul>
+</section>
+<section id="student-academic-support-and-pastoral"
+class="slide level2">
+<h2>Student Academic support and pastoral</h2>
+<p>Primary academic support for your studies comes from the unit teams
+and your personal tutor. Do make full use of</p>
+<ul>
+<li>Lectures, tutorials and labs.</li>
+<li>The online resources provided through Moodle.</li>
+<li>Drop-in and bookable consultations (<em>office hours</em>) provided
+by staff.</li>
+<li>Following the directed self-study parts of the unit, typically
+tutorial exercises etc.</li>
+</ul>
+<p>The university also provides a range of general academic support and
+study skills development opportunities.</p>
+<ul>
+<li><a href="https://www.mmu.ac.uk/studyskills">Study skills</a></li>
+</ul>
+<p>There is also help and support available for your wellbeing and
+mental health while at university.</p>
+<ul>
+<li><a href="https://www.mmu.ac.uk/student-life/wellbeing/">Student
+Wellbeing</a></li>
+</ul>
+</section>
+<section id="personal-learning-plans" class="slide level2">
+<h2>Personal Learning Plans</h2>
+<p><em>A Personal Learning Plan (PLP) is a document that outlines the
+support or ‘reasonable adjustments’ that the University will put in
+place for you to support your study due to your disability-related
+needs. It also includes a list of your responsibilities.</em></p>
+<ul>
+<li>The reasonable adjustments often involve the ability to request
+extensions to the deadlines for coursework and/or extensions to the time
+allowed for examinations.</li>
+<li>But a range of other adjustments are possible to your learning and
+assessment arrangements depending on your situation.</li>
+<li>PLPs are shared with the acdemics teaching and assessing you.</li>
+<li>If you already have a PLP, familiarise yourself with its contents
+and ensure it is updated if need be.</li>
+<li>If you think you may need a PLP then see the information from the <a
+href="https://www.mmu.ac.uk/student-life/wellbeing/disability/">Disability
+Support Service</a> and speak to them.</li>
+</ul>
+</section>
+<section id="academic-engagement" class="slide level2">
+<h2>Academic engagement</h2>
+<p>Success will come from <strong>good engagement with your
+course</strong> and you <strong>making the most of the
+opportunities</strong> that studying at Man Met provides.</p>
+<p>We want you to succeed and will support you in doing so.</p>
+<p>We do monitor student engagement and take action when we feel it is
+necessary.</p>
+<ul>
+<li>If you are contacted by the university about your engagement
+<ul>
+<li>please respond promptly and act on their advice,</li>
+<li>don’t ignore the problem hoping it will <em>go away</em>.</li>
+</ul></li>
+<li>If your engagement remains poor and you do not respond to our
+contacts and advice then the university can begin withdrawal
+proceedings.</li>
+</ul>
+<p>But this is all <em>last resort</em> stuff.</p>
+</section>
+<section id="on-a-more-positive-note" class="slide level2">
+<h2>On a more positive note</h2>
+<p>We all know the route to success and enjoyment of your course. It’s
+not a mystery.</p>
+<ul>
+<li>Make sure you attend all your timetabled classes.</li>
+<li>Talk to and work with the other students on your course.</li>
+<li>Put energy into developing and maintaining friendships.</li>
+<li>Carry out the work required for your units.</li>
+<li>Prepare for, and start work on, courseworks and exams at the
+earliest opportunity.</li>
+<li>Find good ways to relax and unwind.</li>
+<li>Make the most of being in <strong>Manchester</strong>.</li>
+</ul>
+</section>
+<section id="extensions-on-assesessments" class="slide level2">
+<h2>Extensions on assesessments</h2>
+<ul>
+<li>Illness and other exceptional events make interrupt your study and
+work on assessments.</li>
+<li>The university’s Evidenced Extensions process exists to deal with
+this.</li>
+<li>Typically awards extensions and decisions on penalty-free resits
+provided your exceptional factors are supported by <strong>good
+evidence</strong> and <strong>accepted by</strong> the Evidenced
+Extensions process.</li>
+<li>See <a
+href="https://www.mmu.ac.uk/student-life/course/assessments">Assessment
+and Results</a> for more information.</li>
+<li>Short non-evidenced coursework extensions may be possible
+<ul>
+<li>see Moodle and unit teams for info during the Semester</li>
+</ul></li>
+</ul>
+</section>
+<section id="academic-misconduct" class="slide level2">
+<h2>Academic (mis)conduct</h2>
+<ul>
+<li>The University has a thorough well-developed policy on Academic
+Misconduct which the Mathematics programme fully supports.</li>
+<li>More information available from <a
+href="https://www.mmu.ac.uk/student-case-management/guidance-for-students/academic-misconduct/">Academic
+Misconduct</a> site.</li>
+<li>You should maintain the highest standards of behaviour in all
+aspects of your academic work.</li>
+</ul>
+</section>
+<section id="timetables" class="slide level2">
+<h2>Timetables</h2>
+<p>Let’s check our timetables</p>
+<ul>
+<li><a
+href="https://mytimetable.mmu.ac.uk/">mytimetable.mmu.ac.uk</a></li>
+</ul>
+</section>
+<section id="mathematical-software-lab-computers-and-the-library"
+class="slide level2">
+<h2>Mathematical software, lab computers and the Library</h2>
+<ul>
+<li>A range of mathematical and scientific software is available from
+the PCs in the Dalton building and the specialist PCs in the
+library.</li>
+<li>Dalton building features new labs and student spaces.</li>
+<li>See <a
+href="https://www.mmu.ac.uk/about-us/professional-services/itd/software/">Software
+download centre</a> for a range of software available for students to
+install on their own machines - <strong>Matlab</strong> and
+<strong>Python</strong> in particular.</li>
+<li>I recommend having a local installation of <a
+href="https://www.latex-project.org/">LaTeX</a> as well as using online
+tools like <a href="https://www.overleaf.com/">Overleaf</a>.</li>
+<li><a href="https://www.mmu.ac.uk/library">University Library</a> has a
+new home on Oxford Road, in what was the John Dalton East building. See
+website for details.</li>
+</ul>
+</section>
+<section id="the-departmental-learning-studio" class="slide level2">
+<h2>The Departmental Learning Studio</h2>
+<h4 id="your-hq">Your HQ</h4>
+<p><img data-src="studio05.jpg"
+style="display:flex;margin-left: auto; margin-right: auto; width: 50%;" /></p>
+</section>
+<section id="the-departmental-learning-studio-1" class="slide level2">
+<h2>The Departmental Learning Studio</h2>
+<h4 id="your-hq-1">Your HQ</h4>
+<p><img data-src="studio02.jpg"
+style="display:flex;margin-left: auto; margin-right: auto; width: 50%;" /></p>
+<ul>
+<li>Also, lots of study spaces available on ground, 1st and 2nd floors
+of the new Faculty Dalton Building on Chester Street.</li>
+</ul>
+</section>
+<section id="bury-arcade-trip" class="slide level2">
+<h2>Bury Arcade Trip</h2>
+<p>To make your return really special, we’re organising a field trip to
+the <a href="https://www.arcadeclub.co.uk/bury/">Bury Arcade Club</a> on
+Friday of Welcome Week (27th September 2024). This is a <strong>free
+trip</strong> and is open to all final year students in the Department
+of Computing and Mathematics.</p>
+<p>If you would like to come along, please can we ask you to sign-up via
+the <a
+href="https://forms.office.com/Pages/ResponsePage.aspx?id=UPs_KAujjEiQ9M2uT3rm0Vm1UDwgYT1Np3HapUj9AF9UNzBFSTc2WFJMRUNROE1XOEpRVE4zRFNWUS4u">this
+form</a></p>
+<p>On Friday the coach leaves the University at 12:00 noon. We’ll then
+drive to the Arcade Club, have approximately four hours to spend there,
+and then we’ll offer a return journey via coach. You are also welcome to
+make your own way there and meet us at the venue, but please still
+register at the form above.</p>
+<p>If you have any questions about the trip, please reach out to the
+organiser, Anthony McCormick (a.mccormick@mmu.ac.uk).</p>
+</section>
+<section id="see-you-all-next-week" class="slide level2">
+<h2>See you all next week</h2>
+<p>Killian O’Brien</p>
+<ul>
+<li>Email <a
+href="mailto:k.m.obrien@mmu.ac.uk">k.m.obrien@mmu.ac.uk</a></li>
+<li>Teams <a
+href="https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk">https://teams.microsoft.com/l/chat/0/0?users=k.m.obrien@mmu.ac.uk</a></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../reveal.js2/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../reveal.js2/plugin/notes/notes.js"></script>
+  <script src="../reveal.js2/plugin/search/search.js"></script>
+  <script src="../reveal.js2/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 7.0e-2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
