@@ -3,7 +3,7 @@ title: Level 5 Mathematics
 author: 
 	- Induction Meeting for 2025/26
 	- Killian O'Brien
-date: Wednesday 25th September 2024
+date: Wednesday 24th September 2025
 transition: fade
 theme: killian
 revealjs-url: ../reveal.js2
@@ -175,7 +175,7 @@ We all know the route to success and enjoyment of your course. It's not a myster
 ## Academic (mis)conduct
 
 * The University has a thorough well-developed policy on Academic Misconduct which the Mathematics programme fully supports. 
-* More information available from [Academic Misconduct](https://www.mmu.ac.uk/student-case-management/guidance-for-students/academic-misconduct/){target="_blank"} site.
+* More information available from [Academic Misconduct](https://www.mmu.ac.uk/student-life/course/assessments/academic-integrity){target="_blank"} site.
 * You should maintain the highest standards of behaviour in all aspects of your academic work.
 
 
