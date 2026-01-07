@@ -25,7 +25,7 @@ title-slide-attributes:
 * Senior Lecturer in Mathematics
     - also teach Applied Cryptography on BSc Cyber Security, supervise MSc projects etc
 * <a href="mailto:k.m.obrien@mmu.ac.uk">k.m.obrien@mmu.ac.uk</a>, 3.28 Dalton Building
-* at Man Met since 2008
+* here at Man Met since 2008
 
 ## Lecture capture in Man Met
 
