@@ -29,6 +29,7 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="../reveal.js2/dist/theme/killian.css" id="theme">
 </head>
@@ -41,7 +42,7 @@
   <h1 class="title">Lecture capture</h1>
   <p class="author">show and tell, some thoughts and questions</p>
   <p class="author">Killian O’Brien</p>
-  <p class="date">Monday 13th January 2025</p>
+  <p class="date">January 2026</p>
 </section>
 
 <section id="introduction-to-killian" class="slide level2">
@@ -56,7 +57,7 @@ projects etc</li>
 </ul></li>
 <li><a href="mailto:k.m.obrien@mmu.ac.uk">k.m.obrien@mmu.ac.uk</a>, 3.28
 Dalton Building</li>
-<li>at Man Met since 2008</li>
+<li>here at Man Met since 2008</li>
 </ul>
 </section>
 <section id="lecture-capture-in-man-met" class="slide level2">
@@ -85,10 +86,11 @@ rooms.</li>
 <li>Some issues
 <ul>
 <li>the in-room microphone does not produce very <em>comfortably
-listenable</em> audio, and picks up lots of coughs, murmuring, chatting
-etc from the audience.</li>
-<li>Potentially obscuring water-mark in the lower right corner.</li>
-<li>Switching between the presentation and blackboard elements can be
+listenable</em> audio, and picks up lots of coughs, murmuring, .
+movement noises etc from the audience.</li>
+<li>A water-mark in the lower right corner, potentially obscuring
+necessary details.</li>
+<li>Switching between the presentation and ‘blackboard’ elements can be
 tricky.</li>
 <li>Remember: this is only available in certain rooms.</li>
 </ul></li>
@@ -104,9 +106,9 @@ and instead …</p>
 <li>Everything is going through the laptop
 <ul>
 <li>presentation slides</li>
-<li>PDF lecture notes etc</li>
+<li>HTML/PDF lecture notes etc</li>
 <li>software demos</li>
-<li>the “blackboard” with a graphics tablet</li>
+<li>the ‘blackboard’ with a graphics tablet</li>
 <li>using a clip-on (wired or BT) microphone for much better audio</li>
 <li>a webcam view of me (for vanity? crucial hand-waving
 explanations?)</li>
@@ -133,7 +135,7 @@ Moodle.</p>
 <li>Your views on lecture capture?</li>
 <li>What is the longer term university approach? Insights from
 anyone?</li>
-<li>Other good tool/software suggestions.</li>
+<li>Other good tools/software suggestions.</li>
 </ul>
 </section>
     </div>
@@ -145,7 +147,6 @@ anyone?</li>
   <script src="../reveal.js2/plugin/notes/notes.js"></script>
   <script src="../reveal.js2/plugin/search/search.js"></script>
   <script src="../reveal.js2/plugin/zoom/zoom.js"></script>
-  <script src="../reveal.js2/plugin/math/math.js"></script>
 
   <script>
 
@@ -302,26 +303,8 @@ anyone?</li>
         // Factor of the display size that should remain empty around the content
         margin: 7.0e-2,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

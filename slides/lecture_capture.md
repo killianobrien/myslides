@@ -3,7 +3,7 @@ title: "Lecture capture"
 author:
 - show and tell, some thoughts and questions
 - Killian O'Brien
-date: Monday 13th January 2025
+date: January 2026
 transition: fade
 theme: killian
 width: 1920
@@ -39,9 +39,9 @@ title-slide-attributes:
 
 * An example of mine from a few years ago with the in-room tech <iframe width="800" height="450" src="https://www.youtube.com/embed/0owMNLzKcP0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" style="float:right;" allowfullscreen></iframe>
 * Some issues
-    - the in-room microphone does not produce very *comfortably listenable* audio, and picks up lots of coughs, murmuring, chatting etc from the audience.
-    - Potentially obscuring water-mark in the lower right corner.
-    - Switching between the presentation and blackboard elements can be tricky.
+    - the in-room microphone does not produce very *comfortably listenable* audio, and picks up lots of coughs, murmuring, . movement noises etc from the audience.
+    - A water-mark in the lower right corner, potentially obscuring necessary details.
+    - Switching between the presentation and 'blackboard' elements can be tricky.
     - Remember: this is only available in certain rooms.
 
 ## Show and tell on my approach
@@ -51,9 +51,9 @@ My preferred approach now is to *side step* the in-room tech and instead ...
 * Capture my lecture with my laptop. <iframe width="800" height="450" src="https://www.youtube.com/embed/zruc4vfwc5I?si=sHnftFmxqKecW8dK&amp;start=2408" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" style="float:right;" allowfullscreen></iframe>
 * Everything is going through the laptop
     - presentation slides
-    - PDF lecture notes etc
+    - HTML/PDF lecture notes etc
     - software demos
-    - the "blackboard" with a graphics tablet
+    - the 'blackboard' with a graphics tablet
     - using a clip-on (wired or BT) microphone for much better audio
     - a webcam view of me (for vanity? crucial hand-waving explanations?)
 * Then simply capture the laptop screen + mic input with OBS or similar software. 
@@ -69,5 +69,5 @@ Then after class, quickly upload to MMUtube and insert link/embed in Moodle.
 
 * Your views on lecture capture?
 * What is the longer term university approach? Insights from anyone?
-* Other good tool/software suggestions.
+* Other good tools/software suggestions.
 
