@@ -73,7 +73,7 @@ A placement is where a student works with an employer for the year between the s
 #### Semester 2 
 
 * 6G5Z3018 - STATISTICS AND FINANCIAL MATHEMATICS (30 credits) | Dr Esmaeil Babaei Khezerloo
-* 6G5Z3019 - NUMBER THEORY AND CRYPTOGRAPHY (30 credits) | Dr Killian O'Brien
+* 6G5Z0048 - NUMBER THEORY AND ABSTRACT ALGEBRA (30 credits) | Dr Killian O'Brien
 
 #### Timetables
 
