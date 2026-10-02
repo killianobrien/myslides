@@ -15,10 +15,16 @@
     .reveal .sourceCode {  /* see #7635 */
       overflow: visible;
     }
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -29,7 +35,6 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="../reveal.js2/dist/theme/killian.css" id="theme">
 </head>
@@ -111,6 +116,16 @@ target="_blank">www.mmu.ac.uk/sefinalyeartoolkit</a>
 <li>All events/resources for final years will be updated on this toolkit
 throughout the year.</li>
 <li>This is a central referral place for all final year students.</li>
+</ul></li>
+<li>Further study: masters, PhD, …
+<ul>
+<li><a href="https://www.mmu.ac.uk/careers/graduates/further-study"
+target="_blank">Further Study info</a> pages on the Careers website</li>
+<li>Application processes, funding sources vary. The pages above are a
+good start.</li>
+<li>Soem interesting initiatives and schemes out there, including the <a
+href="https://martingale.foundation/" target="_blank">Martingale
+Postgraduate Foundation scheme</a></li>
 </ul></li>
 </ul>
 <p><strong>In person support</strong></p>
